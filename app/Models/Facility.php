@@ -6,11 +6,16 @@ use App\Models\Destination;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Gallery extends Model
+class Facility extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['destination_id', 'image_url'];
+    public $timestamps = false;
+
+    protected $fillable = [
+        'destination_id',
+        'name'
+    ];
 
     public function destination()
     {

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Gallery;
+use App\Models\Facility;
 use App\Models\OpeningHour;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,5 +35,10 @@ class Destination extends Model
     public function openingHours()
     {
         return $this->hasMany(OpeningHour::class);
+    }
+
+    public function facilities()
+    {
+        return $this->hasMany(Facility::class);
     }
 }
