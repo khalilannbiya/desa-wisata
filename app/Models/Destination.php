@@ -6,6 +6,7 @@ use App\Models\Gallery;
 use App\Models\Facility;
 use App\Models\OpeningHour;
 use App\Models\Accommodation;
+use App\Models\ContactDetail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -46,5 +47,10 @@ class Destination extends Model
     public function accommodations()
     {
         return $this->hasMany(Accommodation::class);
+    }
+
+    public function contactDetails()
+    {
+        return $this->hasMany(ContactDetail::class);
     }
 }
