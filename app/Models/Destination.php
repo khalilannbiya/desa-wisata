@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Gallery;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Destination extends Model
 {
@@ -22,5 +23,10 @@ class Destination extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class);
     }
 }
