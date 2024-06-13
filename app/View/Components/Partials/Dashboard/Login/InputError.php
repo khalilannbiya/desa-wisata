@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Partials\Dasboard\Login;
+namespace App\View\Components\Partials\Dashboard\Login;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Input-error extends Component
+class InputError extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Input-error extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.partials.dasboard.login.input-error');
+        return view('components.partials.dashboard.login.input-error');
     }
 }
