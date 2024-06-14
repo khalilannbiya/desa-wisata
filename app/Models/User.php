@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Events;
 use App\Models\Article;
 use App\Models\Destination;
 use Illuminate\Notifications\Notifiable;
@@ -56,5 +57,10 @@ class User extends Authenticatable
     public function articles()
     {
         return $this->hasMany(Article::class, 'author_id');
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Events::class, 'admin_id');
     }
 }
