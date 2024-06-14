@@ -1,6 +1,6 @@
 
 <article class="">
-    <div class=" sm:max-w-sm h-[600px] mx-6 font-montserrat sm:px-0 bg-white border border-gray-200 rounded-lg shadow ">
+    <div class=" sm:max-w-sm  mx-6 font-montserrat sm:px-0 bg-white border border-gray-200 rounded-lg shadow ">
         <a href="# ">
             <img class="rounded-t-lg object-cover" src="{{asset('assets/img/dummy-vilage.jpg')}}" alt="" />
         </a>
@@ -8,7 +8,7 @@
             <a href="#">
                 <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions 2021</h5>
             </a>
-                <p class="mb-3 h-40 font-normal overflow-hidden elipsis text-gray-700 text-balance">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eaque explicabo sapiente illum quisquam iste culpa repellat vitae pariatur ipsa perspiciatis mollitia, minima distinctio dicta consequatur ab saepe debitis sit nemo iusto aliquam dolores aliquid eos nihil. Optio quaerat cum ea nemo nostrum dolore ipsa. Officia nam odit libero qui nesciunt, dolorem at dolor recusandae ullam voluptate eius enim eum mollitia dolorum nisi natus quis dignissimos consequatur doloremque amet labore. Repudiandae aliquid unde vitae tenetur libero. Itaque obcaecati unde autem quia. Nostrum ipsam unde facilis, cupiditate ullam aperiam corrupti placeat delectus laudantium maxime expedita ratione amet magnam in architecto quaerat.</p>
+                <p class="mb-3 h-50 font-normal overflow-hidden elipsis text-gray-700 text-balance">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eaque explicabo sapiente illum quisquam iste culpa repellat vitae pariatur ipsa perspiciatis mollitia, minima distinctio dicta consequatur ab saepe debitis sit nemo iusto aliquam dolores aliquid eos nihil. Optio quaerat cum ea nemo nostrum dolore ipsa. Officia nam odit libero qui nesciunt, dolorem at dolor recusandae ullam voluptate eius enim eum mollitia dolorum nisi natus quis dignissimos consequatur doloremque amet labore. Repudiandae aliquid unde vitae tenetur libero. Itaque obcaecati unde autem quia. Nostrum ipsam unde facilis, cupiditate ullam aperiam corrupti placeat delectus laudantium maxime expedita ratione amet magnam in architecto quaerat.</p>
 
             <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-deep-koamaru-600 rounded hover:bg-deep-koamaru-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                 Selengkapnya
