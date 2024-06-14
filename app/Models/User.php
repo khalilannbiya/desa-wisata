@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Article;
 use App\Models\Destination;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,5 +51,10 @@ class User extends Authenticatable
     public function destinations()
     {
         return $this->hasMany(Destination::class, 'owner_id');
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'author_id');
     }
 }
