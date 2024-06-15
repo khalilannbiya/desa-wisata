@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Destination;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +20,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::post('/store', [DestinationController::class, 'store'])->name('testing');
