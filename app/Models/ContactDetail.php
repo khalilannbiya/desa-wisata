@@ -2,21 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Destination;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ContactDetail extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'destination_id',
         'type',
-        'valeu'
+        'value',
     ];
 
     public function destination()
     {
-        return $this->belongsTo(Destination::class, 'destination_id');
+        return $this->belongsTo(Destination::class);
     }
 }

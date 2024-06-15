@@ -2,9 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Gallery;
+use App\Models\Facility;
+use App\Models\OpeningHour;
+use App\Models\Accommodation;
 use App\Models\ContactDetail;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Destination extends Model
 {
     use HasFactory;
@@ -24,28 +29,28 @@ class Destination extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function openingHours()
-    {
-        return $this->hasMany(OpeningHour::class, 'destination_id');
-    }
-
-    public function contactDetails()
-    {
-        return $this->hasMany(ContactDetail::class, 'destination_id');
-    }
-
     public function galleries()
     {
-        return $this->hasMany(Gallery::class, 'destination_id');
+        return $this->hasMany(Gallery::class);
+    }
+
+    public function openingHours()
+    {
+        return $this->hasMany(OpeningHour::class);
     }
 
     public function facilities()
     {
-        return $this->hasMany(Facility::class, 'destination_id');
+        return $this->hasMany(Facility::class);
     }
 
-    public function accomodations()
+    public function accommodations()
     {
-        return $this->hasMany(Accomodation::class, 'destination_id');
+        return $this->hasMany(Accommodation::class);
+    }
+
+    public function contactDetails()
+    {
+        return $this->hasMany(ContactDetail::class);
     }
 }

@@ -19,6 +19,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/home', function () {
+    return view('components.pages.frontend.index');
+});
+
 require __DIR__.'/auth.php';
 
 Route::post('/store', [DestinationController::class, 'store'])->name('testing');

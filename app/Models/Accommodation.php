@@ -6,7 +6,7 @@ use App\Models\Destination;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Facility extends Model
+class Accommodation extends Model
 {
     use HasFactory;
 
