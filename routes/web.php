@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -17,8 +17,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/add', function () {
+Route::get('/update', function () {
+    return view('components.pages.dashboard.owner.update');
+});
+
+Route::post('/update', function (Request $request) {
+    dd($request->all());
+})->name('update');
+
+
+Route::post('/add', function (Request $request) {
+    dd($request->all());
+
+})->name('posts');
+
+Route::get('/add',function (){
     return view('components.pages.dashboard.owner.add');
 });
+
 
 require __DIR__.'/auth.php';
