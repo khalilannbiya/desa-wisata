@@ -12,6 +12,7 @@ use App\Models\Accommodation;
 use App\Models\ContactDetail;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\DestinationCreateRequest;
 
 class DestinationController extends Controller
@@ -21,7 +22,28 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        //
+        if (request()->ajax()) {
+            $destination = Destination::latest();
+            return DataTables::of($destination)
+                ->addColumn('action', function ($item) {
+                    return '
+                    <div class="wrapper-action">
+                        <a href="#">
+                            Edit
+                        </a>
+                        <div>
+                            <form action="#" method="post">
+                            ' . method_field('delete') . csrf_field() . '
+                            <button type="submit">Hapus</button>
+                            </form>
+                        </div>
+                    </div>
+                ';
+                })
+                ->make();
+        }
+
+        return view('components.pages.dashboard.admin.destination.index');
     }
 
     /**
