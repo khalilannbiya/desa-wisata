@@ -7,6 +7,15 @@
             <div class="">
                 <h1 class="text-black dark:text-white font-bold text-xl mb-6"> Tambah Tempat Wisata </h1>
             </div>
+
+
+
+            <div class="bg-white dark:bg-form-input shadow-lg px-6 py-6 rounded-lg mb-6">
+                <div class="dropzone " id="myDropzone">
+                </div>
+            </div>
+
+
             <div class="bg-white dark:bg-form-input shadow-lg px-6 py-6 rounded-lg mb-6">
                 <div class="w-full mb-6 ">
                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
@@ -295,10 +304,36 @@
     </form>
 
 
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+
 
     {{-- Jadwal Operasional --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+            const myDropzone = new Dropzone('#myDropzone', {
+                url: 'http://desa-wisata.test:8080/testStore',
+                acceptedFiles: 'image/*',
+                paramName: 'file', // The name that will be used to transfer the file
+                maxFilesize: 1,
+                maxFiles: 5,
+                addRemoveLinks: true,
+                dictRemoveFile: `Hapus`,
+                init: function() {
+                    this.on('sending', function(file, xhr, formData) {
+                        formData.append('_token', csrfToken);
+                    });
+                }
+            })
+
+
+
+
+
+
+
+
             const formWisatabaru = document.getElementById('formWisatabaru');
             const tambahWisataBaruButton = document.getElementById('tambahWisata');
             const jadwalBaru = document.getElementById('jadwalBaru');
@@ -340,47 +375,47 @@
 
             tombolTambahAccommodations.addEventListener('click', function() {
                 tambahAccommodations.insertAdjacentHTML('beforeend', `
-                    <div class="mb-6">
-                        <input id="accommodations"
-                        class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        type="text" name="accommodations[${accommodationsCount}][accommodations]"
-                        placeholder="Masukkan Akomondasi">
-                    </div>`)
+                            <div class="mb-6">
+                                <input id="accommodations"
+                                class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                type="text" name="accommodations[${accommodationsCount}][accommodations]"
+                                placeholder="Masukkan Akomondasi">
+                            </div>`)
             })
 
             tomboltambahFacilities.addEventListener('click', function() {
                 tambahFacilities.insertAdjacentHTML('beforeend', `
-                <div class="mb-6">
-                        <input id="facilities"
-                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            type="text" name="facilities[${facilitiesCount}][facilities]" placeholder="Masukkan Fasilitas">
-                    </div>
-                    `)
+                        <div class="mb-6">
+                                <input id="facilities"
+                                    class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                    type="text" name="facilities[${facilitiesCount}][facilities]" placeholder="Masukkan Fasilitas">
+                            </div>
+                            `)
             })
 
             tambahMediaSosial.addEventListener('click', function() {
                 mediaSosialBaru.insertAdjacentHTML('beforeend', `
-                    <div class="w-full my-6">
-                        <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                            <select  name="type[${mediaSosialCount}][type]"
-                                class="relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
-                                :class="isOptionSelected && 'text-black dark:text-white'"
-                                @change="isOptionSelected = true">
-                                <option value="" hidden class="text-body">
-                                    Personal Kontak
-                                </option>
-                                <option value="phone" class="text-body">Phone</option>
-                                <option value="email" class="text-body">Email</option>
-                                <option value="fax" class="text-body">Fax</option>
-                                <option value="social_media" class="text-body">Sosial Media</option>
-                            </select>
-                        </div>
-                    </div>
-                         <div class="mb-6">
-                        <input id="value"
-                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            type="text" name="value[${mediaSosialCount}][value]" placeholder="Masukkan Kontak">
-                    </div>`)
+                            <div class="w-full my-6">
+                                <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
+                                    <select  name="type[${mediaSosialCount}][type]"
+                                        class="relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
+                                        :class="isOptionSelected && 'text-black dark:text-white'"
+                                        @change="isOptionSelected = true">
+                                        <option value="" hidden class="text-body">
+                                            Personal Kontak
+                                        </option>
+                                        <option value="phone" class="text-body">Phone</option>
+                                        <option value="email" class="text-body">Email</option>
+                                        <option value="fax" class="text-body">Fax</option>
+                                        <option value="social_media" class="text-body">Sosial Media</option>
+                                    </select>
+                                </div>
+                            </div>
+                                 <div class="mb-6">
+                                <input id="value"
+                                    class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                    type="text" name="value[${mediaSosialCount}][value]" placeholder="Masukkan Kontak">
+                            </div>`)
             })
 
 
@@ -389,62 +424,62 @@
 
 
                 const html = `<div>
-                        <div class="w-full mb-6">
-                            <label for="days" class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                Hari
-                            </label>
-                            <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                                <select id="days" name="day[1][day]"
-                                    class="days  relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
-                                    :class="isOptionSelected && 'text-black dark:text-white'"
-                                    @change="isOptionSelected = true">
-                                    <option value="" hidden class="text-body">
-                                        Hari Operasional
-                                    </option>
-                                    <option value="senin" class="text-body">Senin</option>
-                                    <option value="selasa" class="text-body">Selasa</option>
-                                    <option value="rabu" class="text-body">Rabu</option>
-                                    <option value="kamis" class="text-body">Kamis</option>
-                                    <option value="jumat" class="text-body">Jumat</option>
-                                    <option value="sabtu" class="text-body">Sabtu</option>
-                                    <option value="minggu" class="text-body">Minggu</option>
-                                </select>
-                            </div>
-                        </div>
+                                <div class="w-full mb-6">
+                                    <label for="days" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                        Hari
+                                    </label>
+                                    <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
+                                        <select id="days" name="day[1][day]"
+                                            class="days  relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
+                                            :class="isOptionSelected && 'text-black dark:text-white'"
+                                            @change="isOptionSelected = true">
+                                            <option value="" hidden class="text-body">
+                                                Hari Operasional
+                                            </option>
+                                            <option value="senin" class="text-body">Senin</option>
+                                            <option value="selasa" class="text-body">Selasa</option>
+                                            <option value="rabu" class="text-body">Rabu</option>
+                                            <option value="kamis" class="text-body">Kamis</option>
+                                            <option value="jumat" class="text-body">Jumat</option>
+                                            <option value="sabtu" class="text-body">Sabtu</option>
+                                            <option value="minggu" class="text-body">Minggu</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                        <div class="mb-6">
+                                <div class="mb-6">
 
-                            <div class="flex gap-2 items-center">
+                                    <div class="flex gap-2 items-center">
 
 
-                                <label class="block text-sm font-medium text-black dark:text-white">
-                                    Tutup
-                                    <input id="close" value="false" type="checkbox" class="close"
-                                        data-target="time-close-${jadwalCount}" name="is_closed[1][is_closed]">
-                                </label>
-                            </div>
-                        </div>
+                                        <label class="block text-sm font-medium text-black dark:text-white">
+                                            Tutup
+                                            <input id="close" value="false" type="checkbox" class="close"
+                                                data-target="time-close-${jadwalCount}" name="is_closed[1][is_closed]">
+                                        </label>
+                                    </div>
+                                </div>
 
-                        <div id="time-close-${jadwalCount}" class="flex gap-4 mb-6">
-                            <div>
-                                <label for="openTime" class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                    Jam Buka
-                                </label>
-                                <input required id="openTime"
-                                    class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                    type="time" value="00:00" name="open[1][open]">
-                            </div>
-                            <div>
-                                <label for="closeTime"
-                                    class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                    Jam Tutup
-                                </label>
-                                <input required id="closeTime"
-                                    class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                    type="time" value="00:00" name="close[1][close]">
-                            </div>
-                        </div>
-                    </div>`
+                                <div id="time-close-${jadwalCount}" class="flex gap-4 mb-6">
+                                    <div>
+                                        <label for="openTime" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                            Jam Buka
+                                        </label>
+                                        <input required id="openTime"
+                                            class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                            type="time" value="00:00" name="open[1][open]">
+                                    </div>
+                                    <div>
+                                        <label for="closeTime"
+                                            class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                            Jam Tutup
+                                        </label>
+                                        <input required id="closeTime"
+                                            class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                            type="time" value="00:00" name="close[1][close]">
+                                    </div>
+                                </div>
+                            </div>`
 
                 const newRow = document.createElement("div");
                 newRow.innerHTML = html;

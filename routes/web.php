@@ -9,6 +9,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/testStore', [DestinationController::class, 'testStore'])->name('testStore');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -62,5 +64,19 @@ Route::middleware([
     });
 });
 
+
+Route::get('/add' , function () {
+    return view('components.pages.dashboard.owner.add');
+});
+
+Route::post('/add', function (Request $request) {
+    dd($request->all());
+
+})->name('posts');
+
+
+Route::get('/home', function () {
+    return view('components.pages.frontend.index');
+});
 
 require __DIR__ . '/auth.php';

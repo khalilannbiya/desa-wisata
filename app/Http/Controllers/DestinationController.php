@@ -32,6 +32,11 @@ class DestinationController extends Controller
         return view('components.pages.dashboard.admin.destination.create');
     }
 
+    public function testStore(Request $request){
+        dd($request->all());
+
+    }
+
     /**
      * Store a newly created resource in storage.
      */
