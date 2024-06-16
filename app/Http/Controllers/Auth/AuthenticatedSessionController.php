@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('components.pages.dashboard.login');
     }
 
     /**
@@ -28,7 +28,20 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $user = Auth::user();
+
+        if ($user->role == 'super_admin') {
+            // If user is super admin, redirect to super admin dashboard
+            return redirect()->route('super_admin.dashboard');
+        } else if ($user->role == 'admin') {
+            // If user is admin, redirect to admin dashboard
+        } else if ($user->role == 'owner') {
+            // If user is owner, redirect to owner dashboard
+            return redirect()->route('owner.dashboard');
+        } else {
+            // If user is not admin or unit admin, redirect to index
+            return redirect()->route('writer.dashboard');
+        }
     }
 
     /**

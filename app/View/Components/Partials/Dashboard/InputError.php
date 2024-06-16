@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Pages\Dashboard\Owner;
+namespace App\View\Components\Partials\Dashboard;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Add extends Component
+class InputError extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Add extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.pages.dashboard.owner.add');
+        return view('components.partials.dashboard.input-error');
     }
 }
