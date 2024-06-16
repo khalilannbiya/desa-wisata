@@ -30,6 +30,8 @@
 </head>
 
 <body class="relative antialiased text-black bg-white font-montserrat">
+    @include('sweetalert::alert')
+
     <main class="px-4 mx-auto lg:py-0 lg:px-0 ">
         <section class="min-h-screen mx-auto md:w-3/5 lg:w-2/5 flex flex-col justify-center">
             {{ $slot }}
