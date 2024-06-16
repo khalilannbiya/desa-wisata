@@ -43,12 +43,10 @@
                         {
                             data: 'name',
                             name: 'name',
-                            // width: '15%'
                         },
                         {
                             data: 'status',
                             name: 'status',
-                            width: '20%'
                         },
                         {
                             data: 'action',
