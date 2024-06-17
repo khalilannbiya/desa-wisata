@@ -26,19 +26,26 @@ class DestinationController extends Controller
             $destination = Destination::latest();
             return DataTables::of($destination)
                 ->addColumn('action', function ($item) {
-                    return '
-                    <div class="wrapper-action">
-                        <a href="#">
-                            Edit
-                        </a>
-                        <div>
-                            <form action="#" method="post">
-                            ' . method_field('delete') . csrf_field() . '
-                            <button type="submit">Hapus</button>
-                            </form>
-                        </div>
-                    </div>
-                ';
+                    $roleName = auth()->user()->role;
+                    $editUrl = route("{$roleName}.destinations.edit", $item->id);
+                    $deleteUrl = route("{$roleName}.destinations.destroy", $item->id);
+
+                    return sprintf(
+                        '
+                        <div class="wrapper-action">
+                            <a href="%s">Edit</a>
+                            <div>
+                                <form action="%s" method="post">
+                                    %s %s
+                                    <button type="submit">Hapus</button>
+                                </form>
+                            </div>
+                        </div>',
+                        $editUrl,
+                        $deleteUrl,
+                        method_field('delete'),
+                        csrf_field()
+                    );
                 })
                 ->make();
         }
@@ -194,8 +201,11 @@ class DestinationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Destination $destination)
     {
-        //
+        $destination->delete();
+
+        Alert::toast('Berhasil menghapus data destinasi', 'success');
+        return redirect()->route(auth()->user()->role . '.destinations.index');
     }
 }
