@@ -22,7 +22,7 @@ class DestinationCreateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name_destination' => 'required|string|min:5|max:100',
             'description' => 'required|string',
             'location' => 'required|string',
@@ -42,6 +42,12 @@ class DestinationCreateRequest extends FormRequest
             'contact_details.*.type' => 'required|string|in:phone,email,fax,social_media',
             'contact_details.*.value' => 'required|string|max:50'
         ];
+
+        if (auth()->user()->role !== 'owner') {
+            $rules['owner'] = 'required';
+        }
+
+        return $rules;
     }
 
     public function messages()

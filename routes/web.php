@@ -40,6 +40,8 @@ Route::middleware([
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+
+        Route::resource('destinations', DestinationController::class);
     });
 
     // owner

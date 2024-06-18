@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Gallery;
 use App\Models\Facility;
 use App\Models\Destination;
@@ -58,7 +59,12 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        return view('components.pages.dashboard.admin.destination.create');
+        $owners = [];
+
+        if (auth()->user()->role !== 'owner') {
+            $owners = User::where('role', 'owner')->get();
+        }
+        return view('components.pages.dashboard.admin.destination.create', compact('owners'));
     }
 
     /**
@@ -100,7 +106,7 @@ class DestinationController extends Controller
     private function createDestination($request)
     {
         return Destination::create([
-            'owner_id' => auth()->user()->id,
+            'owner_id' => auth()->user()->role != "owner" ? $request->owner : auth()->user()->id,
             'name' => $request->name_destination,
             'description' => $request->description,
             'location' => $request->location,

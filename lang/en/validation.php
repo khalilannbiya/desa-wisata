@@ -134,13 +134,13 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'Data tidak sesuai format!',
-    'required' => 'Data tidak boleh kosong!',
+    'required' => ':attribute tidak boleh kosong!',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_if_accepted' => 'The :attribute field is required when :other is accepted.',
     'required_if_declined' => 'The :attribute field is required when :other is declined.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
-    'required_with' => 'The :attribute field is required when :values is present.',
+    'required_with' => ':attribute tidak boleh kosong!',
     'required_with_all' => 'The :attribute field is required when :values are present.',
     'required_without' => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
@@ -189,6 +189,20 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'owner' => 'Penanggung Jawab',
+        'name_destination' => 'Nama Destinasi',
+        'description' => 'Deskripsi',
+        'location' => 'Lokasi',
+        'price_range' => 'Harga',
+        'opening_hours.*.day' => 'Hari',
+        'opening_hours.*.open' => 'Jam Buka',
+        'opening_hours.*.close' => 'Jam Tutup',
+        'galleries.*' => 'Foto',
+        'facilities.*' => 'Fasilitas',
+        'accommodations.*' => 'Akomodasi',
+        'contact_details.*.type' => 'Tipe Kontak',
+        'contact_details.*.value' => 'Nilai Kontak',
+    ],
 
 ];

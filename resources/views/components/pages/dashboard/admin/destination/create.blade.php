@@ -36,6 +36,32 @@
             </div>
 
             <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg mb-6">
+                @if (auth()->user()->role != 'owner')
+                    <div class="mb-4.5">
+                        <label for="owner" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                            Penanggung Jawab Wisata <span class="text-red-500">*</span>
+                        </label>
+                        <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
+                            <select required id="owner" name="owner"
+                                class="relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                :class="isOptionSelected && 'text-black dark:text-white'"
+                                @change="isOptionSelected = true">
+                                <option value="" hidden class="text-body">
+                                    Pilih Penanggung Jawab
+                                </option>
+                                @forelse ($owners as $owner)
+                                    <option value="{{ $owner->id }}" class="text-body"
+                                        {{ old('owner') == $owner->id ? 'selected' : '' }}>
+                                        {{ $owner->name }}</option>
+                                @empty
+                                    <option value="" class="text-body" selected>Belum ada pennggung jawab</option>
+                                @endforelse
+                            </select>
+                            <x-partials.dashboard.input-error :messages="$errors->get('owner')" />
+                        </div>
+                    </div>
+                @endif
+
                 <div class="w-full mb-6">
                     <label for="name_destination" class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Nama Wisata <span class="text-red-500">*</span>
@@ -120,7 +146,8 @@
                                             Hari Operasional
                                         </option>
                                         <option value="senin" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin</option>
+                                            {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin
+                                        </option>
                                         <option value="selasa" class="dark:text-gray-300"
                                             {{ old('opening_hours.1.day') == 'selasa' ? 'selected' : '' }}>Selasa
                                         </option>
