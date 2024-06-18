@@ -1,6 +1,6 @@
 <header class="fixed w-full font-montserrat" id="myElement">
     <nav class="bg-white border-gray-200 py-2.5 ">
-        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 lg:px-8 mx-auto ">
             <div href="#" class="flex items-center">
                 <img src="{{ asset('assets/img/logo.png') }}" class="h-12 mr-3 md:h-20" alt="Desa Sukarame" />
             </div>
@@ -21,12 +21,13 @@
                 </svg>
             </button>
 
-            <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+
+
+            <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1 " id="mobile-menu-2">
+                <ul class="flex flex-col mt-4 lg:items-center font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
                         <a href="#"
-                            class="block py-2 pl-3 pr-4 text-white bg-deep-koamaru-700 rounded lg:bg-transparent lg:text-deep-koamaru-700 lg:p-0 "
-                            aria-current="page">Home</a>
+                            class="block py-2 pl-3 pr-4 text-gray-700  lg:hover:text-deep-koamaru-700 lg:p-0  ">Home</a>
                     </li>
                     <li>
                         <a href="#"
@@ -34,22 +35,24 @@
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0">Marketplace</a>
-                    </li>
-                    <li>
-                        <a href="#"
                             class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0">Features</a>
                     </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0">Team</a>
-                    </li>
+
                     <li>
                         <a href="#"
                             class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0 ">Contact</a>
                     </li>
+
+                    <li>
+                        <a href="/login"
+                            class="block py-2 px-3   text-white bg-deep-koamaru-700 rounded-md hover:bg-deep-koamaru-500  lg:px-4 lg:py-1 "
+                            aria-current="page">Login</a>
+                    </li>
                 </ul>
+
+
             </div>
+
         </div>
     </nav>
 </header>
@@ -67,7 +70,9 @@
                 biasa dan keramahan budaya lokal. Desa ini telah diakui sebagai salah satu dari 50 Desa Wisata Terbaik
                 Indonesia, dan dengan alasan yang tepat</p>
             <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                <a href="" class="inline-flex justify-center  px-4 py-2 text-base font-medium text-center text-white bg-deep-koamaru-600 rounded hover:bg-deep-koamaru-500 focus:ring-4 focus:ring-purple-300 ">Tempat Wisata</a>
+                <a href=""
+                    class="inline-flex justify-center  px-4 py-2 text-base font-medium text-center text-white bg-deep-koamaru-600 rounded hover:bg-deep-koamaru-500 focus:ring-4 focus:ring-purple-300 ">Tempat
+                    Wisata</a>
             </div>
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
