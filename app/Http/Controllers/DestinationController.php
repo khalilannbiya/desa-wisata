@@ -59,7 +59,11 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        $owners = User::where('role', 'owner')->get();
+        $owners = [];
+
+        if (auth()->user()->role !== 'owner') {
+            $owners = User::where('role', 'owner')->get();
+        }
         return view('components.pages.dashboard.admin.destination.create', compact('owners'));
     }
 
