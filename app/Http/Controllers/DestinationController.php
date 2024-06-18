@@ -24,7 +24,11 @@ class DestinationController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $destination = Destination::latest();
+            $destination = Destination::query();
+            if (auth()->user()->role === 'owner') {
+                $destination->where('owner_id', auth()->user()->id);
+            }
+            $destination->latest();
             return DataTables::of($destination)
                 ->addColumn('action', function ($item) {
                     $roleName = auth()->user()->role;
