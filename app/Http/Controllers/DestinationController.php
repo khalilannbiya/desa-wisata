@@ -187,7 +187,10 @@ class DestinationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Hapus Foto Destinasi!';
+        $text = "Apakah Anda yakin ingin menghapus?";
+        confirmDelete($title, $text);
+        return view('components.pages.dashboard.admin.destination.edit');
     }
 
     /**

@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DestinationController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('components.pages.frontend.index');
 });
 
 Route::get('/dashboard', function () {
