@@ -1,5 +1,5 @@
 <div
-    class="group relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+    class="group mx-4 relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
     <div class="h-96 w-73">
         <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
             src="{{ asset('assets/img/dummy-vilage.jpg') }}" alt="" />
