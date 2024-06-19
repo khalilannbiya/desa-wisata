@@ -17,7 +17,7 @@
 
     <section class="min-h-screen ">
         <div class="mb-8 text-center text-4xl font-bold">
-            <h1 class="font-montserrat">Wisata</h1>
+            <h1 class="font-montserrat">Tempat Wisata</h1>
         </div>
         <div class="flex flex-wrap gap-4 justify-center items-center">
             @for ($i = 1; $i <= 3; $i++)
@@ -60,7 +60,7 @@
 
     <section class="px-3 md:px-0 min-h-screen mt-29 ">
         <div class="mb-8  text-center text-4xl font-bold">
-            <h1 class="font-montserrat">Artikel</h1>
+            <h1 class="font-montserrat">Informasi Tentang Desa Wisata</h1>
         </div>
         <div class="flex py-4 flex-wrap gap-4 justify-center items-center">
             @for ($i = 1; $i <= 3; $i++)
