@@ -1,5 +1,5 @@
-<header class="fixed w-full font-montserrat" id="myElement">
-    <nav class="bg-white border-gray-200 py-2.5 ">
+<header class="fixed w-full font-montserrat z-50" id="myElement">
+    <nav class="bg-white border-gray-200 py-2.5  ">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 lg:px-8 mx-auto ">
             <div href="#" class="flex items-center">
                 <img src="{{ asset('assets/img/logo.png') }}" class="h-12 mr-3 md:h-20" alt="Desa Sukarame" />
