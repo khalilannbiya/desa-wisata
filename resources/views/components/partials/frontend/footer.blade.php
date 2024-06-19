@@ -5,7 +5,7 @@
             <a class="flex items-center justify-center font-medium text-gray-900 title-font ">
                 <img class="w-20" src="{{ asset('assets/img/logo.png') }}" alt="">
             </a>
-            <p class="mt-2 text-sm text-gray-500">Design, Code and Ship!</p>
+            <p class="mt-2 text-sm text-gray-500">Repeh Rapih Kerta Raharja</p>
             <div class="mt-4">
                 <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
                     <a class="text-gray-500 cursor-pointer hover:text-gray-700">

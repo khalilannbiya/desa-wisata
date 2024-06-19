@@ -13,8 +13,8 @@
         <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Lorem
             ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.</p>
         <button
-            class="rounded-full bg-neutral-900 px-3.5 py-2 font-com text-sm capitalize text-white shadow shadow-black/60">See
-            More</button>
+            class="rounded-md bg-deep-koamaru-600 px-3.5 py-2 font-com text-sm capitalize text-white shadow shadow-black/60">Detail
+            Acara</button>
     </div>
 </div>
 

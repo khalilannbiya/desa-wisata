@@ -1,7 +1,7 @@
         {{-- card  --}}
         <div class="max-w-sm shadow-lg border-2 rounded-md ">
             <div class="p-6">
-                <div class="pb-3 mb-4 border-b border-stone-200 text-xs font-medium flex justify-between text-blue-900">
+                <div class="pb-3 mb-4 border-b border-stone-200 text-xs font-medium flex justify-between text-black">
                     <span class="flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -19,9 +19,9 @@
                     </span>
                 </div>
                 <h3 class="mb-4 font-semibold  text-2xl"><a href=""
-                        class="transition-all text-blue-900 hover:text-blue-600">laboriosam doloribus quas.
+                        class="transition-all text-black hover:text-deep-koamaru-600">laboriosam doloribus quas.
                         Voluptatum</a></h3>
-                <p class="text-sky-800 text-sm mb-0">
+                <p class="text-black text-sm mb-0">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore laborum iste laboriosam doloribus
                     quas. Voluptatum
                 </p>
