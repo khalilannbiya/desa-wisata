@@ -20,30 +20,31 @@
 
         <div class="form-1">
             <div class="">
-                <h1 class="text-black-dashboard dark:text-white-dahsboard font-bold text-xl mb-6"> Tambah Tempat Wisata
+                <h1 class="mb-6 text-xl font-bold text-black-dashboard dark:text-white-dahsboard"> Tambah Tempat Wisata
                 </h1>
             </div>
-            <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg mb-6">
-                <label for="galleries" class="block mb-2 text-sm text-black dark:text-white font-medium">
+            <div class="px-6 py-6 mb-6 bg-white rounded-lg shadow-lg dark:bg-black">
+                <label for="galleries" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Masukan Foto <span class="text-red-500">*</span>
                 </label>
-                <p class="text-red-500 font-medium text-xs">* Menambahkan foto bisa lebih dari satu</p>
-                <p class="text-red-500 font-medium text-xs">* Pastikan file bertipe jpeg, jpg, png</p>
-                <p class="text-red-500 font-medium text-xs">* Maksimal file 1MB</p>
+                <p class="text-xs font-medium text-red-500">* Menambahkan foto bisa lebih dari satu</p>
+                <p class="text-xs font-medium text-red-500">* Pastikan file bertipe jpeg, jpg, png</p>
+                <p class="text-xs font-medium text-red-500">* Maksimal file 1MB</p>
+                <div id="imagePreviewContainer" class="flex flex-wrap gap-5 mt-3"></div>
                 <input type="file" required multiple accept="image/*" name="galleries[]" id="galleries"
                     class="mt-3">
                 <x-partials.dashboard.input-error :messages="$errors->get('galleries.*')" />
             </div>
 
-            <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg mb-6">
+            <div class="px-6 py-6 mb-6 bg-white rounded-lg shadow-lg dark:bg-black">
                 @if (auth()->user()->role != 'owner')
                     <div class="mb-4.5">
-                        <label for="owner" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label for="owner" class="block mb-3 text-sm font-medium text-black dark:text-white">
                             Penanggung Jawab Wisata <span class="text-red-500">*</span>
                         </label>
                         <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                             <select required id="owner" name="owner"
-                                class="relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                                 :class="isOptionSelected && 'text-black dark:text-white'"
                                 @change="isOptionSelected = true">
                                 <option value="" hidden class="text-body">
@@ -63,7 +64,7 @@
                 @endif
 
                 <div class="w-full mb-6">
-                    <label for="name_destination" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label for="name_destination" class="block mb-3 text-sm font-medium text-black dark:text-white">
                         Nama Wisata <span class="text-red-500">*</span>
                     </label>
                     <input required id="name_destination" name="name_destination" autofocus
@@ -74,12 +75,12 @@
                 </div>
 
                 <div class="mb-4.5">
-                    <label for="status" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label for="status" class="block mb-3 text-sm font-medium text-black dark:text-white">
                         Status Tempat Wisata <span class="text-red-500">*</span>
                     </label>
                     <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                         <select id="status" required name="status"
-                            class="relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             :class="isOptionSelected && 'text-black dark:text-white'" @change="isOptionSelected = true">
                             <option value="" hidden class="text-body">
                                 Pilih Status Tempat Wisata
@@ -94,7 +95,7 @@
                 </div>
 
                 <div class="w-full mb-6 ">
-                    <label for="location" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label for="location" class="block mb-3 text-sm font-medium text-black dark:text-white">
                         Lokasi Tempat Wisata <span class="text-red-500">*</span>
                     </label>
                     <input name="location" id="location" value="{{ old('location') }}" autocomplete="location" required
@@ -104,17 +105,17 @@
                 </div>
 
                 <div class="w-full mb-6 ">
-                    <label for="price_range" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label for="price_range" class="block mb-3 text-sm font-medium text-black dark:text-white">
                         Harga Tempat Wisata <span class="text-red-500">*</span>
                     </label>
-                    <p class="text-red-500 font-medium text-xs">* Jika gratis/free masukan nilai 0</p>
+                    <p class="text-xs font-medium text-red-500">* Jika gratis/free masukan nilai 0</p>
                     <input id="price_range" value="{{ old('price_range') }}" required name="price_range" type="number"
                         placeholder="Harga Tempat Wisata"
                         class="w-full mt-3 rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
                 </div>
 
                 <div class="mb-6">
-                    <label for="description" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label for="description" class="block mb-3 text-sm font-medium text-black dark:text-white">
                         Deskripsi <span class="text-red-500">*</span>
                     </label>
                     <textarea id="description" required name="description" rows="6" placeholder="Deskripsi Tempat Wisata"
@@ -123,8 +124,8 @@
                 </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-4 mb-6 ">
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
+            <div class="grid gap-4 mb-6 sm:grid-cols-2 ">
+                <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
                     <div class="text-center text-black dark:text-white">
                         <h2>Jadwal Operasional</h2>
                     </div>
@@ -134,12 +135,12 @@
                         <div>
                             <div class="w-full mb-6">
                                 <label for="opening_hours-1-day"
-                                    class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                    class="block mb-3 text-sm font-medium text-black dark:text-white">
                                     Hari <span class="text-red-500">*</span>
                                 </label>
                                 <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                                     <select id="opening_hours-1-day" name="opening_hours[1][day]"
-                                        class="days relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary bg-white dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
+                                        class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
                                         :class="isOptionSelected && 'text-black dark:text-white'"
                                         @change="isOptionSelected = true">
                                         <option value="" hidden class="dark:text-gray-300">
@@ -171,7 +172,7 @@
                             </div>
 
                             <div class="mb-6">
-                                <div class="flex gap-2 items-center">
+                                <div class="flex items-center gap-2">
                                     <label for="opening_hours-1-is_closed"
                                         class="block text-sm font-medium text-black dark:text-white">
                                         Tutup
@@ -187,7 +188,7 @@
                             <div id="time-close-1" class="flex gap-4 mb-6">
                                 <div>
                                     <label for="opening_hours-1-open"
-                                        class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
                                         Jam Buka
                                     </label>
                                     <input required id="opening_hours-1-open"
@@ -197,7 +198,7 @@
                                 </div>
                                 <div>
                                     <label for="opening_hours-1-close"
-                                        class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
                                         Jam Tutup
                                     </label>
                                     <input required id="opening_hours-1-close"
@@ -218,19 +219,19 @@
 
                         <div class="flex gap-4">
                             <button type="button" id="addTimeRowButton"
-                                class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
+                                class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
                                 Tambah Jadwal
                             </button>
 
                             <button type="button" id="tombolHapusJadwal"
-                                class="rounded hidden bg-danger py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">Hapus
+                                class="hidden px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">Hapus
                                 Jadwal
                             </button>
                         </div>
                     </section>
                 </div>
 
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
+                <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
                     <div class="text-center text-black dark:text-white-dahsboard">
                         <h2>Personal Kontak</h2>
                     </div>
@@ -238,12 +239,12 @@
                     <div>
                         <div class="w-full my-6">
                             <label for="contact_details.1.type"
-                                class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
                                 Akun Media Sosial <span class="text-red-500">*</span>
                             </label>
                             <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                                 <select id="contact_details.1.type" name="contact_details[1][type]"
-                                    class="relative z-20 w-full appearance-none rounded border dark:bg-black-dashboard border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
+                                    class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none dark:bg-black-dashboard focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
                                     :class="isOptionSelected && 'text-black dark:text-white'"
                                     @change="isOptionSelected = true">
                                     <option value="" hidden class="dark:text-gray-300">
@@ -272,7 +273,7 @@
 
                         <div class="mb-6">
                             <label for="contact_details.1.value"
-                                class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
                                 Identitas akun <span class="text-red-500">*</span>
                             </label>
                             <input id="contact_details.1.value"
@@ -287,15 +288,15 @@
 
                     <div class="">
                         <button type="button" id="addContactDetailRowButton"
-                            class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
+                            class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
                             Tambah Kontak </button>
                     </div>
                 </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-4 mb-6">
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
-                    <div class="text-center mb-6 text-black dark:text-white">
+            <div class="grid gap-4 mb-6 sm:grid-cols-2">
+                <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
+                    <div class="mb-6 text-center text-black dark:text-white">
                         <h2>Fasilitas</h2>
                     </div>
 
@@ -311,13 +312,13 @@
 
                     <div class="">
                         <button type="button" id="addFacilityRowButton"
-                            class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
+                            class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
                             Tambah Fasilitas </button>
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
-                    <div class="text-center mb-6 text-black dark:text-white">
+                <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
+                    <div class="mb-6 text-center text-black dark:text-white">
                         <h2>Akomondasi</h2>
                     </div>
 
@@ -333,7 +334,7 @@
 
                     <div class="">
                         <button type="button" id="addAccommodationRowButton"
-                            class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
+                            class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
                             Tambah Akomondasi </button>
                     </div>
                 </div>
@@ -341,11 +342,29 @@
         </div>
 
         <button type="submit"
-            class="flex w-full justify-center rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">
+            class="flex justify-center w-full p-3 font-medium text-white rounded bg-deep-koamaru-600 hover:bg-opacity-90">
             Kirim
         </button>
     </form>
 
+    <script>
+        document.getElementById('galleries').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            imagePreviewContainer.innerHTML = ''; // Clear previous images
+
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'w-32 h-32 object-cover rounded-lg';
+                    imagePreviewContainer.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
     <script>
         const newTimeRow = document.getElementById("newTimeRow");
@@ -388,15 +407,15 @@
 
             const html = `
         <div>
-            <div class="border my-3"></div>
+            <div class="my-3 border"></div>
             <div class="w-full mb-6">
                 <label for="opening_hours-${timeCount}-day"
-                    class="mb-3 block text-sm font-medium text-black dark:text-white">
+                    class="block mb-3 text-sm font-medium text-black dark:text-white">
                     Hari
                 </label>
                 <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                     <select id="opening_hours-${timeCount}-days" name="opening_hours[${timeCount}][day]"
-                        class="days relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
+                        class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
                         :class="isOptionSelected && 'text-black dark:text-white'"
                         @change="isOptionSelected = true">
                         <option value="" hidden class="text-body">
@@ -415,7 +434,7 @@
             </div>
 
              <div class="mb-6">
-                <div class="flex gap-2 items-center">
+                <div class="flex items-center gap-2">
                     <label for="opening_hours-${timeCount}-is_closed" class="block text-sm font-medium text-black dark:text-white">Tutup
                         <input id="opening_hours-${timeCount}-is_closed" type="checkbox" class="close" data-target="time-close-${timeCount}" value="1" name="opening_hours[${timeCount}][is_closed]"
                         {{ old('opening_hours.${timeCount}.is_closed') ? 'checked' : '' }}>
@@ -426,13 +445,13 @@
 
             <div id="time-close-${timeCount}" class="flex gap-4 mb-6">
                <div>
-                <label for="opening_hours-${timeCount}-open" class="mb-3 block text-sm font-medium text-black dark:text-white"> Jam Buka
+                <label for="opening_hours-${timeCount}-open" class="block mb-3 text-sm font-medium text-black dark:text-white"> Jam Buka
                 </label>
                 <input required id="opening_hours-${timeCount}-open" class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" type="time" name="opening_hours[${timeCount}][open]" value="{{ old('opening_hours.${timeCount}.open', '00:00') }}">
                 </div>
 
                 <div>
-                    <label for="opening_hours-${timeCount}-close" class="mb-3 block text-sm font-medium text-black dark:text-white">Jam Tutup
+                    <label for="opening_hours-${timeCount}-close" class="block mb-3 text-sm font-medium text-black dark:text-white">Jam Tutup
                     </label>
                     <input required id="opening_hours-${timeCount}-close"
                     class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -461,14 +480,14 @@
 
             const html = `
                 <div>
-                    <div class="border my-3"></div>
+                    <div class="my-3 border"></div>
                     <div class="w-full my-6">
-                        <label for="contact_details.${detailContactCount}.type" class="mb-3 block text-sm font-medium text-black dark:text-white">
+                        <label for="contact_details.${detailContactCount}.type" class="block mb-3 text-sm font-medium text-black dark:text-white">
                             Akun Media Sosial
                         </label>
                         <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                             <select id="contact_details.${detailContactCount}.type" name="contact_details[${detailContactCount}][type]"
-                            class="relative z-20 w-full appearance-none rounded border dark:bg-black-dashboard border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
+                            class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none dark:bg-black-dashboard focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
                             :class="isOptionSelected && 'text-black dark:text-white'"
                             @change="isOptionSelected = true">
                             <option value="" hidden class="dark:text-gray-300">
@@ -496,7 +515,7 @@
 
                         <div class="mb-6">
                             <label for="contact_details.${detailContactCount}.value"
-                                class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
                                 Identitas akun
                             </label>
                             <input id="contact_details.${detailContactCount}.value"
@@ -519,7 +538,7 @@
 
             const html = `
                  <div class="mb-6">
-                    <div class="border my-5"></div>
+                    <div class="my-5 border"></div>
                         <input id="facilities.${facilityCount}"
                             class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             type="text" value="{{ old('facilities.${facilityCount}') }}" autocomplete="facilities[${facilityCount}]"
@@ -540,7 +559,7 @@
 
             const html = `
                   <div class="mb-6">
-                    <div class="border my-5"></div>
+                    <div class="my-5 border"></div>
                         <input id="accommodations.${accommodationCount}"
                             class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             type="text" autocomplete="accommodations[${accommodationCount}]" value="{{ old('accommodations.${accommodationCount}') }}"

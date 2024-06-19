@@ -12,6 +12,10 @@
             </ol>
         </nav>
 
+        {{-- Button add destination --}}
+        <a href="{{ route(auth()->user()->role . '.destinations.create') }}"
+            class="flex justify-center px-3 py-3 mb-5 rounded w-44 bg-primary text-white-dahsboard">Tambah Wisata</a>
+
         <table id="crudTable">
             <thead>
                 <tr>

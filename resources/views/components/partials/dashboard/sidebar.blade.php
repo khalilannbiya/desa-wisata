@@ -52,17 +52,24 @@
                     </li>
                     <!-- Menu Item Dashboard -->
 
-                    <li>
-                        <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4"
-                            href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
-                                <path
-                                    d="m20 8-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM9 19H7v-9h2v9zm4 0h-2v-6h2v6zm4 0h-2v-3h2v3zM14 9h-1V4l5 5h-4z">
-                                </path>
-                            </svg> Data Laporan
-                        </a>
-                    </li>
+                    @if (auth()->user()->role != 'writer')
+                        <li>
+                            @php
+                                $roleName = auth()->user()->role;
+                                $routeName = $roleName . '.destinations.index';
+                            @endphp
+
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ Route::current()->getName() == $routeName ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
+                                href="{{ route($routeName) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+                                    <path
+                                        d="m20 8-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM9 19H7v-9h2v9zm4 0h-2v-6h2v6zm4 0h-2v-3h2v3zM14 9h-1V4l5 5h-4z">
+                                    </path>
+                                </svg> Data Wisata
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
 
