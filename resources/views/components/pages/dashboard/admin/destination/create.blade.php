@@ -415,7 +415,7 @@
                 </label>
                 <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                     <select id="opening_hours-${timeCount}-days" name="opening_hours[${timeCount}][day]"
-                        class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
+                        class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
                         :class="isOptionSelected && 'text-black dark:text-white'"
                         @change="isOptionSelected = true">
                         <option value="" hidden class="text-body">
