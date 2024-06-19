@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
     <title>DESA WISATA</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body>
     <header>
         <x-partials.frontend.navbar />
@@ -19,7 +22,7 @@
     </section>
 
     <section>
-        <x-partials.frontend.advantages-brand class=""/>
+        <x-partials.frontend.advantages-brand class="" />
     </section>
 
     <section class="">
@@ -57,5 +60,5 @@
 
     <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 </body>
-</html>
 
+</html>
