@@ -68,5 +68,8 @@ Route::middleware([
     });
 });
 
+Route::get('/home', function () {
+    return view('components.pages.frontend.index');
+});
 
 require __DIR__ . '/auth.php';
