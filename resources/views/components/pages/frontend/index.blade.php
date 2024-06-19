@@ -15,7 +15,7 @@
         <x-partials.frontend.navbar />
     </header>
 
-    <section class="min-h-screen ">
+    <section class="">
         <div class="mb-8 text-center text-4xl font-bold">
             <h1 class="font-montserrat">Tempat Wisata</h1>
         </div>
@@ -30,13 +30,13 @@
         </div>
     </section>
 
-    <section class="min-h-screen">
+    <section class="">
         <x-partials.frontend.advantages-brand class="" />
     </section>
 
-    <section class="min-h-screen">
+    <section class="mb-20">
         <div class="mb-8 text-center text-4xl font-bold">
-            <h1 class="font-montserrat">Acara</h1>
+            <h1 class="font-montserrat">Info Acara</h1>
         </div>
         <div class="flex py-4 flex-wrap gap-10 justify-center items-center">
             @for ($i = 1; $i <= 3; $i++)
@@ -49,7 +49,7 @@
         </div>
     </section>
 
-    <section class="md:-mt-11 mt-14">
+    <section class="">
         <div class="flex flex-wrap items-center justify-center gap-4">
             @for ($i = 1; $i <= 3; $i++)
                 <x-partials.frontend.logo />
@@ -58,7 +58,7 @@
 
     </section>
 
-    <section class="px-3 md:px-0 min-h-screen mt-29 ">
+    <section class="px-3 md:px-0 mt-29 ">
         <div class="mb-8  text-center text-4xl font-bold">
             <h1 class="font-montserrat">Informasi Tentang Desa Wisata</h1>
         </div>
