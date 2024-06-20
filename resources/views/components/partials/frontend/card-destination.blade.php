@@ -5,10 +5,13 @@
         </a>
         <div class="p-5">
             <a href="#">
-                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions 2021
+                <h5
+                    class="mb-2 text-xl font-bold tracking-tight text-gray-900 hover:text-deep-koamaru-600 transition-all duration-500 ">
+                    Noteworthy
+                    technology acquisitions 2021
                 </h5>
             </a>
-            <p class="mb-3 h-50 font-normal overflow-hidden elipsis text-gray-700 text-balance">Here are the biggest
+            <p class="mb-3 h-20 font-normal overflow-hidden elipsis text-gray-700 text-balance">Here are the biggest
                 enterprise technology acquisitions of 2021 so far, in reverse chronological order. Lorem ipsum dolor,
                 sit amet consectetur adipisicing elit. Laborum eaque explicabo sapiente illum quisquam iste culpa
                 repellat vitae pariatur ipsa perspiciatis mollitia, minima distinctio dicta consequatur ab saepe debitis
@@ -54,5 +57,5 @@
         });
     }
 
-    shortenText(".elipsis", 250, true);
+    shortenText(".elipsis", 120, true);
 </script>
