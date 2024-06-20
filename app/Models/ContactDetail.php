@@ -14,8 +14,9 @@ class ContactDetail extends Model
 
     protected $fillable = [
         'destination_id',
-        'type',
-        'value',
+        'phone',
+        'email',
+        'social_media'
     ];
 
     public function destination()

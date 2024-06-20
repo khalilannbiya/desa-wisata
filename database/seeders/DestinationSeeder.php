@@ -46,16 +46,11 @@ class DestinationSeeder extends Seeder
             $days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
 
             foreach ($days as $day) {
-                $isClosed = $faker->boolean();
-                $open = $isClosed ? null : $faker->time('H:i:s');
-                $close = $isClosed ? null : $faker->time('H:i:s');
-
                 OpeningHour::create([
                     'destination_id' => $destination->id,
                     'day' => $day,
-                    'open' => $open,
-                    'close' => $close,
-                    'is_closed' => $isClosed,
+                    'open' => $faker->time('H:i:s'),
+                    'close' => $faker->time('H:i:s'),
                 ]);
             }
 
@@ -74,15 +69,12 @@ class DestinationSeeder extends Seeder
                 ]);
             }
 
-            $typeOfContacts = ['phone', 'email', 'fax', 'social_media'];
-
-            foreach ($typeOfContacts as $type) {
-                ContactDetail::create([
-                    'destination_id' => $destination->id,
-                    'type' => $type,
-                    'value' => $faker->phoneNumber()
-                ]);
-            }
+            ContactDetail::create([
+                'destination_id' => $destination->id,
+                'phone' => $faker->sentence(2),
+                'email' => $faker->sentence(2),
+                'social_media' => $faker->sentence(2)
+            ]);
         }
     }
 }
