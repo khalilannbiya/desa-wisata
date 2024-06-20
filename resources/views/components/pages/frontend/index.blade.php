@@ -4,7 +4,6 @@
         <x-partials.frontend.hero />
     </header>
 
-
     <section class="">
         <div class="mb-8 text-center text-4xl font-extrabold">
             <h1 class="font-montserrat">Tempat Wisata</h1>
