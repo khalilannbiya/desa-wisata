@@ -1,4 +1,4 @@
-<div class="flex justify-center space-x-20 ">
+<div class="flex flex-wrap justify-center md:space-x-20 ">
     <div class="">
         <img class="w-full h-25 mb-5 mt-5" src="{{ asset('assets/img/logo_kemendes.png') }}">
     </div>
