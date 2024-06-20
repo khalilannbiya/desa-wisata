@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('contact_details', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('destination_id')->nullable(false);
-            $table->string('phone', 50)->nullable();
+            $table->string('phone', 20)->nullable();
             $table->string('email', 50)->nullable();
-            $table->string('social_media', 50)->nullable();
+            $table->string('social_media', 100)->nullable();
 
             $table->foreign('destination_id')->references('id')->on('destinations')->cascadeOnDelete();
         });
