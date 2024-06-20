@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Card-Event extends Component
+class CardEvent extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Card-Event extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.partials.frontend.card--event');
+        return view('components.partials.frontend.card-event');
     }
 }
