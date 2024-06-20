@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
     .body {
       @apply relative text-base font-normal z-1 bg-whiten font-montserrat text-body;

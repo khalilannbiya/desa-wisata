@@ -8,6 +8,9 @@ use App\Http\Controllers\DestinationController;
 Route::get('/', function () {
     return view('components.pages.frontend.index');
 });
+Route::get('/wisata', function () {
+    return view('components.pages.frontend.destination');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

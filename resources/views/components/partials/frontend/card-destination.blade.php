@@ -1,5 +1,5 @@
-<article class="">
-    <div class=" sm:max-w-sm  mx-6 font-montserrat sm:px-0 bg-white border border-gray-200 rounded-lg shadow ">
+<article class="card">
+    <div class=" sm:max-w-sm  mx-6 font-montserrat sm:px-0 bg-white border border-gray-200 rounded-lg shadow-lg ">
         <a href="# ">
             <img class="rounded-t-lg object-cover" src="{{ asset('assets/img/dummy-vilage.jpg') }}" alt="" />
         </a>
