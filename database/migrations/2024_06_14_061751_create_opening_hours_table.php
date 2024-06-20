@@ -17,7 +17,6 @@ return new class extends Migration
             $table->enum('day', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'])->nullable(false);
             $table->time('open')->nullable();
             $table->time('close')->nullable();
-            $table->boolean('is_closed')->default(false);
 
             $table->foreign('destination_id')->references('id')->on('destinations')->cascadeOnDelete();
         });

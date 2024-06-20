@@ -16,7 +16,6 @@ class OpeningHour extends Model
         'day',
         'open',
         'close',
-        'is_closed',
     ];
 
     public function destination()
