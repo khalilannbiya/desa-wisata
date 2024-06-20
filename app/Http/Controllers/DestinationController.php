@@ -134,29 +134,26 @@ class DestinationController extends Controller
 
     private function storeOpeningHours($request, $destination)
     {
-        if ($request->has('opening_hours')) {
-            foreach ($request->opening_hours as $key => $__) {
-                OpeningHour::create([
-                    'destination_id' => $destination->id,
-                    'day' => $request->input("opening_hours.$key.day"),
-                    'open' => $request->has("opening_hours.$key.is_closed") ? null : $request->input("opening_hours.$key.open"),
-                    'close' => $request->has("opening_hours.$key.is_closed") ? null : $request->input("opening_hours.$key.close"),
-                    'is_closed' => $request->has("opening_hours.$key.is_closed") ? $request->input("opening_hours.$key.is_closed") : '0'
-                ]);
-            }
+        $days = [$request->input("opening_hours.first_day"), $request->input("opening_hours.last_day")];
+        foreach ($days as $day) {
+            OpeningHour::create([
+                'destination_id' => $destination->id,
+                'day' => $day,
+                'open' => $request->input("opening_hours.open"),
+                'close' => $request->input("opening_hours.close"),
+            ]);
         }
     }
 
     private function storeContactDetails($request, $destination)
     {
         if ($request->has('contact_details')) {
-            foreach ($request->contact_details as $key => $__) {
-                ContactDetail::create([
-                    'destination_id' => $destination->id,
-                    'type' => $request->input("contact_details.$key.type"),
-                    'value' => $request->input("contact_details.$key.value"),
-                ]);
-            }
+            ContactDetail::create([
+                'destination_id' => $destination->id,
+                'phone' => $request->input('contact_details.phone'),
+                'email' => $request->input('contact_details.email'),
+                'social_media' => $request->input('contact_details.social_media')
+            ]);
         }
     }
 

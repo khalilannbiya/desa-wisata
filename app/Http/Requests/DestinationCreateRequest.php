@@ -29,18 +29,19 @@ class DestinationCreateRequest extends FormRequest
             'price_range' => 'required|numeric|regex:/^[0-9]+$/',
             'status' => 'required|string|in:active,inactive',
             'opening_hours' => 'array',
-            'opening_hours.*.day' => 'required|string|in:senin,selasa,rabu,kamis,jumat,sabtu,minggu',
-            'opening_hours.*.open' => 'required_with:opening_hours.*.day,opening_hours.*.close|string',
-            'opening_hours.*.close' => 'required_with:opening_hours.*.day,opening_hours.*.open|string',
-            'opening_hours.*.is_closed' => 'boolean|nullable',
+            'opening_hours.first_day' => 'required|string|in:senin,selasa,rabu,kamis,jumat,sabtu,minggu',
+            'opening_hours.last_day' => 'required|string|in:senin,selasa,rabu,kamis,jumat,sabtu,minggu',
+            'opening_hours.open' => 'required_with:opening_hours.*.day,opening_hours.*.close|string|date_format:H:i',
+            'opening_hours.close' => 'required_with:opening_hours.*.day,opening_hours.*.open|string|date_format:H:i',
             'galleries.*' => 'required|image|mimes:jpeg,png,jpg|max:1048|',
             'facilities' => 'array',
             'facilities.*' => 'nullable|string',
             'accommodations' => 'array',
             'accommodations.*' => 'nullable|string',
             'contact_details' => 'array',
-            'contact_details.*.type' => 'required|string|in:phone,email,fax,social_media',
-            'contact_details.*.value' => 'required|string|max:50'
+            'contact_details.phone' => 'nullable|string|max:20',
+            'contact_details.email' => 'nullable|string|max:50',
+            'contact_details.social_media' => 'nullable|string|max:100',
         ];
 
         if (auth()->user()->role !== 'owner') {
@@ -55,9 +56,12 @@ class DestinationCreateRequest extends FormRequest
         return [
             'price_range.regex' => 'Harap isi dengan angka!',
             'status.in' => 'Status harus berisi active atau inactive!',
-            'opening_hours.*.day.in' => 'Jangan masukkan hari lain!',
-            'opening_hours.*.open.required_with' => 'Jam buka harus diisi!',
-            'opening_hours.*.close.required_with' => 'Jam tutup harus diisi!',
+            'opening_hours.first_day.in' => 'Jangan masukkan hari lain!',
+            'opening_hours.last_day.in' => 'Jangan masukkan hari lain!',
+            'opening_hours.open.required_with' => 'Jam buka harus diisi!',
+            'opening_hours.close.required_with' => 'Jam tutup harus diisi!',
+            'opening_hours.open.date_format' => 'Jam tidak valid!',
+            'opening_hours.close.date_format' => 'Jam tidak valid!',
         ];
     }
 }
