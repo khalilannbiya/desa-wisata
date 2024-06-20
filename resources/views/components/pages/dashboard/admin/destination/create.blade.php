@@ -131,117 +131,113 @@
                     </div>
 
                     {{-- Jadwal operasional --}}
-                    <section>
+                    <div>
+                        <div class="w-full mb-6">
+                            <label for="opening_hours-1-day"
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                Hari Awal <span class="text-red-500">*</span>
+                            </label>
+                            <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
+                                <select id="opening_hours-1-day" name="opening_hours[1][day]"
+                                    class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
+                                    :class="isOptionSelected && 'text-black dark:text-white'"
+                                    @change="isOptionSelected = true">
+                                    <option value="" hidden class="dark:text-gray-300">
+                                        Hari Operasional
+                                    </option>
+                                    <option value="senin" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin
+                                    </option>
+                                    <option value="selasa" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'selasa' ? 'selected' : '' }}>Selasa
+                                    </option>
+                                    <option value="rabu" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'rabu' ? 'selected' : '' }}>Rabu</option>
+                                    <option value="kamis" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'kamis' ? 'selected' : '' }}>Kamis
+                                    </option>
+                                    <option value="jumat" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'jumat' ? 'selected' : '' }}>Jumat
+                                    </option>
+                                    <option value="sabtu" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'sabtu' ? 'selected' : '' }}>Sabtu
+                                    </option>
+                                    <option value="minggu" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'minggu' ? 'selected' : '' }}>Minggu
+                                    </option>
+                                </select>
+                            </div>
+                            <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.day')" />
+                        </div>
+                        <div class="w-full mb-6">
+                            <label for="opening_hours-1-day"
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                Hari Akhir <span class="text-red-500">*</span>
+                            </label>
+                            <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
+                                <select id="opening_hours-1-day" name="opening_hours[1][day]"
+                                    class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
+                                    :class="isOptionSelected && 'text-black dark:text-white'"
+                                    @change="isOptionSelected = true">
+                                    <option value="" hidden class="dark:text-gray-300">
+                                        Hari Operasional
+                                    </option>
+                                    <option value="senin" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin
+                                    </option>
+                                    <option value="selasa" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'selasa' ? 'selected' : '' }}>Selasa
+                                    </option>
+                                    <option value="rabu" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'rabu' ? 'selected' : '' }}>Rabu</option>
+                                    <option value="kamis" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'kamis' ? 'selected' : '' }}>Kamis
+                                    </option>
+                                    <option value="jumat" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'jumat' ? 'selected' : '' }}>Jumat
+                                    </option>
+                                    <option value="sabtu" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'sabtu' ? 'selected' : '' }}>Sabtu
+                                    </option>
+                                    <option value="minggu" class="dark:text-gray-300"
+                                        {{ old('opening_hours.1.day') == 'minggu' ? 'selected' : '' }}>Minggu
+                                    </option>
+                                </select>
+                            </div>
+                            <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.day')" />
+                        </div>
+
+
+                        <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.is_closed')" />
+                    </div>
+
+
+                    <div id="time-close-1" class="flex gap-4 mb-6">
                         <div>
-                            <div class="w-full mb-6">
-                                <label for="opening_hours-1-day"
-                                    class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                    Hari Awal <span class="text-red-500">*</span>
-                                </label>
-                                <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                                    <select id="opening_hours-1-day" name="opening_hours[1][day]"
-                                        class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
-                                        :class="isOptionSelected && 'text-black dark:text-white'"
-                                        @change="isOptionSelected = true">
-                                        <option value="" hidden class="dark:text-gray-300">
-                                            Hari Operasional
-                                        </option>
-                                        <option value="senin" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin
-                                        </option>
-                                        <option value="selasa" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'selasa' ? 'selected' : '' }}>Selasa
-                                        </option>
-                                        <option value="rabu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'rabu' ? 'selected' : '' }}>Rabu</option>
-                                        <option value="kamis" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'kamis' ? 'selected' : '' }}>Kamis
-                                        </option>
-                                        <option value="jumat" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'jumat' ? 'selected' : '' }}>Jumat
-                                        </option>
-                                        <option value="sabtu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'sabtu' ? 'selected' : '' }}>Sabtu
-                                        </option>
-                                        <option value="minggu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'minggu' ? 'selected' : '' }}>Minggu
-                                        </option>
-                                    </select>
-                                </div>
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.day')" />
-                            </div>
-                            <div class="w-full mb-6">
-                                <label for="opening_hours-1-day"
-                                    class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                    Hari Akhir <span class="text-red-500">*</span>
-                                </label>
-                                <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                                    <select id="opening_hours-1-day" name="opening_hours[1][day]"
-                                        class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
-                                        :class="isOptionSelected && 'text-black dark:text-white'"
-                                        @change="isOptionSelected = true">
-                                        <option value="" hidden class="dark:text-gray-300">
-                                            Hari Operasional
-                                        </option>
-                                        <option value="senin" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin
-                                        </option>
-                                        <option value="selasa" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'selasa' ? 'selected' : '' }}>Selasa
-                                        </option>
-                                        <option value="rabu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'rabu' ? 'selected' : '' }}>Rabu</option>
-                                        <option value="kamis" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'kamis' ? 'selected' : '' }}>Kamis
-                                        </option>
-                                        <option value="jumat" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'jumat' ? 'selected' : '' }}>Jumat
-                                        </option>
-                                        <option value="sabtu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'sabtu' ? 'selected' : '' }}>Sabtu
-                                        </option>
-                                        <option value="minggu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'minggu' ? 'selected' : '' }}>Minggu
-                                        </option>
-                                    </select>
-                                </div>
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.day')" />
-                            </div>
-
-
-                            <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.is_closed')" />
+                            <label for="opening_hours-1-open"
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                Jam Buka
+                            </label>
+                            <input required id="opening_hours-1-open"
+                                class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                type="time" name="opening_hours[1][open]"
+                                value="{{ old('opening_hours.1.open', '00:00') }}">
+                        </div>
+                        <div>
+                            <label for="opening_hours-1-close"
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                Jam Tutup
+                            </label>
+                            <input required id="opening_hours-1-close"
+                                class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                type="time" name="opening_hours[1][close]"
+                                value="{{ old('opening_hours.1.close', '00:00') }}">
                         </div>
 
-
-                        <div id="time-close-1" class="flex gap-4 mb-6">
-                            <div>
-                                <label for="opening_hours-1-open"
-                                    class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                    Jam Buka
-                                </label>
-                                <input required id="opening_hours-1-open"
-                                    class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                    type="time" name="opening_hours[1][open]"
-                                    value="{{ old('opening_hours.1.open', '00:00') }}">
-                            </div>
-                            <div>
-                                <label for="opening_hours-1-close"
-                                    class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                    Jam Tutup
-                                </label>
-                                <input required id="opening_hours-1-close"
-                                    class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                    type="time" name="opening_hours[1][close]"
-                                    value="{{ old('opening_hours.1.close', '00:00') }}">
-                            </div>
-
-                            <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-1-open')" />
-                            <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-1-close')" />
-                        </div>
+                        <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-1-open')" />
+                        <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-1-close')" />
+                    </div>
                 </div>
-
-
-                </section>
             </div>
 
             <div class="px-6 py-6 mb-6 bg-white rounded-lg shadow-lg dark:bg-black">
