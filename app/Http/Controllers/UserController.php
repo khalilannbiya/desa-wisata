@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserCreateRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
@@ -16,7 +17,37 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        if (request()->ajax()) {
+            $users = User::latest();
+            return DataTables::of($users)
+                ->addColumn('action', function ($item) {
+                    $roleName = auth()->user()->role;
+                    $editUrl = route("{$roleName}.users.edit", $item->id);
+                    $deleteUrl = route("{$roleName}.users.destroy", $item->id);
+                    $deleteButton = $roleName === 'admin' ? '' : '
+                        <div>
+                            <form action="' . $deleteUrl . '" method="POST">
+                                ' . method_field('DELETE') . '
+                                ' . csrf_field() . '
+                                <button type="submit">Hapus</button>
+                            </form>
+                        </div>';
+
+                    return sprintf(
+                        '
+                        <div class="wrapper-action">
+                            <a href="%s">Edit</a>
+                            %s
+                        </div>',
+                        $editUrl,
+                        $deleteButton
+                    );
+                })
+                ->make(true);
+        }
+
+
+        return view('components.pages.dashboard.admin.user.index');
     }
 
     /**
