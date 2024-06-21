@@ -35,6 +35,14 @@ Route::middleware([
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+
+        Route::resource('destinations', DestinationController::class)->except([
+            'show'
+        ]);
+
+        Route::resource('users', UserController::class)->except([
+            'show'
+        ]);
     });
 
     // Admin
