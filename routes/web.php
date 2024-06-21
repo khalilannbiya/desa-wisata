@@ -12,6 +12,10 @@ Route::get('/wisata', function () {
     return view('components.pages.frontend.destination');
 });
 
+Route::get('/edit ', function () {
+    return view('edit');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
