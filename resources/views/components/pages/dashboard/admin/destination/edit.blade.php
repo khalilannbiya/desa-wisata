@@ -17,64 +17,13 @@
     <form action="{{ route(strtolower(auth()->user()->role) . '.destinations.store') }}" enctype="multipart/form-data"
         method="POST">
         @csrf
-
-        <div class="form-1">
-            <div class="flex justify-between">
-                <div class="">
-
-                    <h1 class="text-black-dashboard dark:text-white-dahsboard font-bold text-xl mb-6"> Tambah Tempat
-                        Wisata
-                    </h1>
-                </div>
-                <div class="">
-
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">Dropdown button <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-
-                    <!-- Dropdown menu -->
-                    <div id="dropdown"
-                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="dropdownDefaultButton">
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                                    out</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
+        <div class="">
+            <div class="">
+                <h1 class="text-black-dashboard dark:text-white-dahsboard font-bold text-xl mb-6"> Tambah Tempat
+                    Wisata
+                </h1>
             </div>
-            <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg mb-6">
-                <label for="galleries" class="block mb-2 text-sm text-black dark:text-white font-medium">
-                    Masukan Foto <span class="text-red-500">*</span>
-                </label>
-                <p class="text-red-500 font-medium text-xs">* Menambahkan foto bisa lebih dari satu</p>
-                <p class="text-red-500 font-medium text-xs">* Pastikan file bertipe jpeg, jpg, png</p>
-                <p class="text-red-500 font-medium text-xs">* Maksimal file 1MB</p>
-                <input type="file" required multiple accept="image/*" name="galleries[]" id="galleries"
-                    class="mt-3">
-                <x-partials.dashboard.input-error :messages="$errors->get('galleries.*')" />
-            </div>
+
 
             <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg mb-6">
                 <div class="w-full mb-6">
@@ -138,277 +87,11 @@
                 </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 gap-4 mb-6 ">
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
-                    <div class="text-center text-black dark:text-white">
-                        <h2>Jadwal Operasional</h2>
-                    </div>
-
-                    {{-- Jadwal operasional --}}
-                    <section>
-                        <div>
-                            <div class="w-full mb-6">
-                                <label for="opening_hours-1-day"
-                                    class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                    Hari <span class="text-red-500">*</span>
-                                </label>
-                                <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                                    <select id="opening_hours-1-day" name="opening_hours[1][day]"
-                                        class="days relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary bg-white dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
-                                        :class="isOptionSelected && 'text-black dark:text-white'"
-                                        @change="isOptionSelected = true">
-                                        <option value="" hidden class="dark:text-gray-300">
-                                            Hari Operasional
-                                        </option>
-                                        <option value="senin" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin</option>
-                                        <option value="selasa" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'selasa' ? 'selected' : '' }}>Selasa
-                                        </option>
-                                        <option value="rabu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'rabu' ? 'selected' : '' }}>Rabu</option>
-                                        <option value="kamis" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'kamis' ? 'selected' : '' }}>Kamis
-                                        </option>
-                                        <option value="jumat" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'jumat' ? 'selected' : '' }}>Jumat
-                                        </option>
-                                        <option value="sabtu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'sabtu' ? 'selected' : '' }}>Sabtu
-                                        </option>
-                                        <option value="minggu" class="dark:text-gray-300"
-                                            {{ old('opening_hours.1.day') == 'minggu' ? 'selected' : '' }}>Minggu
-                                        </option>
-                                    </select>
-                                </div>
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.day')" />
-                            </div>
-
-                            <div class="mb-6">
-                                <div class="flex gap-2 items-center">
-                                    <label for="opening_hours-1-is_closed"
-                                        class="block text-sm font-medium text-black dark:text-white">
-                                        Tutup
-                                        <input id="opening_hours-1-is_closed" type="checkbox" class="close"
-                                            data-target="time-close-1" name="opening_hours[1][is_closed]"
-                                            value="1" {{ old('opening_hours.1.is_closed') ? 'checked' : '' }}>
-                                    </label>
-                                </div>
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.1.is_closed')" />
-                            </div>
 
 
-                            <div id="time-close-1" class="flex gap-4 mb-6">
-                                <div>
-                                    <label for="opening_hours-1-open"
-                                        class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                        Jam Buka
-                                    </label>
-                                    <input required id="opening_hours-1-open"
-                                        class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                        type="time" name="opening_hours[1][open]"
-                                        value="{{ old('opening_hours.1.open', '00:00') }}">
-                                </div>
-                                <div>
-                                    <label for="opening_hours-1-close"
-                                        class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                        Jam Tutup
-                                    </label>
-                                    <input required id="opening_hours-1-close"
-                                        class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                        type="time" name="opening_hours[1][close]"
-                                        value="{{ old('opening_hours.1.close', '00:00') }}">
-                                </div>
 
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-1-open')" />
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-1-close')" />
-                            </div>
-                        </div>
-
-                        <div id="newTimeRow" class="mt-6">
-                            <!-- Tempat untuk menampilkan hasil jadwal operasional -->
-                        </div>
-
-
-                        <div class="flex gap-4">
-                            <button type="button" id="addTimeRowButton"
-                                class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
-                                Tambah Jadwal
-                            </button>
-
-                            <button type="button" id="tombolHapusJadwal"
-                                class="rounded hidden bg-danger py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">Hapus
-                                Jadwal
-                            </button>
-                        </div>
-                    </section>
-                </div>
-
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
-                    <div class="text-center text-black dark:text-white-dahsboard">
-                        <h2>Personal Kontak</h2>
-                    </div>
-
-                    <div>
-                        <div class="w-full my-6">
-                            <label for="contact_details.1.type"
-                                class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                Akun Media Sosial <span class="text-red-500">*</span>
-                            </label>
-                            <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                                <select id="contact_details.1.type" name="contact_details[1][type]"
-                                    class="relative z-20 w-full appearance-none rounded border dark:bg-black-dashboard border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
-                                    :class="isOptionSelected && 'text-black dark:text-white'"
-                                    @change="isOptionSelected = true">
-                                    <option value="" hidden class="dark:text-gray-300">
-                                        Personal Kontak
-                                    </option>
-                                    <option value="phone" class="dark:text-gray-300"
-                                        {{ old('contact_details.1.type') == 'phone' ? 'selected' : '' }}>
-                                        Phone
-                                    </option>
-                                    <option value="email" class="dark:text-gray-300"
-                                        {{ old('contact_details.1.type') == 'email' ? 'selected' : '' }}>
-                                        Email
-                                    </option>
-                                    <option value="fax" class="dark:text-gray-300"
-                                        {{ old('contact_details.1.type') == 'fax' ? 'selected' : '' }}>
-                                        Fax
-                                    </option>
-                                    <option value="social_media" class="dark:text-gray-300"
-                                        {{ old('contact_details.1.type') == 'social_media' ? 'selected' : '' }}>
-                                        Sosial Media
-                                    </option>
-                                </select>
-                            </div>
-                            <x-partials.dashboard.input-error :messages="$errors->get('contact_details.1.type')" />
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="contact_details.1.value"
-                                class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                Identitas akun <span class="text-red-500">*</span>
-                            </label>
-                            <input id="contact_details.1.value"
-                                class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                value="{{ old('contact_details.1.value') }}" type="text"
-                                name="contact_details[1][value]" placeholder="Masukkan Identitas| Ex: @example">
-                            <x-partials.dashboard.input-error :messages="$errors->get('contact_details.1.value')" />
-                        </div>
-                    </div>
-
-                    <div id="newContactDetailRow" class="mt-6"></div>
-
-                    <div class="">
-                        <button type="button" id="addContactDetailRowButton"
-                            class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
-                            Tambah Kontak </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 gap-4 mb-6">
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
-                    <div class="text-center mb-6 text-black dark:text-white">
-                        <h2>Fasilitas</h2>
-                    </div>
-
-                    <div class="mb-6">
-                        <input id="facilities.1"
-                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            type="text" value="{{ old('facilities.1') }}" autocomplete="facilities[1]"
-                            name="facilities[1]" placeholder="Masukkan Fasilitas ke 1">
-                        <x-partials.dashboard.input-error :messages="$errors->get('facilities.1')" />
-                    </div>
-
-                    <div id="newFacilityRow" class="mt-6"></div>
-
-                    <div class="">
-                        <button type="button" id="addFacilityRowButton"
-                            class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
-                            Tambah Fasilitas </button>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg">
-                    <div class="text-center mb-6 text-black dark:text-white">
-                        <h2>Akomondasi</h2>
-                    </div>
-
-                    <div class="mb-6">
-                        <input id="accommodations.1"
-                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            type="text" autocomplete="accommodations[1]" value="{{ old('accommodations.1') }}"
-                            name="accommodations[1]" placeholder="Masukkan Akomondasi ke 1">
-                        <x-partials.dashboard.input-error :messages="$errors->get('accommodations.1')" />
-                    </div>
-
-                    <div id="newAccommodationRow" class="mt-6"></div>
-
-                    <div class="">
-                        <button type="button" id="addAccommodationRowButton"
-                            class="rounded bg-primary py-3 px-6 text-white shadow-md hover:bg-primary-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
-                            Tambah Akomondasi </button>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        {{-- Gallery 1 --}}
-        {{-- Start --}}
-
-
-
-        <div id="controls-carousel" class="relative w-full mb-10" data-carousel="static">
-            <!-- Carousel wrapper -->
-            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-
-                @for ($i = 1; $i <= 5; $i++)
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="{{ asset('assets/img/dummy-vilage.jpg') }}"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                            alt="...">
-                        <div class="">
-                            <button type="button" data-confirm-delete="true"
-                                class="absolute bg-danger  py-4   text-white shadow-md bottom-0 left-0 right-0 ">
-                                Hapus
-                            </button>
-                        </div>
-                    </div>
-                @endfor
-
-            </div>
-            <!-- Slider controls -->
-            <button type="button"
-                class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-prev>
-                <span
-                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 1 1 5l4 4" />
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button"
-                class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                data-carousel-next>
-                <span
-                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 9 4-4-4-4" />
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
-        </div>
-
-
-        {{-- END --}}
 
 
         <button type="submit"
@@ -417,214 +100,575 @@
         </button>
     </form>
 
-
-    <script>
-        const newTimeRow = document.getElementById("newTimeRow");
-        const addTimeRowButton = document.getElementById("addTimeRowButton");
-
-        const newContactDetailRow = document.getElementById("newContactDetailRow");
-        const addContactDetailRowButton = document.getElementById("addContactDetailRowButton");
-
-        const newFacilityRow = document.getElementById("newFacilityRow");
-        const addFacilityRowButton = document.getElementById("addFacilityRowButton");
-
-        const newAccommodationRow = document.getElementById("newAccommodationRow");
-        const addAccommodationRowButton = document.getElementById("addAccommodationRowButton");
+    {{-- Nav Tab --}}
 
 
-        let timeCount = 1;
+    <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg mb-6 mt-6">
+        <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
+                data-tabs-toggle="#default-tab-content" role="tablist">
+                <li role="presentation">
+                    <button
+                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="gallery-tab" data-tabs-target="#gallery" type="button" role="tab"
+                        aria-controls="gallery" aria-selected="false">Galeri </button>
+                </li>
+                <li class="me-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="profile-tab"
+                        data-tabs-target="#profile" type="button" role="tab" aria-controls="profile"
+                        aria-selected="false">Jadwal Operasional</button>
+                </li>
+                <li class="me-2" role="presentation">
+                    <button
+                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
+                        aria-controls="dashboard" aria-selected="false">Fasilitas</button>
+                </li>
+                <li class="me-2" role="presentation">
+                    <button
+                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="settings-tab" data-tabs-target="#settings" type="button" role="tab"
+                        aria-controls="settings" aria-selected="false">Akomondasi</button>
+                </li>
+                <li role="presentation">
+                    <button
+                        class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab"
+                        aria-controls="contacts" aria-selected="false">Kontak </button>
+                </li>
 
-        // Function to handle changes in 'Tutup' checkbox
-        function handleCheckboxChange() {
-            const buttonClose = document.querySelectorAll('.close');
-            buttonClose.forEach(button => {
-                button.addEventListener('change', function() {
-                    const targetId = button.getAttribute('data-target');
-                    const targetElement = document.getElementById(targetId);
-
-                    if (button.checked) {
-                        targetElement.classList.add('hidden');
-                    } else {
-                        targetElement.classList.remove('hidden');
-                    }
-                });
-            });
-        }
-
-        // Initial call to set up event listeners for existing elements
-        handleCheckboxChange();
-
-        addTimeRowButton.addEventListener("click", () => {
-            timeCount++;
-
-            const html = `
-        <div>
-            <div class="border my-3"></div>
-            <div class="w-full mb-6">
-                <label for="opening_hours-${timeCount}-day"
-                    class="mb-3 block text-sm font-medium text-black dark:text-white">
-                    Hari
-                </label>
-                <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                    <select id="opening_hours-${timeCount}-days" name="opening_hours[${timeCount}][day]"
-                        class="days relative z-20 w-full appearance-none rounded border border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
-                        :class="isOptionSelected && 'text-black dark:text-white'"
-                        @change="isOptionSelected = true">
-                        <option value="" hidden class="text-body">
-                            Hari Operasional
-                        </option>
-                         <option value="senin" class="dark:text-gray-300" {{ old('opening_hours.1.day') == 'senin' ? 'selected' : '' }}>Senin</option>
-                         <option value="selasa" class="dark:text-gray-300" {{ old('opening_hours.1.day') == 'selasa' ? 'selected' : '' }}>Selasa</option>
-                         <option value="rabu" class="dark:text-gray-300" {{ old('opening_hours.1.day') == 'rabu' ? 'selected' : '' }}>Rabu</option>
-                         <option value="kamis" class="dark:text-gray-300" {{ old('opening_hours.1.day') == 'kamis' ? 'selected' : '' }}>Kamis</option>
-                         <option value="jumat" class="dark:text-gray-300" {{ old('opening_hours.1.day') == 'jumat' ? 'selected' : '' }}>Jumat</option>
-                         <option value="sabtu" class="dark:text-gray-300" {{ old('opening_hours.1.day') == 'sabtu' ? 'selected' : '' }}>Sabtu</option>
-                         <option value="minggu" class="dark:text-gray-300" {{ old('opening_hours.1.day') == 'minggu' ? 'selected' : '' }}>Minggu</option>
-                    </select>
-                </div>
-                 <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.${timeCount}.day')" />
-            </div>
-
-             <div class="mb-6">
-                <div class="flex gap-2 items-center">
-                    <label for="opening_hours-${timeCount}-is_closed" class="block text-sm font-medium text-black dark:text-white">Tutup
-                        <input id="opening_hours-${timeCount}-is_closed" type="checkbox" class="close" data-target="time-close-${timeCount}" value="1" name="opening_hours[${timeCount}][is_closed]"
-                        {{ old('opening_hours.${timeCount}.is_closed') ? 'checked' : '' }}>
-                         </label>
-                         </div>
-                         <x-partials.dashboard.input-error :messages="$errors->get('opening_hours.${timeCount}.is_closed')" />
-            </div>
-
-            <div id="time-close-${timeCount}" class="flex gap-4 mb-6">
-               <div>
-                <label for="opening_hours-${timeCount}-open" class="mb-3 block text-sm font-medium text-black dark:text-white"> Jam Buka
-                </label>
-                <input required id="opening_hours-${timeCount}-open" class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" type="time" name="opening_hours[${timeCount}][open]" value="{{ old('opening_hours.${timeCount}.open', '00:00') }}">
-                </div>
-
-                <div>
-                    <label for="opening_hours-${timeCount}-close" class="mb-3 block text-sm font-medium text-black dark:text-white">Jam Tutup
-                    </label>
-                    <input required id="opening_hours-${timeCount}-close"
-                    class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                    type="time" name="opening_hours[${timeCount}][close]"
-                    value="{{ old('opening_hours.${timeCount}.close', '00:00') }}">
-                </div>
-
-                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-${timeCount}-open')" />
-                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-${timeCount}-close')" />
-            </div>
+            </ul>
         </div>
-    `;
+        <div id="default-tab-content">
+            <div class="hidden p-4 rounded-lg " id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+                <div class="">
+                    <div class="text-center text-black dark:text-white-dahsboard">
+                        <h2>Galeri</h2>
+                    </div>
 
-            const newRow = document.createElement("div");
-            newRow.innerHTML = html;
-            newTimeRow.appendChild(newRow);
+                    <div class="mb-4">
+                        <button data-modal-target="crud-modal-4" data-modal-toggle="crud-modal-4"
+                            class="bg-deep-koamaru-600 py-2
+                            px-4 text-white rounded-md">Tambah
+                            Galeri</button>
+                    </div>
 
-            // Call function to handle checkbox change for the newly added row
-            handleCheckboxChange();
-        });
-
-        let detailContactCount = 1;
-
-        addContactDetailRowButton.addEventListener("click", () => {
-            detailContactCount++;
-
-            const html = `
-                <div>
-                    <div class="border my-3"></div>
-                    <div class="w-full my-6">
-                        <label for="contact_details.${detailContactCount}.type" class="mb-3 block text-sm font-medium text-black dark:text-white">
-                            Akun Media Sosial
-                        </label>
-                        <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
-                            <select id="contact_details.${detailContactCount}.type" name="contact_details[${detailContactCount}][type]"
-                            class="relative z-20 w-full appearance-none rounded border dark:bg-black-dashboard border-black bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:focus:border-primary"
-                            :class="isOptionSelected && 'text-black dark:text-white'"
-                            @change="isOptionSelected = true">
-                            <option value="" hidden class="dark:text-gray-300">
-                                Personal Kontak
-                            </option>
-                            <option value="phone" class="dark:text-gray-300"
-                                {{ old('contact_details.${detailContactCount}.type') == 'phone' ? 'selected' : '' }}> Phone
-                            </option>
-                                    <option value="email" class="dark:text-gray-300"
-                                        {{ old('contact_details.${detailContactCount}.type') == 'email' ? 'selected' : '' }}>
-                                        Email
-                                    </option>
-                                    <option value="fax" class="dark:text-gray-300"
-                                        {{ old('contact_details.${detailContactCount}.type') == 'fax' ? 'selected' : '' }}>
-                                        Fax
-                                    </option>
-                                    <option value="social_media" class="dark:text-gray-300"
-                                        {{ old('contact_details.${detailContactCount}.type') == 'social_media' ? 'selected' : '' }}>
-                                        Sosial Media
-                                    </option>
-                                </select>
+                    {{-- Form Galeri --}}
+                    <div class="border-b-2 border-stone-200 py-2">
+                        <div class="flex justify-between items-center ">
+                            <div class="w-40 object-contain rounded-md overflow-hidden">
+                                <img src={{ asset('assets/img/dummy-vilage.jpg') }} alt="">
                             </div>
-                            <x-partials.dashboard.input-error :messages="$errors->get('contact_details.${detailContactCount}.type')" />
+                            <div class="">
+                                <button type="button" class="bg-danger py-2  px-4 text-white rounded-md ">
+                                    Hapus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main modal -->
+                    <div id="crud-modal-4" tabindex="-1" aria-hidden="true"
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div
+                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                        Tambah Galeri
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-toggle="crud-modal-4">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <form action="" class="p-4 md:p-5">
+                                    <div class="bg-white dark:bg-black  px-6 py-6 rounded-lg mb-6">
+                                        <label for="galleries"
+                                            class="block mb-2 text-sm text-black dark:text-white font-medium">
+                                            Masukan Foto <span class="text-red-500">*</span>
+                                        </label>
+                                        <p class="text-red-500 font-medium text-xs">* Menambahkan foto bisa lebih dari
+                                            satu</p>
+                                        <p class="text-red-500 font-medium text-xs">* Pastikan file bertipe jpeg, jpg,
+                                            png</p>
+                                        <p class="text-red-500 font-medium text-xs">* Maksimal file 1MB</p>
+                                        <input type="file" required multiple accept="image/*" name="galleries[]"
+                                            id="galleries" class="mt-3">
+                                        <x-partials.dashboard.input-error :messages="$errors->get('galleries.*')" />
+                                    </div>
+                                    <div class="text-center pb-4 ">
+
+                                        <button type="submit"
+                                            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            Kirim
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    {{-- End --}}
+                </div>
+            </div>
+
+
+            <div class="hidden p-4 rounded-lg " id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                {{-- Jadwal operasional --}}
+                <div class=" mb-6 ">
+                    <div class="">
+                        <div class="text-center text-black dark:text-white">
+                            <h2>Jadwal Operasional</h2>
+                        </div>
+
+                        {{-- Form Jadwal --}}
+                        <form action="">
+                            <div>
+                                <div class="w-full mb-6">
+                                    <label for="opening_hours-first_day"
+                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                        Hari Awal <span class="text-red-500">*</span>
+                                    </label>
+                                    <div x-data="{ isOptionSelected: false }"
+                                        class="relative z-20 bg-transparent dark:bg-form-input">
+                                        <select id="opening_hours-first_day" name="opening_hours[first_day]"
+                                            class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
+                                            :class="isOptionSelected && 'text-black dark:text-white'"
+                                            @change="isOptionSelected = true">
+                                            <option value="" hidden class="dark:text-gray-300">
+                                                Hari Operasional
+                                            </option>
+                                            <option value="senin" class="dark:text-gray-300"
+                                                {{ old('opening_hours-first_day') == 'senin' ? 'selected' : '' }}>
+                                                Senin
+                                            </option>
+                                            <option value="selasa" class="dark:text-gray-300"
+                                                {{ old('opening_hours-first_day') == 'selasa' ? 'selected' : '' }}>
+                                                Selasa
+                                            </option>
+                                            <option value="rabu" class="dark:text-gray-300"
+                                                {{ old('opening_hours-first_day') == 'rabu' ? 'selected' : '' }}>
+                                                Rabu
+                                            </option>
+                                            <option value="kamis" class="dark:text-gray-300"
+                                                {{ old('opening_hours-first_day') == 'kamis' ? 'selected' : '' }}>
+                                                Kamis
+                                            </option>
+                                            <option value="jumat" class="dark:text-gray-300"
+                                                {{ old('opening_hours-first_day') == 'jumat' ? 'selected' : '' }}>
+                                                Jumat
+                                            </option>
+                                            <option value="sabtu" class="dark:text-gray-300"
+                                                {{ old('opening_hours-first_day') == 'sabtu' ? 'selected' : '' }}>
+                                                Sabtu
+                                            </option>
+                                            <option value="minggu" class="dark:text-gray-300"
+                                                {{ old('opening_hours-first_day') == 'minggu' ? 'selected' : '' }}>
+                                                Minggu
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-first_day')" />
+                                </div>
+                                <div class="w-full mb-6">
+                                    <label for="opening_hours-last_day"
+                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                        Hari Akhir <span class="text-red-500">*</span>
+                                    </label>
+                                    <div x-data="{ isOptionSelected: false }"
+                                        class="relative z-20 bg-transparent dark:bg-form-input">
+                                        <select id="opening_hours-last_day" name="opening_hours[last_day]"
+                                            class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
+                                            :class="isOptionSelected && 'text-black dark:text-white'"
+                                            @change="isOptionSelected = true">
+                                            <option value="" hidden class="dark:text-gray-300">
+                                                Hari Operasional
+                                            </option>
+                                            <option value="senin" class="dark:text-gray-300"
+                                                {{ old('opening_hours-last_day') == 'senin' ? 'selected' : '' }}>
+                                                Senin
+                                            </option>
+                                            <option value="selasa" class="dark:text-gray-300"
+                                                {{ old('opening_hours-last_day') == 'selasa' ? 'selected' : '' }}>
+                                                Selasa
+                                            </option>
+                                            <option value="rabu" class="dark:text-gray-300"
+                                                {{ old('opening_hours-last_day') == 'rabu' ? 'selected' : '' }}>
+                                                Rabu
+                                            </option>
+                                            <option value="kamis" class="dark:text-gray-300"
+                                                {{ old('opening_hours-last_day') == 'kamis' ? 'selected' : '' }}>
+                                                Kamis
+                                            </option>
+                                            <option value="jumat" class="dark:text-gray-300"
+                                                {{ old('opening_hours-last_day') == 'jumat' ? 'selected' : '' }}>
+                                                Jumat
+                                            </option>
+                                            <option value="sabtu" class="dark:text-gray-300"
+                                                {{ old('opening_hours-last_day') == 'sabtu' ? 'selected' : '' }}>
+                                                Sabtu
+                                            </option>
+                                            <option value="minggu" class="dark:text-gray-300"
+                                                {{ old('opening_hours-last_day') == 'minggu' ? 'selected' : '' }}>
+                                                Minggu
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-last_day')" />
+                                </div>
+                            </div>
+
+
+                            <div class="flex gap-4 mb-6">
+                                <div>
+                                    <label for="opening_hours-open"
+                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                        Jam Buka
+                                    </label>
+                                    <input required id="opening_hours-open"
+                                        class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                        type="time" name="opening_hours[open]"
+                                        value="{{ old('opening_hours-open', '00:00') }}">
+                                </div>
+                                <div>
+                                    <label for="opening_hours-close"
+                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                        Jam Tutup
+                                    </label>
+                                    <input required id="opening_hours-close"
+                                        class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                        type="time" name="opening_hours[close]"
+                                        value="{{ old('opening_hours.close', '00:00') }}">
+                                </div>
+
+                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-open')" />
+                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-close')" />
+                            </div>
+
+                            <div class="">
+
+                                <button type="button"
+                                    class="w-full rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">Update</button>
+                            </div>
+                        </form>
+                        {{-- End --}}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="hidden p-4 rounded-lg " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+
+                {{-- Form Fasilitas --}}
+                <div class="">
+                    <div class="mb-6 text-center text-black dark:text-white">
+                        <h2>Fasilitas</h2>
+                    </div>
+
+                    <div class="mb-6 flex gap-3 ">
+                        <div class="w-full ">
+                            <input id="facilities.1"
+                                class="w-full  rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                type="text" value="{{ old('facilities.1') }}" autocomplete="facilities[1]"
+                                name="facilities[1]" placeholder="Masukkan Fasilitas ke 1">
+                            <x-partials.dashboard.input-error :messages="$errors->get('facilities.1')" />
+                        </div>
+
+
+                        {{-- Delete --}}
+                        <form class="">
+                            @csrf
+                            @method('DELETE')
+                            <button
+                                class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
+                        </form>
+                    </div>
+
+
+                    <!-- Modal toggle -->
+                    <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        Tambah
+                    </button>
+
+                    <!-- Main modal -->
+                    <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div
+                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                        Tambah Fasilitas
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-toggle="crud-modal">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <form action="" class="p-4 md:p-5">
+                                    <div class="mb-4 px-3">
+                                        <label for="contact_details.social_media"
+                                            class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                            Fasilitas
+
+                                        </label>
+                                        <input id="contact_details.social_media"
+                                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
+                                            value="{{ old('contact_details.social_media') }}" type="text"
+                                            name="contact_details[social_media]" placeholder="Masukkan Fasilitas">
+                                        <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
+                                    </div>
+                                    <div class="text-center pb-4 ">
+
+                                        <button type="submit"
+                                            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            Kirim
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- End --}}
+            </div>
+            <div class="hidden p-4 rounded-lg " id="settings" role="tabpanel" aria-labelledby="settings-tab">
+
+                {{-- Form Akomondasi --}}
+                <form class="">
+                    <div class="mb-6 text-center text-black dark:text-white">
+                        <h2>Akomondasi</h2>
+                    </div>
+
+                    <div class="mb-6 flex gap-3 ">
+                        <div class="w-full ">
+                            <input id="accommodations.1"
+                                class="w-full  rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                type="text" value="{{ old('accommodations.1') }}"
+                                autocomplete="accommodations[1]" name="accommodations[1]"
+                                placeholder="Masukkan Akomondasi ke 1">
+                            <x-partials.dashboard.input-error :messages="$errors->get('accommodations.1')" />
+                        </div>
+
+
+                        {{-- Delete --}}
+                        <form class="">
+                            @csrf
+                            @method('DELETE')
+                            <button
+                                class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
+                        </form>
+                    </div>
+
+                    <!-- Modal toggle -->
+                    <button data-modal-target="crud-modal-2" data-modal-toggle="crud-modal-2"
+                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        Tambah
+                    </button>
+
+                    <!-- Main modal -->
+                    <div id="crud-modal-2" tabindex="-1" aria-hidden="true"
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <!-- Modal content -->
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <!-- Modal header -->
+                                <div
+                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                        Tambah Akomondasi
+                                    </h3>
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-toggle="crud-modal-2">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <form class="p-4  md:p-5">
+                                    <div class="mb-4 px-3">
+                                        <label for="contact_details.social_media"
+                                            class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                            Akomondasi
+
+                                        </label>
+                                        <input id="contact_details.social_media"
+                                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
+                                            value="{{ old('contact_details.social_media') }}" type="text"
+                                            name="contact_details[social_media]" placeholder="Masukkan Akomondasi">
+                                        <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
+                                    </div>
+                                    <div class="text-center pb-4 ">
+
+                                        <button type="submit"
+                                            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            Kirim
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {{-- End --}}
+            </div>
+            <div class="hidden p-4 rounded-lg " id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+                <div class="">
+                    <div class="text-center text-black dark:text-white-dahsboard">
+                        <h2>Personal Kontak</h2>
+                    </div>
+
+                    {{-- Form Kontak --}}
+                    <form action="">
+                        <div class="mb-6">
+                            <label for="contact_details.phone"
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                Telepon
+                            </label>
+                            <div class="flex gap-4">
+                                <input id="contact_details.phone"
+                                    class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
+                                    value="{{ old('contact_details.phone') }}" type="number"
+                                    name="contact_details[phone]" placeholder="Masukkan Telepon">
+                                <x-partials.dashboard.input-error :messages="$errors->get('contact_details.phone')" />
+                                <button id="delete-phone" type="button"
+                                    class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
+
+                            </div>
                         </div>
 
                         <div class="mb-6">
-                            <label for="contact_details.${detailContactCount}.value"
-                                class="mb-3 block text-sm font-medium text-black dark:text-white">
-                                Identitas akun
+                            <label for="contact_details.email"
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                Email
                             </label>
-                            <input id="contact_details.${detailContactCount}.value"
-                                class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                value="{{ old('contact_details.${detailContactCount}.value') }}" type="text"
-                                name="contact_details[${detailContactCount}][value]" placeholder="Masukkan Identitas| Ex: @example">
-                            <x-partials.dashboard.input-error :messages="$errors->get('contact_details.${detailContactCount}.value')" />
+
+                            <div class="flex gap-4">
+
+                                <input id="contact_details.email"
+                                    class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
+                                    value="{{ old('contact_details.email') }}" type="email"
+                                    name="contact_details[email]" placeholder="Masukkan Email">
+                                <x-partials.dashboard.input-error :messages="$errors->get('contact_details.email')" />
+                                <button id="delete-email" type="button"
+                                    class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
+
+                            </div>
                         </div>
-                    </div>
-            `;
 
-            const newRow = document.createElement("div");
-            newRow.innerHTML = html;
-            newContactDetailRow.appendChild(newRow);
-        });
+                        <div class="mb-6">
+                            <label for="contact_details.social_media"
+                                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                Sosial Media
 
-        let facilityCount = 1;
-        addFacilityRowButton.addEventListener('click', () => {
-            facilityCount++;
+                            </label>
+                            <div class="flex gap-4">
 
-            const html = `
-                 <div class="mb-6">
-                    <div class="border my-5"></div>
-                        <input id="facilities.${facilityCount}"
-                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            type="text" value="{{ old('facilities.${facilityCount}') }}" autocomplete="facilities[${facilityCount}]"
-                            name="facilities[${facilityCount}]" placeholder="Masukkan Fasilitas ke ${facilityCount}">
-                        <x-partials.dashboard.input-error :messages="$errors->get('facilities.${facilityCount}')" />
-                    </div>
-            `;
+                                <input id="contact_details.social_media"
+                                    class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
+                                    value="{{ old('contact_details.social_media') }}" type="text"
+                                    name="contact_details[social_media]" placeholder="Masukkan URL">
+                                <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
+                                <button id="delete-social-media" type="button"
+                                    class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
 
-            const newRow = document.createElement("div");
-            newRow.innerHTML = html;
-            newFacilityRow.appendChild(newRow);
-        });
+                            </div>
+                        </div>
 
-        let accommodationCount = 1;
+                        <div class="">
 
-        addAccommodationRowButton.addEventListener('click', () => {
-            accommodationCount++;
+                            <button type="sbumit"
+                                class="w-full rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">Update</button>
+                        </div>
 
-            const html = `
-                  <div class="mb-6">
-                    <div class="border my-5"></div>
-                        <input id="accommodations.${accommodationCount}"
-                            class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            type="text" autocomplete="accommodations[${accommodationCount}]" value="{{ old('accommodations.${accommodationCount}') }}"
-                            name="accommodations[${accommodationCount}]" placeholder="Masukkan Akomondasi ke ${accommodationCount}">
-                        <x-partials.dashboard.input-error :messages="$errors->get('accommodations.${accommodationCount}')" />
-                    </div>
-            `;
+                    </form>
+                    {{-- End --}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- END --}}
 
-            const newRow = document.createElement("div");
-            newRow.innerHTML = html;
-            newAccommodationRow.appendChild(newRow);
-        });
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const phone = document.getElementById('contact_details.phone').value;
+            const email = document.getElementById('contact_details.email').value;
+            const socialMedia = document.getElementById('contact_details.social_media').value;
+
+            const deletePhone = document.getElementById('delete-phone');
+            const deleteEmail = document.getElementById('delete-email');
+            const deleteSocialMedia = document.getElementById('delete-social-media');
+
+
+            deletePhone.addEventListener('click', function() {
+                document.getElementById('contact_details.phone').value = '';
+            });
+            deleteEmail.addEventListener('click', function() {
+                document.getElementById('contact_details.email').value = '';
+            });
+            deleteSocialMedia.addEventListener('click', function() {
+                document.getElementById('contact_details.social_media').value = '';
+            });
+
+        })
     </script>
+
+
+
 
 
 </x-layouts.dashboard>
