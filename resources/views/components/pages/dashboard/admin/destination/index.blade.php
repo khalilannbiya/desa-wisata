@@ -8,7 +8,7 @@
                 <li>
                     <a class="font-medium" href="{{ route(auth()->user()->role . '.dashboard') }}">Dashboard /</a>
                 </li>
-                <li class="font-medium text-primary">Data Wisata</li>
+                <li class="font-medium text-primary">Wisata</li>
             </ol>
         </nav>
 

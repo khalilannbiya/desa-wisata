@@ -1,5 +1,5 @@
 <x-layouts.dashboard>
-    <x-slot:title>Data Wisata | </x-slot:title>
+    <x-slot:title>Data Pengguna | </x-slot:title>
 
     <section>
         {{-- Breadcrumb --}}
@@ -8,7 +8,7 @@
                 <li>
                     <a class="font-medium" href="{{ route(auth()->user()->role . '.dashboard') }}">Dashboard /</a>
                 </li>
-                <li class="font-medium text-primary">Data Pengguna</li>
+                <li class="font-medium text-primary">Pengguna</li>
             </ol>
         </nav>
 

@@ -59,7 +59,7 @@
                                 $routeName = $roleName . '.users.index';
                             @endphp
 
-                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ Route::current()->getName() == $routeName ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ in_array(Route::current()->getName(), [$roleName . '.users.index', $roleName . '.users.create', $roleName . '.users.edit']) ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
                                 href="{{ route($routeName) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                     viewBox="0 0 24 24" style="fill: rgba(251, 251, 251, 1);transform: ;msFilter:;">
@@ -79,7 +79,7 @@
                                 $routeName = $roleName . '.destinations.index';
                             @endphp
 
-                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ Route::current()->getName() == $routeName ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ in_array(Route::current()->getName(), [$roleName . '.destinations.index', $roleName . '.destinations.create', $roleName . '.destinations.edit']) ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
                                 href="{{ route($routeName) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                     viewBox="0 0 24 24" style="fill: rgba(251, 251, 251, 1);transform: ;msFilter:;">
@@ -93,12 +93,6 @@
                 </ul>
             </div>
 
-            <!-- Data Master Group -->
-            <div>
-                <h3 class="mb-4 ml-4 text-sm font-medium uppercase text-bodydark2">Data Master</h3>
-
-
-            </div>
         </nav>
         <!-- Sidebar Menu -->
     </div>

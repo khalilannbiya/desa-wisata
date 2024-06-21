@@ -7,7 +7,7 @@
                 <a class="font-medium" href="{{ route(auth()->user()->role . '.dashboard') }}">Dashboard /</a>
             </li>
             <li>
-                <a class="font-medium" href="{{ route(auth()->user()->role . '.users.index') }}">Data Pengguna
+                <a class="font-medium" href="{{ route(auth()->user()->role . '.users.index') }}">Pengguna
                     /</a>
             </li>
             <li class="font-medium text-primary">Tambah Pengguna</li>
