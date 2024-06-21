@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -94,24 +95,51 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('components.pages.dashboard.admin.user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, string $id)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $user = User::find($id);
+
+            $updateData = [
+                'role' => $request->role,
+                'name' => $request->name,
+                'email' => $request->email,
+            ];
+
+            if ($request->has('password')) {
+                $updateData['password'] = Hash::make($request->password);
+            }
+
+            $user->update($updateData);
+
+            DB::commit();
+
+            Alert::toast('Sukses Mengubah Pengguna', 'success');
+            return redirect()->route(auth()->user()->role . '.users.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Gagal Mengubah Pengguna: ' . $e->getMessage()]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        Alert::toast('Sukses Menghapus Pengguna', 'success');
+        return redirect()->route(auth()->user()->role . '.users.index');
     }
 }
