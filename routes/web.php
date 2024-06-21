@@ -49,7 +49,9 @@ Route::middleware([
             'show'
         ]);
 
-        Route::resource('users', UserController::class);
+        Route::resource('users', UserController::class)->except([
+            'show'
+        ]);
     });
 
     // owner
