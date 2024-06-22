@@ -40,8 +40,11 @@ Route::middleware([
             'show'
         ]);
 
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('prevent.superadmin.edit')->name('users.edit');
+        Route::put('/users/{user}', [UserController::class, 'update'])->middleware('prevent.superadmin.update')->name('users.update');
+        Route::post('/users', [UserController::class, 'store'])->middleware('prevent.superadmin.create')->name('users.store');
         Route::resource('users', UserController::class)->except([
-            'show'
+            'show', 'edit', 'update', 'store'
         ]);
     });
 
@@ -57,8 +60,11 @@ Route::middleware([
             'show'
         ]);
 
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('prevent.superadmin.edit')->name('users.edit');
+        Route::put('/users/{user}', [UserController::class, 'update'])->middleware('prevent.superadmin.update')->name('users.update');
+        Route::post('/users', [UserController::class, 'store'])->middleware('prevent.superadmin.create')->name('users.store');
         Route::resource('users', UserController::class)->except([
-            'show'
+            'show', 'edit', 'update', 'store'
         ]);
     });
 

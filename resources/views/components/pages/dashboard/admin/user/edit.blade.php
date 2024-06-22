@@ -35,9 +35,6 @@
                             class="relative z-20 w-full appearance-none capitalize rounded border border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             :class="isOptionSelected && 'text-black dark:text-white'" @change="isOptionSelected = true">
                             <option disabled selected class="text-body capitalize">Pilih Role</option>
-                            <option value="super_admin" class="text-body capitalize"
-                                {{ $user->role == 'super_admin' ? 'selected' : '' }}>
-                                Super Admin</option>
                             <option value="admin" class="text-body capitalize"
                                 {{ $user->role == 'admin' ? 'selected' : '' }}>
                                 Admin</option>
