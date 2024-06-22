@@ -8,13 +8,13 @@
             <p class="mt-2 text-sm text-gray-500">Repeh Rapih Kerta Raharja</p>
             <div class="mt-4">
                 <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                    <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">
+                    <a class="text-gray-500 cursor-pointer hover:text-green-new">
                         <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             class="w-5 h-5" viewBox="0 0 24 24">
                             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                         </svg>
                     </a>
-                    <a class="ml-3 text-gray-500 cursor-pointer hover:text-deep-koamaru-600">
+                    <a class="ml-3 text-gray-500 cursor-pointer hover:text-green-new">
                         <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             class="w-5 h-5" viewBox="0 0 24 24">
                             <path
@@ -22,14 +22,14 @@
                             </path>
                         </svg>
                     </a>
-                    <a class="ml-3 text-gray-500 cursor-pointer hover:text-deep-koamaru-600">
+                    <a class="ml-3 text-gray-500 cursor-pointer hover:text-green-new">
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                             <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                         </svg>
                     </a>
-                    <a class="ml-3 text-gray-500 cursor-pointer hover:text-deep-koamaru-600">
+                    <a class="ml-3 text-gray-500 cursor-pointer hover:text-green-new">
                         <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
                             <path stroke="none"
@@ -46,13 +46,13 @@
                 <h2 class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">About</h2>
                 <nav class="mb-10 list-none">
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Company</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Company</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Careers</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Careers</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Blog</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Blog</a>
                     </li>
                 </nav>
             </div>
@@ -60,13 +60,13 @@
                 <h2 class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Support</h2>
                 <nav class="mb-10 list-none">
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Contact Support</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Contact Support</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Help Resources</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Help Resources</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Release Updates</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Release Updates</a>
                     </li>
                 </nav>
             </div>
@@ -75,13 +75,13 @@
                 </h2>
                 <nav class="mb-10 list-none">
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Terms &amp; Privacy</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Terms &amp; Privacy</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Pricing</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Pricing</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">FAQ</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">FAQ</a>
                     </li>
                 </nav>
             </div>
@@ -89,21 +89,21 @@
                 <h2 class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Contact</h2>
                 <nav class="mb-10 list-none">
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Send a Message</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Send a Message</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">Request a Quote</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">Request a Quote</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-deep-koamaru-600">+123-456-7890</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-green-new">+123-456-7890</a>
                     </li>
                 </nav>
             </div>
         </div>
     </div>
-    <div class="bg-gray-300">
+    <div class="bg-green-new">
         <div class="container px-5 py-4 mx-auto">
-            <p class="text-sm text-gray-700 font-bold capitalize text-center">Copyright {{ date('Y') }} Desa
+            <p class="text-sm text-white font-bold capitalize text-center">Copyright {{ date('Y') }} Desa
                 Sukarame </p>
         </div>
     </div>
