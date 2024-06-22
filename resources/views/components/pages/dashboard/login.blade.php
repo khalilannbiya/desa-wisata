@@ -15,7 +15,7 @@
                         <div class="mt-2">
                             <input id="email" name="email" type="email" autocomplete="username" required
                                 autofocus
-                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-new sm:text-sm sm:leading-6">
                         </div>
                         <x-partials.dashboard.input-error :messages="$errors->get('email')" />
                     </div>
@@ -27,7 +27,7 @@
                         <div class="mt-2">
                             <input id="password" name="password" type="password" autocomplete="current-password"
                                 required
-                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-new sm:text-sm sm:leading-6">
 
                         </div>
                         <x-partials.dashboard.input-error :messages="$errors->get('password')" />
@@ -40,14 +40,14 @@
 
                 <div>
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md bg-deep-koamaru-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-deep-koamaru-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-500">Masuk</button>
+                        class="flex w-full justify-center rounded-md bg-green-new px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-new transition-all duration-500">Masuk</button>
                 </div>
             </form>
 
 
             <div class="mt-4">
                 <a href="/"
-                    class="flex w-full justify-center rounded-md  border-2 border-deep-koamaru-600 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm ">Kembali</a>
+                    class="flex w-full justify-center rounded-md  border-2 border-green-new px-3 py-1.5 text-sm font-semibold leading-6 text-green-new shadow-sm ">Kembali</a>
             </div>
         </div>
 </x-layouts.auth>

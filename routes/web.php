@@ -13,9 +13,11 @@ Route::get('/wisata', function () {
     return view('components.pages.frontend.destination');
 });
 
-Route::get('/edit ', function () {
-    return view('edit');
+Route::get('/detail ', function () {
+    return view('components.pages.frontend.detail-destination');
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

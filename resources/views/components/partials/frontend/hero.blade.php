@@ -13,8 +13,8 @@
             </p>
             <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                 <a href=""
-                    class="inline-flex justify-center  px-4 py-2 text-base font-medium text-center text-white bg-deep-koamaru-600 rounded hover:bg-deep-koamaru-500 focus:ring-4 focus:ring-purple-300 ">Tempat
-                    Wisata</a>
+                    class="inline-flex justify-center  px-4 py-2 text-base font-medium text-center text-white bg-green-new rounded hover:bg-opacity-90 focus:ring-4 focus:ring-purple-300 ">TEMPAT
+                    WISATA</a>
             </div>
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">

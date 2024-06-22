@@ -46,29 +46,29 @@
                     <ul class="flex flex-col mt-4 lg:items-center font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
                             <a href="/"
-                                class="block py-2 pl-3 pr-4 text-gray-700  lg:hover:text-deep-koamaru-700 lg:p-0  ">Beranda</a>
+                                class="block py-2 pl-3 pr-4 text-gray-700  lg:hover:text-green-new lg:p-0  ">Beranda</a>
                         </li>
                         <li>
                             <a href="/wisata"
-                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0">Wisata</a>
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0">Wisata</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0">Galeri</a>
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0">Galeri</a>
                         </li>
 
                         <li>
                             <a href="#"
-                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0 ">Acara</a>
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 ">Acara</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-deep-koamaru-700 lg:p-0 ">Artikel</a>
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 ">Artikel</a>
                         </li>
 
                         <li>
                             <a href="/login"
-                                class="block py-2 px-3   text-white bg-deep-koamaru-700 rounded-md hover:bg-deep-koamaru-500  lg:px-4 lg:py-1 "
+                                class="block py-2 px-3   text-white bg-green-new rounded-md hover:bg-opacity-90  lg:px-4 lg:py-1 "
                                 aria-current="page">Login</a>
                         </li>
                     </ul>
@@ -114,11 +114,9 @@
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </body>

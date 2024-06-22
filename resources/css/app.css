@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.list-check li::before {
+    content: '\2713'; /* Unicode untuk tanda centang */
+    color: #10B981; /* Warna hijau dari Tailwind (green-500) */
+    font-weight: bold; /* Berat font untuk tanda centang */
+    margin-right: 0.5rem; /* Margin kanan */
+}
+
 @layer base {
     .body {
       @apply relative text-base font-normal z-1 bg-whiten font-montserrat text-body;

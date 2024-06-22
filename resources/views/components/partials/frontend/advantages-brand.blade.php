@@ -14,8 +14,8 @@
                 sampai tahun 1925.
             </p>
             <a href="#"
-                class="gs_reveal gs_reveal_fromLeft inline-flex mt-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-deep-koamaru-600 rounded hover:bg-deep-koamaru-500 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
-                Selengkapnya
+                class="gs_reveal gs_reveal_fromLeft inline-flex mt-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-new rounded-md focus:ring-4 focus:outline-none focus:ring-blue-300 hover:bg-opacity-90 ">
+                SELENGKAPNYA
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

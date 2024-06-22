@@ -27,6 +27,7 @@ export default {
                     900: "#1b169c",
                     950: "#0e0f83",
                 },
+                "green-new": "#009688",
                 current: "currentColor",
                 transparent: "transparent",
                 "white-dahsboard": "#FFFFFF",
