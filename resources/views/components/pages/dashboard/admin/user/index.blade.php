@@ -14,7 +14,7 @@
 
         {{-- Button add destination --}}
         <a href="{{ route(auth()->user()->role . '.users.create') }}"
-            class="flex justify-center px-3 py-3 mb-5 rounded bg-primary text-white-dahsboard">Tambah
+            class="px-3 inline-block py-3 mb-5 rounded bg-primary text-white-dahsboard z-10">Tambah
             Pengguna</a>
 
         <table id="crudTable">
@@ -34,17 +34,15 @@
     @push('script')
         <script type="text/javascript">
             $(document).ready(function() {
-                let counter = 1;
                 $('#crudTable').DataTable({
                     serverSide: true,
                     ajax: {
                         url: '{!! url()->current() !!}'
                     },
                     columns: [{
-                            "render": function(data, type, row) {
-                                return counter++; // Increment counter and return the value
-                            },
-                            "width": "5%"
+                            data: 'id',
+                            name: 'id',
+                            width: '5%'
                         },
                         {
                             data: 'role',

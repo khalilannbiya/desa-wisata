@@ -71,7 +71,7 @@ class DestinationSeeder extends Seeder
 
             ContactDetail::create([
                 'destination_id' => $destination->id,
-                'phone' => $faker->sentence(2),
+                'phone' => $faker->sentence(1),
                 'email' => $faker->sentence(2),
                 'social_media' => $faker->sentence(2)
             ]);
