@@ -1,10 +1,6 @@
-<x-layouts.navbar>
+<x-layouts.visitor-layout>
 
     <x-slot:title>Tempat Wisata | </x-slot:title>
-
-
-
-
 
     <section class="py-30 ">
         <div class="text-center text-4xl  font-extrabold">
@@ -114,4 +110,4 @@
             }));
         });
     </script>
-</x-layouts.navbar>
+    </x-layouts.navbar>

@@ -1,4 +1,4 @@
-<x-Layouts.navbar>
+<x-Layouts.visitor-layout>
     <x-slot:title>Beranda | </x-slot:title>
     <header>
         <x-partials.frontend.hero />
@@ -80,13 +80,11 @@
 
     </section>
 
-    <section class="mt-20">
-        <x-partials.frontend.footer />
-    </section>
+
 
     <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 
 
 
 
-</x-Layouts.navbar>
+    </x-Layouts.navbar>
