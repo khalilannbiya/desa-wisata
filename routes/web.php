@@ -17,6 +17,10 @@ Route::get('/detail ', function () {
     return view('components.pages.frontend.detail-destination');
 });
 
+Route::get('/galeri', function () {
+    return view('components.pages.frontend.gallery');
+});
+
 
 
 Route::get('/dashboard', function () {

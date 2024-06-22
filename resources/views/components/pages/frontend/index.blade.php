@@ -9,9 +9,12 @@
         <div class="mb-8 text-center text-4xl font-extrabold">
             <h1 class="font-montserrat">Tempat Wisata</h1>
         </div>
-        <div class="flex flex-wrap gap-4 px-4 md:px-0 justify-center items-center">
+        <div class=" flex flex-wrap gap-4 px-4
+            md:px-0 justify-center items-center">
             @for ($i = 1; $i <= 3; $i++)
-                <x-partials.frontend.card-destination />
+                <div class="card-container">
+                    <x-partials.frontend.card-destination />
+                </div>
             @endfor
         </div>
         <div class="text-center mt-10">
@@ -21,7 +24,7 @@
     </section>
 
     <section class="">
-        <x-partials.frontend.advantages-brand class="" />
+        <x-partials.frontend.advantages-brand />
     </section>
 
     <section class="mb-10">
@@ -55,7 +58,7 @@
 
     </section>
 
-    <section class="">
+    <section class="relative">
         <div class="">
 
             <x-partials.frontend.logo />
@@ -63,28 +66,51 @@
         </div>
 
     </section>
-
-    <section class="px-3 md:px-0 mt-29 ">
-        <div class="mb-8  text-center text-4xl font-extrabold">
+    <section class="px-3 md:px-0 mt-29 relative">
+        <div class="mb-8 text-center text-4xl font-extrabold">
             <h1 class="font-montserrat">Informasi Tentang Desa Wisata</h1>
         </div>
         <div class="flex py-4 flex-wrap gap-4 justify-center items-center">
             @for ($i = 1; $i <= 3; $i++)
-                <x-partials.frontend.card-article />
+                <div class="image-container opacity-0">
+                    <x-partials.frontend.card-article />
+                </div>
             @endfor
         </div>
         <div class="text-center mt-6">
             <a href=""
-                class="text-black px-4 py-2 rounded-md border-2 border-gray-600 hover:shadow-lg transition-transform duration-300 transform ">Selengkapnya</a>
+                class="text-black px-4 py-2 rounded-md border-2 border-gray-600 hover:shadow-lg transition-transform duration-300 transform">Selengkapnya</a>
         </div>
-
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Daftarkan plugin ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
 
 
-    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+            // Buat animasi untuk elemen dengan kelas .image-container
+            gsap.utils.toArray('.image-container').forEach(container => {
+                gsap.to(container, {
+                    scrollTrigger: {
+                        trigger: container,
+                        start: 'top 80%', // Mulai animasi saat elemen berada 80% dari bagian atas viewport
+                        end: 'top 30%', // Selesai animasi saat elemen berada 30% dari bagian atas viewport
+                        toggleActions: 'play none none reverse', // Animasi akan berbalik saat scroll ke atas
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1
+
+                });
+            })
+        });
+    </script>
 
 
 
 
-    </x-Layouts.navbar>
+
+</x-Layouts.visitor-layout>

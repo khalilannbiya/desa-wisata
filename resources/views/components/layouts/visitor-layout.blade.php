@@ -10,6 +10,9 @@
     {{-- FLowbite --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 
+    {{-- Aos --}}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title ?? '' }} Desa Wisata Sukarame</title>
 </head>
@@ -53,7 +56,7 @@
                                 class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0">Wisata</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="/galeri"
                                 class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0">Galeri</a>
                         </li>
 
@@ -242,6 +245,7 @@
 
 
     <script>
+       
         const myElement = document.getElementById('myElement');
         const scrollTrigger = 20; // Tinggi scroll yang memicu shadow (sesuaikan nilai ini)
 
@@ -272,6 +276,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 </body>
 
