@@ -2,8 +2,8 @@
 
     <x-slot:title>Tempat Wisata | </x-slot:title>
 
-    <section class="py-30 ">
-        <div class="text-center text-4xl  font-extrabold">
+    <section class="py-30 px-6 ">
+        <div class="text-center text-4xl font-extrabold">
             <h1>Tempat Wisata</h1>
         </div>
         <div class="">
@@ -102,7 +102,6 @@
                     y: 100,
                     overwrite: true
                 })
-                // you can also define things like start, end, etc.
             });
 
             ScrollTrigger.addEventListener("refreshInit", () => gsap.set(".card", {

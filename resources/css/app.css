@@ -10,6 +10,28 @@
     margin-right: 0.5rem; /* Margin kanan */
 }
 
+/* ::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+
+
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+
+} */
+
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
 @layer base {
     .body {
       @apply relative text-base font-normal z-1 bg-whiten font-montserrat text-body;

@@ -1,5 +1,5 @@
 <x-layouts.visitor-layout>
-    <div class="grid md:grid-cols-2 gap-5 px-4 pt-35 mx-auto">
+    <div class="grid md:grid-cols-2 gap-5 md:px-6 px-4 pt-35 mx-auto">
         <div class="">
             <div class="grid gap-4">
                 <div>
@@ -70,30 +70,40 @@
                     </ul>
                 </div>
                 <div id="default-tab-content">
-                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel"
+                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel"
                         aria-labelledby="profile-tab">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                                class="font-medium text-gray-800 dark:text-white">Profile tab's associated
-                                content</strong>. Clicking another tab will toggle the visibility of this one for the
-                            next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
+                        <ul class="list-check">
+                            <li>Senin</li>
+                            <li>Sabtu</li>
+                            <li>Selasa</li>
+                            <li>Minggu</li>
+                            <li>Minggu</li>
+                            <li>Minggu</li>
+                        </ul>
                     </div>
-                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel"
+                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel"
                         aria-labelledby="dashboard-tab">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-                            <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated
-                                content</strong>. Clicking another tab will toggle the visibility of this one for the
-                            next. The tab JavaScript swaps classes to control the content visibility and styling.
-                        </p>
+                        <ul class="list-check">
+                            <li>Senin</li>
+                            <li>Sabtu</li>
+                            <li>Selasa</li>
+                            <li>Minggu</li>
+                            <li>Minggu</li>
+                            <li>Minggu</li>
+                        </ul>
                     </div>
-                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel"
+                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel"
                         aria-labelledby="settings-tab">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-                            <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated
-                                content</strong>. Clicking another tab will toggle the visibility of this one for the
-                            next. The tab JavaScript swaps classes to control the content visibility and styling.
-                        </p>
+                        <ul class="list-check">
+                            <li>Senin</li>
+                            <li>Sabtu</li>
+                            <li>Selasa</li>
+                            <li>Minggu</li>
+                            <li>Minggu</li>
+                            <li>Minggu</li>
+                        </ul>
                     </div>
-                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel"
+                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel"
                         aria-labelledby="contacts-tab">
                         <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
                             <strong class="font-medium text-gray-800 dark:text-white">Contacts tab's associated

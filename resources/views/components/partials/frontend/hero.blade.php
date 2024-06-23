@@ -5,7 +5,7 @@
         <div class="mr-auto place-self-center lg:col-span-7">
             <h1 id="slogan"
                 class="max-w-2xl font-montserrat mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl S">
-                Desa Wisata <br>Sukarame</h1>
+            </h1>
             <p class="max-w-2xl mb-6 font-light text-gray-700 lg:mb-8 md:text-lg lg:text-xl">Desa Wisata Sukarame,
                 terletak di provinsi Jawa Barat, telah diakui sebagai salah satu Desa Wisata Indonesia. Julukan ini
                 tidak datang tanpa alasan. Desa ini menawarkan perpaduan sempurna antara keindahan alam yang memukau dan
@@ -25,3 +25,19 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        gsap.registerPlugin(TextPlugin)
+        const myElement = document.getElementById('slogan');
+
+        gsap.to(myElement, {
+            text: "Desa Wisata <br>Sukarame",
+            duration: 3,
+            repeat: 0,
+            ease: "none",
+        });
+
+    })
+</script>

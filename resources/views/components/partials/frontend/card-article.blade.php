@@ -14,20 +14,20 @@
 
                 </div>
                 <h3 class="mb-4 font-semibold group-hover:text-white  text-2xl">
-                    <a href="" class="transition-all group-hover:text-white text-black ">laboriosam
-                        doloribus quas.
-                        Voluptatum</a>
+                    <a href="" class="elips transition-all group-hover:text-white text-black ">laboriosam
+                        doloribus quas Voluptatum Lorem ipsum dolor sit amet.</a>
                 </h3>
-                <p class="text-black group-hover:text-white text-sm mb-0">
+                <p class="elipsis text-black group-hover:text-white text-sm mb-0">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore laborum iste laboriosam doloribus
                     quas. Voluptatum
                 </p>
             </div>
             <div class="mt-auto">
-                <img src="https://picsum.photos/400/300" alt="" class="w-full h-48 object-cover">
+                <img src="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}" alt=""
+                    class="w-full h-48 object-cover">
             </div>
             <div class="text-center">
-                <a href="#"
+                <a href="/detail-artikel"
                     class="my-6 inline-flex items-center px-3 py-2 text-sm font-medium text-center group-hover:bg-white group-hover:text-green-new text-white bg-green-new rounded-md focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                     DETAIL ARTIKEL
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -38,3 +38,27 @@
                 </a>
             </div>
         </div>
+
+        <script>
+            function shortenText(elementSelector, maxLength, elipsis) {
+                let elements = document.querySelectorAll(elementSelector);
+
+                elements.forEach(function(element) {
+                    let textContent = element.textContent.trim();
+
+                    if (textContent.length > maxLength) {
+                        if (elipsis) {
+                            let shortenedContent =
+                                textContent.substring(0, maxLength) + " ...";
+                            element.textContent = shortenedContent;
+                        } else {
+                            let shortenedContent = textContent.substring(0, maxLength);
+                            element.textContent = shortenedContent;
+                        }
+                    }
+                });
+            }
+
+            shortenText(".elipsis", 100, true);
+            shortenText(".elips", 70, true);
+        </script>
