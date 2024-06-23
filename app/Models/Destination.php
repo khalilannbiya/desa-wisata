@@ -51,6 +51,6 @@ class Destination extends Model
 
     public function contactDetails()
     {
-        return $this->hasMany(ContactDetail::class);
+        return $this->hasOne(ContactDetail::class);
     }
 }

@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Controllers\ContactDetailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\AccommodationController;
+use App\Http\Controllers\OpeningHourController;
+use App\Http\Controllers\GalleryController;
+
 
 Route::get('/', function () {
     return view('components.pages.frontend.index');
@@ -73,9 +79,34 @@ Route::middleware([
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+
         Route::resource('destinations', DestinationController::class)->except([
             'show'
         ]);
+
+        Route::resource('contact', ContactDetailController::class)->only([
+            'update'
+        ]);
+
+        Route::resource('openingHour', OpeningHourController::class)->only([
+            'update'
+        ]);
+
+        Route::resource('facility', FacilityController::class)->only([
+            'store',
+            'destroy'
+        ]);
+
+        Route::resource('accommodation', AccommodationController::class)->only([
+            'store',
+            'destroy'
+        ]);
+
+        Route::resource('gallery', GalleryController::class)->only([
+            'store',
+            'destroy'
+        ]);
+
     });
 
     // Super Admin

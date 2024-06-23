@@ -10,16 +10,17 @@
                 <a class="font-medium" href="{{ route(auth()->user()->role . '.destinations.index') }}">Wisata
                     /</a>
             </li>
-            <li class="font-medium text-primary">Tambah</li>
+            <li class="font-medium text-primary">Ubah</li>
         </ol>
     </nav>
 
-    <form action="{{ route(strtolower(auth()->user()->role) . '.destinations.store') }}" enctype="multipart/form-data"
+    <form action="{{ route(strtolower(auth()->user()->role) . '.destinations.update', [$destination->id]) }}" enctype="multipart/form-data"
         method="POST">
         @csrf
+        @method('PUT')
         <div class="">
             <div class="">
-                <h1 class="text-black-dashboard dark:text-white-dahsboard font-bold text-xl mb-6"> Tambah Tempat
+                <h1 class="text-black-dashboard dark:text-white-dahsboard font-bold text-xl mb-6"> Ubah Tempat
                     Wisata
                 </h1>
             </div>
@@ -31,7 +32,7 @@
                         Nama Wisata <span class="text-red-500">*</span>
                     </label>
                     <input required id="name_destination" name="name_destination" autofocus
-                        autocomplete="name_destination" value="{{ old('name_destination') }}" type="text"
+                        autocomplete="name_destination" value="{{ $destination->name }}" type="text"
                         placeholder="Nama Tempat Wisata"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
                     <x-partials.dashboard.input-error :messages="$errors->get('name_destination')" />
@@ -48,10 +49,10 @@
                             <option value="" hidden class="text-body">
                                 Pilih Status Tempat Wisata
                             </option>
-                            <option value="active" class="text-body" {{ old('status') == 'active' ? 'selected' : '' }}>
+                            <option value="active" class="text-body" {{ $destination->status == 'active' ? 'selected' : '' }}>
                                 Aktif</option>
                             <option value="inactive" class="text-body"
-                                {{ old('status') == 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
+                                {{ $destination->status == 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
                         </select>
                         <x-partials.dashboard.input-error :messages="$errors->get('status')" />
                     </div>
@@ -61,7 +62,7 @@
                     <label for="location" class="mb-3 block text-sm font-medium text-black dark:text-white">
                         Lokasi Tempat Wisata <span class="text-red-500">*</span>
                     </label>
-                    <input name="location" id="location" value="{{ old('location') }}" autocomplete="location" required
+                    <input name="location" id="location" value="{{ $destination->location }}" autocomplete="location" required
                         type="text" placeholder="Lokasi Tempat Wisata"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
                     <x-partials.dashboard.input-error :messages="$errors->get('location')" />
@@ -72,7 +73,7 @@
                         Harga Tempat Wisata <span class="text-red-500">*</span>
                     </label>
                     <p class="text-red-500 font-medium text-xs">* Jika gratis/free masukan nilai 0</p>
-                    <input id="price_range" value="{{ old('price_range') }}" required name="price_range" type="number"
+                    <input id="price_range" value="{{ $destination->price_range }}" required name="price_range" type="number"
                         placeholder="Harga Tempat Wisata"
                         class="w-full mt-3 rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
                 </div>
@@ -82,18 +83,11 @@
                         Deskripsi <span class="text-red-500">*</span>
                     </label>
                     <textarea id="description" required name="description" rows="6" placeholder="Deskripsi Tempat Wisata"
-                        class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary">{{ old('description') }}</textarea>
+                        class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary">{{ $destination->description }}</textarea>
                     <x-partials.dashboard.input-error :messages="$errors->get('description')" />
                 </div>
             </div>
-
-
-
-
         </div>
-
-
-
         <button type="submit"
             class="flex w-full justify-center rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">
             Kirim
@@ -101,7 +95,6 @@
     </form>
 
     {{-- Nav Tab --}}
-
 
     <div class="bg-white dark:bg-black shadow-lg px-6 py-6 rounded-lg mb-6 mt-6">
         <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
@@ -154,18 +147,24 @@
                     </div>
 
                     {{-- Form Galeri --}}
+                    @foreach ( $destination->galleries as $gallery )
                     <div class="border-b-2 border-stone-200 py-2">
                         <div class="flex justify-between items-center ">
                             <div class="w-40 object-contain rounded-md overflow-hidden">
-                                <img src={{ asset('assets/img/dummy-vilage.jpg') }} alt="">
+                                <img src={{ asset('storage/'. $gallery->image_url) }} alt="">
                             </div>
                             <div class="">
-                                <button type="button" class="bg-danger py-2  px-4 text-white rounded-md ">
-                                    Hapus
-                                </button>
+                                <form action="{{ route(auth()->user()->role . '.gallery.destroy', [$gallery->id]) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="bg-danger py-2  px-4 text-white rounded-md ">
+                                        Hapus
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
                     <!-- Main modal -->
                     <div id="crud-modal-4" tabindex="-1" aria-hidden="true"
@@ -192,7 +191,8 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form action="" class="p-4 md:p-5">
+                                <form action="{{ route(auth()->user()->role . '.gallery.store') }}" enctype="multipart/form-data" method="POST" class="p-4 md:p-5">
+                                    @csrf
                                     <div class="bg-white dark:bg-black  px-6 py-6 rounded-lg mb-6">
                                         <label for="galleries"
                                             class="block mb-2 text-sm text-black dark:text-white font-medium">
@@ -205,6 +205,7 @@
                                         <p class="text-red-500 font-medium text-xs">* Maksimal file 1MB</p>
                                         <input type="file" required multiple accept="image/*" name="galleries[]"
                                             id="galleries" class="mt-3">
+                                            <input type="hidden" name="destination_id" value="{{ $destination->id }}">
                                         <x-partials.dashboard.input-error :messages="$errors->get('galleries.*')" />
                                     </div>
                                     <div class="text-center pb-4 ">
@@ -224,9 +225,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     {{-- End --}}
                 </div>
             </div>
@@ -241,135 +239,136 @@
                         </div>
 
                         {{-- Form Jadwal --}}
-                        <form action="">
-                            <div>
-                                <div class="w-full mb-6">
-                                    <label for="opening_hours-first_day"
-                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                        Hari Awal <span class="text-red-500">*</span>
-                                    </label>
-                                    <div x-data="{ isOptionSelected: false }"
-                                        class="relative z-20 bg-transparent dark:bg-form-input">
-                                        <select id="opening_hours-first_day" name="opening_hours[first_day]"
-                                            class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
-                                            :class="isOptionSelected && 'text-black dark:text-white'"
-                                            @change="isOptionSelected = true">
-                                            <option value="" hidden class="dark:text-gray-300">
-                                                Hari Operasional
-                                            </option>
-                                            <option value="senin" class="dark:text-gray-300"
-                                                {{ old('opening_hours-first_day') == 'senin' ? 'selected' : '' }}>
-                                                Senin
-                                            </option>
-                                            <option value="selasa" class="dark:text-gray-300"
-                                                {{ old('opening_hours-first_day') == 'selasa' ? 'selected' : '' }}>
-                                                Selasa
-                                            </option>
-                                            <option value="rabu" class="dark:text-gray-300"
-                                                {{ old('opening_hours-first_day') == 'rabu' ? 'selected' : '' }}>
-                                                Rabu
-                                            </option>
-                                            <option value="kamis" class="dark:text-gray-300"
-                                                {{ old('opening_hours-first_day') == 'kamis' ? 'selected' : '' }}>
-                                                Kamis
-                                            </option>
-                                            <option value="jumat" class="dark:text-gray-300"
-                                                {{ old('opening_hours-first_day') == 'jumat' ? 'selected' : '' }}>
-                                                Jumat
-                                            </option>
-                                            <option value="sabtu" class="dark:text-gray-300"
-                                                {{ old('opening_hours-first_day') == 'sabtu' ? 'selected' : '' }}>
-                                                Sabtu
-                                            </option>
-                                            <option value="minggu" class="dark:text-gray-300"
-                                                {{ old('opening_hours-first_day') == 'minggu' ? 'selected' : '' }}>
-                                                Minggu
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-first_day')" />
-                                </div>
-                                <div class="w-full mb-6">
-                                    <label for="opening_hours-last_day"
-                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                        Hari Akhir <span class="text-red-500">*</span>
-                                    </label>
-                                    <div x-data="{ isOptionSelected: false }"
-                                        class="relative z-20 bg-transparent dark:bg-form-input">
-                                        <select id="opening_hours-last_day" name="opening_hours[last_day]"
-                                            class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
-                                            :class="isOptionSelected && 'text-black dark:text-white'"
-                                            @change="isOptionSelected = true">
-                                            <option value="" hidden class="dark:text-gray-300">
-                                                Hari Operasional
-                                            </option>
-                                            <option value="senin" class="dark:text-gray-300"
-                                                {{ old('opening_hours-last_day') == 'senin' ? 'selected' : '' }}>
-                                                Senin
-                                            </option>
-                                            <option value="selasa" class="dark:text-gray-300"
-                                                {{ old('opening_hours-last_day') == 'selasa' ? 'selected' : '' }}>
-                                                Selasa
-                                            </option>
-                                            <option value="rabu" class="dark:text-gray-300"
-                                                {{ old('opening_hours-last_day') == 'rabu' ? 'selected' : '' }}>
-                                                Rabu
-                                            </option>
-                                            <option value="kamis" class="dark:text-gray-300"
-                                                {{ old('opening_hours-last_day') == 'kamis' ? 'selected' : '' }}>
-                                                Kamis
-                                            </option>
-                                            <option value="jumat" class="dark:text-gray-300"
-                                                {{ old('opening_hours-last_day') == 'jumat' ? 'selected' : '' }}>
-                                                Jumat
-                                            </option>
-                                            <option value="sabtu" class="dark:text-gray-300"
-                                                {{ old('opening_hours-last_day') == 'sabtu' ? 'selected' : '' }}>
-                                                Sabtu
-                                            </option>
-                                            <option value="minggu" class="dark:text-gray-300"
-                                                {{ old('opening_hours-last_day') == 'minggu' ? 'selected' : '' }}>
-                                                Minggu
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-last_day')" />
-                                </div>
-                            </div>
+                        <form action="{{ route(strtolower(auth()->user()->role) . '.openingHour.update', [$destination->id]) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            {{-- <input type="hidden" name="destination_id" value="{{ $destination->id }}"> --}}
+    <div>
+        <div class="w-full mb-6">
+            <label for="opening_hours-first_day"
+                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                Hari Awal <span class="text-red-500">*</span>
+            </label>
+            <div x-data="{ isOptionSelected: false }"
+                class="relative z-20 bg-transparent dark:bg-form-input">
+                <select id="opening_hours-first_day" name="opening_hours[first_day]"
+                    class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
+                    :class="isOptionSelected && 'text-black dark:text-white'"
+                    @change="isOptionSelected = true">
+                    <option value="" hidden class="dark:text-gray-300">
+                        Hari Operasional
+                    </option>
+                    <option value="senin" class="dark:text-gray-300"
+                        {{ $destination->openingHours->first()->day == 'senin' ? 'selected' : '' }}>
+                        Senin
+                    </option>
+                    <option value="selasa" class="dark:text-gray-300"
+                        {{ $destination->openingHours->first()->day == 'selasa' ? 'selected' : '' }}>
+                        Selasa
+                    </option>
+                    <option value="rabu" class="dark:text-gray-300"
+                        {{ $destination->openingHours->first()->day == 'rabu' ? 'selected' : '' }}>
+                        Rabu
+                    </option>
+                    <option value="kamis" class="dark:text-gray-300"
+                        {{ $destination->openingHours->first()->day == 'kamis' ? 'selected' : '' }}>
+                        Kamis
+                    </option>
+                    <option value="jumat" class="dark:text-gray-300"
+                        {{ $destination->openingHours->first()->day == 'jumat' ? 'selected' : '' }}>
+                        Jumat
+                    </option>
+                    <option value="sabtu" class="dark:text-gray-300"
+                        {{ $destination->openingHours->first()->day == 'sabtu' ? 'selected' : '' }}>
+                        Sabtu
+                    </option>
+                    <option value="minggu" class="dark:text-gray-300"
+                        {{ $destination->openingHours->first()->day == 'minggu' ? 'selected' : '' }}>
+                        Minggu
+                    </option>
+                </select>
+            </div>
+            <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-first_day')" />
+        </div>
+        <div class="w-full mb-6">
+            <label for="opening_hours-last_day"
+                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                Hari Akhir <span class="text-red-500">*</span>
+            </label>
+            <div x-data="{ isOptionSelected: false }"
+                class="relative z-20 bg-transparent dark:bg-form-input">
+                <select id="opening_hours-last_day" name="opening_hours[last_day]"
+                    class="relative z-20 w-full px-5 py-3 transition bg-transparent bg-white border border-black rounded outline-none appearance-none days focus:border-primary active:border-primary dark:bg-black-dashboard dark:border-form-strokedark dark:focus:border-primary"
+                    :class="isOptionSelected && 'text-black dark:text-white'"
+                    @change="isOptionSelected = true">
+                    <option value="" hidden class="dark:text-gray-300">
+                        Hari Operasional
+                    </option>
+                    <option value="senin" class="dark:text-gray-300"
+                        {{ $destination->openingHours->last()->day == 'senin' ? 'selected' : '' }}>
+                        Senin
+                    </option>
+                    <option value="selasa" class="dark:text-gray-300"
+                        {{ $destination->openingHours->last()->day == 'selasa' ? 'selected' : '' }}>
+                        Selasa
+                    </option>
+                    <option value="rabu" class="dark:text-gray-300"
+                        {{ $destination->openingHours->last()->day == 'rabu' ? 'selected' : '' }}>
+                        Rabu
+                    </option>
+                    <option value="kamis" class="dark:text-gray-300"
+                        {{ $destination->openingHours->last()->day == 'kamis' ? 'selected' : '' }}>
+                        Kamis
+                    </option>
+                    <option value="jumat" class="dark:text-gray-300"
+                        {{ $destination->openingHours->last()->day == 'jumat' ? 'selected' : '' }}>
+                        Jumat
+                    </option>
+                    <option value="sabtu" class="dark:text-gray-300"
+                        {{ $destination->openingHours->last()->day == 'sabtu' ? 'selected' : '' }}>
+                        Sabtu
+                    </option>
+                    <option value="minggu" class="dark:text-gray-300"
+                        {{ $destination->openingHours->last()->day == 'minggu' ? 'selected' : '' }}>
+                        Minggu
+                    </option>
+                </select>
+            </div>
+            <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-last_day')" />
+        </div>
+    </div>
 
+    <div class="flex gap-4 mb-6">
+        <div>
+            <label for="opening_hours-open"
+                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                Jam Buka
+            </label>
+            <input required id="opening_hours-open"
+                class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                type="time" name="opening_hours[open]"
+                value="{{ date('H:i', strtotime($destination->openingHours->first()->open))  }}">
+        </div>
+        <div>
+            <label for="opening_hours-close"
+                class="block mb-3 text-sm font-medium text-black dark:text-white">
+                Jam Tutup
+            </label>
+            <input required id="opening_hours-close"
+                class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                type="time" name="opening_hours[close]"
+                value="{{ date('H:i', strtotime($destination->openingHours->first()->close)) }}">
+        </div>
 
-                            <div class="flex gap-4 mb-6">
-                                <div>
-                                    <label for="opening_hours-open"
-                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                        Jam Buka
-                                    </label>
-                                    <input required id="opening_hours-open"
-                                        class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                        type="time" name="opening_hours[open]"
-                                        value="{{ old('opening_hours-open', '00:00') }}">
-                                </div>
-                                <div>
-                                    <label for="opening_hours-close"
-                                        class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                        Jam Tutup
-                                    </label>
-                                    <input required id="opening_hours-close"
-                                        class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                        type="time" name="opening_hours[close]"
-                                        value="{{ old('opening_hours.close', '00:00') }}">
-                                </div>
+        <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-open')" />
+        <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-close')" />
+    </div>
 
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-open')" />
-                                <x-partials.dashboard.input-error :messages="$errors->get('opening_hours-close')" />
-                            </div>
-
-                            <div class="">
-
-                                <button type="button"
-                                    class="w-full rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">Update</button>
-                            </div>
-                        </form>
+    <div>
+        <button type="submit"
+            class="w-full rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">Ubah</button>
+    </div>
+</form>
                         {{-- End --}}
                     </div>
                 </div>
@@ -386,26 +385,25 @@
                     <div class="mb-6 text-center text-black dark:text-white">
                         <h2>Fasilitas</h2>
                     </div>
-
+                    @foreach ( $destination->facilities as $facility)
                     <div class="mb-6 flex gap-3 ">
                         <div class="w-full ">
                             <input id="facilities.1"
                                 class="w-full  rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                type="text" value="{{ old('facilities.1') }}" autocomplete="facilities[1]"
-                                name="facilities[1]" placeholder="Masukkan Fasilitas ke 1">
+                                type="text" value="{{ $facility->name }}">
                             <x-partials.dashboard.input-error :messages="$errors->get('facilities.1')" />
                         </div>
 
 
                         {{-- Delete --}}
-                        <form class="">
+                        <form action="{{ route(auth()->user()->role .'.facility.destroy', [$facility->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button
                                 class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
                         </form>
                     </div>
-
+                    @endforeach
 
                     <!-- Modal toggle -->
                     <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
@@ -439,21 +437,21 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form action="" class="p-4 md:p-5">
+                                <form action="{{ route(auth()->user()->role . '.facility.store') }}" method="POST" class="p-4 md:p-5">
+                                    @csrf
                                     <div class="mb-4 px-3">
                                         <label for="contact_details.social_media"
                                             class="block mb-3 text-sm font-medium text-black dark:text-white">
                                             Fasilitas
-
                                         </label>
-                                        <input id="contact_details.social_media"
+                                        <input id="facilities"
                                             class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                            value="{{ old('contact_details.social_media') }}" type="text"
-                                            name="contact_details[social_media]" placeholder="Masukkan Fasilitas">
-                                        <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
+                                            value="{{ old('name_facility') }}" type="text"
+                                            name="name_facility" placeholder="Masukkan Fasilitas">
+                                            <input type="hidden" name="destination_id" value="{{ $destination->id }}" >
+                                        <x-partials.dashboard.input-error :messages="$errors->get('facilities')" />
                                     </div>
                                     <div class="text-center pb-4 ">
-
                                         <button type="submit"
                                             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -475,31 +473,30 @@
             <div class="hidden p-4 rounded-lg " id="settings" role="tabpanel" aria-labelledby="settings-tab">
 
                 {{-- Form Akomondasi --}}
-                <form class="">
                     <div class="mb-6 text-center text-black dark:text-white">
                         <h2>Akomondasi</h2>
                     </div>
-
+                    @foreach ( $destination->accommodations as $accommodation )
                     <div class="mb-6 flex gap-3 ">
                         <div class="w-full ">
-                            <input id="accommodations.1"
+                            <input id="accommodations"
                                 class="w-full  rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                                type="text" value="{{ old('accommodations.1') }}"
-                                autocomplete="accommodations[1]" name="accommodations[1]"
-                                placeholder="Masukkan Akomondasi ke 1">
-                            <x-partials.dashboard.input-error :messages="$errors->get('accommodations.1')" />
+                                type="text" value="{{ $accommodation->name }}"
+                                autocomplete="accommodations" name="name_accommodation"
+                                placeholder="Masukkan Akomondasi ke ">
+                            <x-partials.dashboard.input-error :messages="$errors->get('accommodations')" />
                         </div>
 
 
                         {{-- Delete --}}
-                        <form class="">
+                         <form action="{{ route(auth()->user()->role .'.accommodation.destroy', [$accommodation->id]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button
                                 class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
                         </form>
                     </div>
-
+                    @endforeach
                     <!-- Modal toggle -->
                     <button data-modal-target="crud-modal-2" data-modal-toggle="crud-modal-2"
                         class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -532,18 +529,20 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form class="p-4  md:p-5">
+                                <form action="{{ route(auth()->user()->role . '.accommodation.store') }}" method="POST" class="p-4 md:p-5">
+                                    @csrf
                                     <div class="mb-4 px-3">
-                                        <label for="contact_details.social_media"
+                                        <label for="accommodation"
                                             class="block mb-3 text-sm font-medium text-black dark:text-white">
                                             Akomondasi
 
                                         </label>
-                                        <input id="contact_details.social_media"
+                                        <input id="accommodation"
                                             class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                            value="{{ old('contact_details.social_media') }}" type="text"
-                                            name="contact_details[social_media]" placeholder="Masukkan Akomondasi">
-                                        <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
+                                            value="{{ old('name_accommodation') }}" type="text"
+                                            name="name_accommodation" placeholder="Masukkan Akomondasi">
+                                            <input type="hidden" name="destination_id" value="{{ $destination->id }}" >
+                                        <x-partials.dashboard.input-error :messages="$errors->get('accommodation')" />
                                     </div>
                                     <div class="text-center pb-4 ">
 
@@ -562,7 +561,6 @@
                             </div>
                         </div>
                     </div>
-                </form>
                 {{-- End --}}
             </div>
             <div class="hidden p-4 rounded-lg " id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
@@ -572,7 +570,9 @@
                     </div>
 
                     {{-- Form Kontak --}}
-                    <form action="">
+                    <form action="{{ route(auth()->user()->role . '.contact.update', [$destination->contactDetails->id]) }}"  method="POST">
+                        @csrf
+                        @method('PUT')
                         <div class="mb-6">
                             <label for="contact_details.phone"
                                 class="block mb-3 text-sm font-medium text-black dark:text-white">
@@ -581,8 +581,8 @@
                             <div class="flex gap-4">
                                 <input id="contact_details.phone"
                                     class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                    value="{{ old('contact_details.phone') }}" type="number"
-                                    name="contact_details[phone]" placeholder="Masukkan Telepon">
+                                    value="{{ $destination->contactDetails->phone }}" type="number"
+                                    name="phone" placeholder="Masukkan Telepon">
                                 <x-partials.dashboard.input-error :messages="$errors->get('contact_details.phone')" />
                                 <button id="delete-phone" type="button"
                                     class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
@@ -600,8 +600,8 @@
 
                                 <input id="contact_details.email"
                                     class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                    value="{{ old('contact_details.email') }}" type="email"
-                                    name="contact_details[email]" placeholder="Masukkan Email">
+                                    value="{{ $destination->contactDetails->email }}" type="email"
+                                    name="email" placeholder="Masukkan Email">
                                 <x-partials.dashboard.input-error :messages="$errors->get('contact_details.email')" />
                                 <button id="delete-email" type="button"
                                     class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
@@ -619,8 +619,8 @@
 
                                 <input id="contact_details.social_media"
                                     class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                    value="{{ old('contact_details.social_media') }}" type="text"
-                                    name="contact_details[social_media]" placeholder="Masukkan URL">
+                                    value="{{ $destination->contactDetails->social_media }}" type="text"
+                                    name="social_media" placeholder="Masukkan URL">
                                 <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
                                 <button id="delete-social-media" type="button"
                                     class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
@@ -630,8 +630,8 @@
 
                         <div class="">
 
-                            <button type="sbumit"
-                                class="w-full rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">Update</button>
+                            <button type="submit"
+                                class="w-full rounded bg-deep-koamaru-600 p-3 font-medium text-white hover:bg-opacity-90">Ubah</button>
                         </div>
 
                     </form>
@@ -640,6 +640,7 @@
             </div>
         </div>
     </div>
+
     {{-- END --}}
 
 
@@ -666,9 +667,4 @@
 
         })
     </script>
-
-
-
-
-
 </x-layouts.dashboard>

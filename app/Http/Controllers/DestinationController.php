@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\DestinationCreateRequest;
+use App\Http\Requests\DestinationUpdateRequest;
+use App\Http\Requests\OpeningHourUpdateRequest;
+use App\Http\Requests\ContactDetailUpdateRequest;
+use App\Http\Requests\FacilityUpdateRequest;
+use App\Http\Requests\AccommodationUpdateRequest;
 
 class DestinationController extends Controller
 {
@@ -194,18 +199,44 @@ class DestinationController extends Controller
      */
     public function edit(string $id)
     {
+        $destination = Destination::with(['galleries', 'openingHours', 'facilities', 'accommodations', 'contactDetails'])->where('id', $id)->firstOrFail();
+
         $title = 'Hapus Foto Destinasi!';
         $text = "Apakah Anda yakin ingin menghapus?";
         confirmDelete($title, $text);
-        return view('components.pages.dashboard.admin.destination.edit');
+        return view('components.pages.dashboard.admin.destination.edit', compact('destination'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+
+    public function update(DestinationUpdateRequest $request, string $id)
     {
-        //
+        try {
+
+            DB::beginTransaction();
+
+            // Find the existing destination
+            $destination = Destination::findOrFail($id);
+
+            $destination->update([
+                'name' => $request->name_destination,
+                'description' => $request->description,
+                'location' => $request->location,
+                'price_range' => $request->price_range,
+                'status' => $request->status,
+                'slug' => Str::slug($request->name_destination . '-' . Str::ulid())
+            ]);
+
+            DB::commit();
+
+            Alert::toast('Sukses Memperbarui Destinasi', 'success');
+            return redirect()->route(auth()->user()->role . '.destinations.index');
+        } catch (\Exception $e) {
+
+            return back()->withErrors(['error' => 'Gagal Memperbarui Destinasi: ' . $e->getMessage()]);
+        }
     }
 
     /**
