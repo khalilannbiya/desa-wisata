@@ -109,8 +109,4 @@
         });
     </script>
 
-
-
-
-
 </x-Layouts.visitor-layout>
