@@ -140,4 +140,8 @@ Route::get('/home', function () {
     return view('components.pages.frontend.index');
 });
 
+Route::get('/aboutus', function () {
+    return view('components.pages.frontend.about-us-page');
+});
+
 require __DIR__ . '/auth.php';
