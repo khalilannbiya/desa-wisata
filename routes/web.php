@@ -22,6 +22,10 @@ Route::get('/detail-artikel', function () {
     return view('components.pages.frontend.detail-article');
 });
 
+Route::get('/event', function () {
+    return view('components.pages.frontend.event');
+});
+
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
@@ -130,6 +134,10 @@ Route::middleware([
 
 Route::get('/home', function () {
     return view('components.pages.frontend.index');
+});
+
+Route::get('/aboutus', function () {
+    return view('components.pages.frontend.about-us-page');
 });
 
 require __DIR__ . '/auth.php';

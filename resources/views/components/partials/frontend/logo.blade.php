@@ -14,5 +14,4 @@
     <div>
         <img class="w-full h-25  mb-5 mt-5" src="{{ asset('assets/img/logo_KEMENPAREKRAF.png') }}">
     </div>
-
 </div>

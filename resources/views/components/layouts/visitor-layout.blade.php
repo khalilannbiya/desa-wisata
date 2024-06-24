@@ -68,11 +68,10 @@
                             <a href="/artikel"
                                 class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 ">Artikel</a>
                         </li>
-
                         <li>
-                            <a href="/login"
-                                class="block px-3 py-2 text-white rounded-md bg-green-new hover:bg-opacity-90 lg:px-4 lg:py-1 "
-                                aria-current="page">Login</a>
+                            <a href=""
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0">Tentang
+                                Kami</a>
                         </li>
                     </ul>
 
