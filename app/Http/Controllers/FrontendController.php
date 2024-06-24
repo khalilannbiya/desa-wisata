@@ -9,7 +9,8 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('components.pages.frontend.index');
+        $destinations = Destination::with('galleries')->limit(3)->get();
+        return view('components.pages.frontend.index', compact('destinations'));
     }
 
     public function destinations()
