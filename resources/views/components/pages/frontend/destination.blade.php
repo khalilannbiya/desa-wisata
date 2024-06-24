@@ -58,7 +58,8 @@
             </form>
 
         </div>
-        <div class="grid lg:grid-cols-4  md:grid-cols-2 sm:grid-cols-1 items-center justify-items-center  gap-4">
+        <div
+            class="grid xl:grid-cols-4 lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1 items-center justify-items-center  gap-4">
             @for ($i = 1; $i <= 20; $i++)
                 <x-partials.frontend.card-destination />
             @endfor

@@ -41,7 +41,7 @@
                     yang tersedia.
                 </p>
                 <div class="  mt-6">
-                    <a href=""
+                    <a href="/event"
                         class=" px-4 py-2 rounded-md border-2 border-white hover:shadow-lg transition-transform duration-300 transform ">SELENGKAPNYA</a>
                 </div>
             </div>
@@ -78,7 +78,7 @@
             @endfor
         </div>
         <div class="text-center mt-6">
-            <a href=""
+            <a href="/artikel"
                 class="text-black px-4 py-2 rounded-md border-2 border-gray-600 hover:shadow-lg transition-transform duration-300 transform">Selengkapnya</a>
         </div>
     </section>
