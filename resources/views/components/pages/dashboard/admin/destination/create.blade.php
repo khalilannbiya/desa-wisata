@@ -95,9 +95,10 @@
                 </div>
 
                 <div class="w-full mb-6 ">
-                    <label for="location" class="block mb-3 text-sm font-medium text-black dark:text-white">
+                    <label for="location" class="block mb-1 text-sm font-medium text-black dark:text-white">
                         Lokasi Tempat Wisata <span class="text-red-500">*</span>
                     </label>
+                    <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukkan URL/link google maps</p>
                     <input name="location" id="location" value="{{ old('location') }}" autocomplete="location" required
                         type="text" placeholder="Lokasi Tempat Wisata"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
@@ -211,7 +212,6 @@
                             </div>
                         </div>
 
-
                         <div class="flex gap-4 mb-6">
                             <div>
                                 <label for="opening_hours-open"
@@ -273,14 +273,15 @@
 
                     <div class="mb-6">
                         <label for="contact_details.social_media"
-                            class="block mb-3 text-sm font-medium text-black dark:text-white">
+                            class="block mb-1 text-sm font-medium text-black dark:text-white">
                             Sosial Media
-
                         </label>
+                        <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukan URL media sosial</p>
                         <input id="contact_details.social_media"
                             class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
                             value="{{ old('contact_details.social_media') }}" type="text"
-                            name="contact_details[social_media]" placeholder="Masukkan URL">
+                            name="contact_details[social_media]"
+                            placeholder="Contoh: https://www.instagram.com/instagram">
                         <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
                     </div>
                 </div>
