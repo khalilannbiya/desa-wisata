@@ -49,8 +49,8 @@ class Destination extends Model
         return $this->hasMany(Accommodation::class);
     }
 
-    public function contactDetails()
+    public function contactDetail()
     {
-        return $this->hasMany(ContactDetail::class);
+        return $this->hasOne(ContactDetail::class);
     }
 }

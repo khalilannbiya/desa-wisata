@@ -181,6 +181,76 @@ class DestinationController extends Controller
         }
     }
 
+    public function addGalleries(Request $request, string $destination)
+    {
+        try {
+            $request->validate([
+                'galleries.*' => 'required|image|mimes:jpeg,png,jpg|max:1048|',
+            ]);
+
+            DB::beginTransaction();
+
+            $destination = Destination::with('galleries')->findOrFail($destination);
+            $this->storeGalleries($request, $destination);
+
+            DB::commit();
+
+            Alert::toast('Sukses Menambahkan Photo', 'success');
+            return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Gagal Menambahkan Photo: ' . $e->getMessage()]);
+        }
+    }
+
+    public function storeAccommodation(Request $request, string $destination)
+    {
+        try {
+            $request->validate([
+                'accommodation' => 'required|string',
+            ]);
+
+            DB::beginTransaction();
+
+            $destination = Destination::with('accommodations')->findOrFail($destination);
+            $destination->accommodations()->create([
+                'name' => $request->accommodation
+            ]);
+
+            DB::commit();
+
+            Alert::toast('Sukses Menambahkan Akomodasi', 'success');
+            return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Gagal Menambahkan Akomodasi: ' . $e->getMessage()]);
+        }
+    }
+
+    public function storeFacility(Request $request, string $destination)
+    {
+        try {
+            $request->validate([
+                'facility' => 'required|string',
+            ]);
+
+            DB::beginTransaction();
+
+            $destination = Destination::with('facilities')->findOrFail($destination);
+            $destination->facilities()->create([
+                'name' => $request->facility
+            ]);
+
+            DB::commit();
+
+            Alert::toast('Sukses Menambahkan Fasilitas', 'success');
+            return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Gagal Menambahkan Fasilitas: ' . $e->getMessage()]);
+        }
+    }
+
     /**
      * Display the specified resource.
      */
@@ -194,18 +264,126 @@ class DestinationController extends Controller
      */
     public function edit(string $id)
     {
+        $destination = Destination::with(['contactDetail', 'accommodations', 'facilities', 'openingHours', 'galleries'])->findOrFail($id);
+
+        $openingHours = $this->formatOpeningHours($destination->openingHours->toArray());
+
+        $owners = [];
+
+        if (auth()->user()->role !== 'owner') {
+            $owners = User::where('role', 'owner')->get();
+        }
+
         $title = 'Hapus Foto Destinasi!';
         $text = "Apakah Anda yakin ingin menghapus?";
         confirmDelete($title, $text);
-        return view('components.pages.dashboard.admin.destination.edit');
+        return view('components.pages.dashboard.admin.destination.edit', compact('destination', 'openingHours', 'owners'));
+    }
+
+    private function formatOpeningHours($openingHours)
+    {
+        // Ambil hari pertama dan kedua
+        $days = array_column($openingHours, 'day');
+
+        // Ambil jam buka dan jam tutup dari entry pertama
+        $openTime = $openingHours[0]['open'];
+        $closeTime = $openingHours[0]['close'];
+
+        // Buat array hasil
+        $result = [
+            $days[0],       // Nama hari pertama
+            $days[1],       // Nama hari kedua
+            $openTime,      // Jam buka
+            $closeTime      // Jam tutup
+        ];
+
+        return $result;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $destination)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            $destination = Destination::findOrFail($destination);
+            $destination->update([
+                'owner_id' => auth()->user()->role != "owner" ? $request->owner : auth()->user()->id,
+                'name' => $request->name_destination,
+                'description' => $request->description,
+                'location' => $request->location,
+                'price_range' => $request->price_range,
+                'status' => $request->status,
+                'slug' => Str::slug($request->name_destination . '-' . Str::ulid())
+            ]);
+
+            DB::commit();
+
+            Alert::toast('Sukses Mengubah Destinasi', 'success');
+            return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Gagal Mengubah Kontak: ' . $e->getMessage()]);
+        }
+    }
+
+    public function updateOperational(Request $request, string $destination)
+    {
+        try {
+            $request->validate([
+                'opening_hours' => 'array',
+                'opening_hours.first_day' => 'required|string|in:senin,selasa,rabu,kamis,jumat,sabtu,minggu',
+                'opening_hours.last_day' => 'required|string|in:senin,selasa,rabu,kamis,jumat,sabtu,minggu',
+                'opening_hours.open' => 'required|string',
+                'opening_hours.close' => 'required|string',
+            ]);
+
+            DB::beginTransaction();
+
+            $destination = Destination::with('openingHours')->findOrFail($destination);
+            $destination->openingHours()->delete();
+
+            $this->storeOpeningHours($request, $destination);
+
+            DB::commit();
+
+            Alert::toast('Sukses Mengubah Kontak', 'success');
+            return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Gagal Mengubah Kontak: ' . $e->getMessage()]);
+        }
+    }
+
+    public function updateContactDetail(Request $request, string $destination)
+    {
+        try {
+            $request->validate([
+                'contact_details' => 'array',
+                'contact_details.phone' => 'nullable|string|max:20',
+                'contact_details.email' => 'nullable|string|max:50',
+                'contact_details.social_media' => 'nullable|string|max:100',
+            ]);
+
+            DB::beginTransaction();
+
+            $destination = Destination::with('contactDetail')->findOrFail($destination);
+            $destination->contactDetail->update([
+                "phone" => $request->input('contact_details.phone'),
+                "email" => $request->input('contact_details.email'),
+                "social_media" => $request->input('contact_details.social_media')
+            ]);
+
+            DB::commit();
+
+            Alert::toast('Sukses Mengubah Kontak', 'success');
+            return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Gagal Mengubah Kontak: ' . $e->getMessage()]);
+        }
     }
 
     /**
@@ -217,5 +395,32 @@ class DestinationController extends Controller
 
         Alert::toast('Berhasil menghapus data destinasi', 'success');
         return redirect()->route(auth()->user()->role . '.destinations.index');
+    }
+
+    public function destroyGallery(string $destination, string $gallery)
+    {
+        $destination = Destination::with('galleries')->findOrFail($destination);
+        $destination->galleries()->findOrFail($gallery)->delete();
+
+        Alert::toast('Berhasil menghapus data photo', 'success');
+        return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+    }
+
+    public function destroyFacility(string $destination, string $facility)
+    {
+        $destination = Destination::with('facilities')->findOrFail($destination);
+        $destination->facilities()->findOrFail($facility)->delete();
+
+        Alert::toast('Berhasil menghapus data fasilitas', 'success');
+        return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
+    }
+
+    public function destroyAccommodation(string $destination, string $accommodation)
+    {
+        $destination = Destination::with('accommodations')->findOrFail($destination);
+        $destination->accommodations()->findOrFail($accommodation)->delete();
+
+        Alert::toast('Berhasil menghapus data akomodasi', 'success');
+        return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
     }
 }
