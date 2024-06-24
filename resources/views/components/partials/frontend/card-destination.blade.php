@@ -1,5 +1,5 @@
 <div
-    class="relative card flex w-full max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
+    class="relative h-115 card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
         <img src={{ asset('assets/img/wisata-rakutak-2.jpeg') }} alt="ui/ux review check" />
@@ -9,17 +9,20 @@
     </div>
     <div class="p-6">
         <div class="mb-3">
-            <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
-                Wooden House, Florida
+            <h5 class="blockc title font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
+                Wooden House, Florida Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, expedita
+                qui sunt quibusdam harum, inventore dolores enim magnam explicabo eligendi asperiores tempore? Laborum
+                quasi ut voluptatum magnam? Esse aspernatur debitis ullam ratione perspiciatis, eaque magni incidunt
+                quam, minima eligendi nesciunt.
             </h5>
 
         </div>
         <p class="elipsis block font-sans text-base  antialiased font-light leading-relaxed text-white">
-            Enter a freshly updated and thoughtfully furnished peaceful home
-            surrounded by ancient trees, stone walls, and open meadows.
-        </p>
+            Enter a freshly Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore ducimus, labore pariatur ad
+            exercitationem minima, possimus quo qui natus corporis consequuntur deserunt vitae voluptatem aliquam
+            similique commodi quae alias dolores.
     </div>
-    <div class="p-6 pt-3">
+    <div class="p-6 pt-3 abosolute ">
         <a href="/detail"
             class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
             type="button">
@@ -52,5 +55,6 @@
         });
     }
 
-    shortenText(".elipsis", 120, true);
+    shortenText(".title", 25, true);
+    shortenText(".elipsis", 100, true);
 </script>
