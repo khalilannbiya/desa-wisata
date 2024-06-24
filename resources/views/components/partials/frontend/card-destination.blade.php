@@ -2,7 +2,8 @@
     class="relative h-115 card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-        <img src={{ asset('assets/img/wisata-rakutak-2.jpeg') }} alt="ui/ux review check" />
+        <img class="object-cover w-full object-center h-45" src={{ asset('assets/img/wisata-rakutak-2.jpeg') }}
+            alt="Photo Wisata" />
         <div
             class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
         </div>
@@ -12,8 +13,8 @@
             <h1 class="block title font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
                 {{ $destination->name }}
             </h1>
-
         </div>
+
         <p class="elipsis block font-sans text-base  antialiased font-light leading-relaxed text-white">
             {{ $destination->description }}
         </p>

@@ -39,9 +39,9 @@
                     Mari jadikan momen liburan Anda di Sukarame semakin berkesan dengan mengikuti berbagai acara seru
                     yang tersedia.
                 </p>
-                <div class="mt-6 ">
-                    <a href=""
-                        class="px-4 py-2 transition-transform duration-300 transform border-2 border-white rounded-md  hover:shadow-lg">SELENGKAPNYA</a>
+                <div class="  mt-6">
+                    <a href="/event"
+                        class=" px-4 py-2 rounded-md border-2 border-white hover:shadow-lg transition-transform duration-300 transform">SELENGKAPNYA</a>
                 </div>
             </div>
             <div class="overflow-x-auto no-scrollbar ">
@@ -76,9 +76,9 @@
                 </div>
             @endfor
         </div>
-        <div class="mt-6 text-center">
-            <a href=""
-                class="px-4 py-2 text-black transition-transform duration-300 transform border-2 border-gray-600 rounded-md hover:shadow-lg">Selengkapnya</a>
+        <div class="text-center mt-6">
+            <a href="/artikel"
+                class="text-black px-4 py-2 rounded-md border-2 border-gray-600 hover:shadow-lg transition-transform duration-300 transform">Selengkapnya</a>
         </div>
     </section>
 
