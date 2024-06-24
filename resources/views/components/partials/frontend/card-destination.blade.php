@@ -9,14 +9,14 @@
     </div>
     <div class="p-6">
         <div class="mb-3">
-            <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
-                Wooden House, Florida
+            <h5
+                class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white capitalize">
+                {{ $destination->name }}
             </h5>
 
         </div>
-        <p class="elipsis block font-sans text-base  antialiased font-light leading-relaxed text-white">
-            Enter a freshly updated and thoughtfully furnished peaceful home
-            surrounded by ancient trees, stone walls, and open meadows.
+        <p class="block font-sans text-base antialiased font-light leading-relaxed text-white elipsis">
+            {{ $destination->description }}
         </p>
     </div>
     <div class="p-6 pt-3">

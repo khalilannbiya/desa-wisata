@@ -4,14 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
-
-Route::get('/', function () {
-    return view('components.pages.frontend.index');
-});
-Route::get('/wisata', function () {
-    return view('components.pages.frontend.destination');
-});
 
 Route::get('/detail ', function () {
     return view('components.pages.frontend.detail-destination');
@@ -29,6 +23,8 @@ Route::get('/detail-artikel', function () {
 });
 
 
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

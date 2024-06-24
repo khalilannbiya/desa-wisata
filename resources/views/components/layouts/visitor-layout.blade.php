@@ -18,9 +18,9 @@
 </head>
 
 <body>
-    <header class="fixed w-full font-montserrat z-50" id="myElement">
+    <header class="fixed z-50 w-full font-montserrat" id="myElement">
         <nav class="bg-white border-gray-200 py-2.5  ">
-            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 lg:px-8 mx-auto ">
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto lg:px-8 ">
                 <div href="#" class="flex items-center">
                     <img src="{{ asset('assets/img/logo.png') }}" class="h-12 mr-3 md:h-20" alt="Desa Sukarame" />
                 </div>
@@ -46,14 +46,14 @@
 
                 <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1 "
                     id="mobile-menu-2">
-                    <ul class="flex flex-col mt-4 lg:items-center font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                    <ul class="flex flex-col mt-4 font-medium lg:items-center lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
-                            <a href="/"
-                                class="block py-2 pl-3 pr-4 text-gray-700  lg:hover:text-green-new lg:p-0  ">Beranda</a>
+                            <a href="{{ route('index') }}"
+                                class="block py-2 pl-3 pr-4 text-gray-700 lg:hover:text-green-new lg:p-0 {{ Route::current()->getName() == 'index' ? 'text-green-new' : '' }}">Beranda</a>
                         </li>
                         <li>
-                            <a href="/wisata"
-                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0">Wisata</a>
+                            <a href="{{ route('destinations') }}"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 {{ Route::current()->getName() == 'destinations' ? 'text-green-new' : '' }}">Wisata</a>
                         </li>
                         <li>
                             <a href="/galeri"
@@ -71,7 +71,7 @@
 
                         <li>
                             <a href="/login"
-                                class="block py-2 px-3   text-white bg-green-new rounded-md hover:bg-opacity-90  lg:px-4 lg:py-1 "
+                                class="block px-3 py-2 text-white rounded-md bg-green-new hover:bg-opacity-90 lg:px-4 lg:py-1 "
                                 aria-current="page">Login</a>
                         </li>
                     </ul>
@@ -87,7 +87,7 @@
         {{ $slot }}
     </section>
 
-    <footer class="w-full text-gray-700 bg-gray-100 body-font mt-20">
+    <footer class="w-full mt-20 text-gray-700 bg-gray-100 body-font">
         <div
             class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
             <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 ">
@@ -197,7 +197,7 @@
         </div>
         <div class="bg-green-new">
             <div class="container px-5 py-4 mx-auto">
-                <p class="text-sm text-white font-bold capitalize text-center">Copyright {{ date('Y') }} Desa
+                <p class="text-sm font-bold text-center text-white capitalize">Copyright {{ date('Y') }} Desa
                     Sukarame </p>
             </div>
         </div>
