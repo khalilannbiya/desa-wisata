@@ -1,5 +1,5 @@
 <div
-    class="relative h-115 card flex w-full max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
+    class="relative h-115 card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
         <img src={{ asset('assets/img/wisata-rakutak-2.jpeg') }} alt="ui/ux review check" />
@@ -18,18 +18,11 @@
 
         </div>
         <p class="elipsis block font-sans text-base  antialiased font-light leading-relaxed text-white">
-            Enter a freshly updated and thoughtfully furnished peaceful home
-            surrounded by ancient trees, stone walls, and open meadows. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Fuga repellat ut dolorem, eaque perferendis quis ex voluptas ea voluptates repudiandae
-            consequatur velit. Consequuntur at sequi, assumenda similique amet, odit dolorem placeat vitae fugiat eum
-            tempora consequatur ea ipsum adipisci atque! Quam rerum necessitatibus minima dolorem eaque corrupti quidem
-            aliquid sequi perferendis nobis ducimus qui magni perspiciatis ab, similique repellendus reprehenderit animi
-            aperiam! Consequatur iusto odit, sunt, enim tempore voluptatum repellat praesentium, facilis nobis in
-            suscipit necessitatibus illum vero blanditiis earum commodi quam magni porro numquam corporis. Animi
-            quisquam aut commodi adipisci, sapiente nostrum soluta suscipit. Amet rem qui eaque optio?
-        </p>
+            Enter a freshly Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore ducimus, labore pariatur ad
+            exercitationem minima, possimus quo qui natus corporis consequuntur deserunt vitae voluptatem aliquam
+            similique commodi quae alias dolores.
     </div>
-    <div class="p-6 pt-3">
+    <div class="p-6 pt-3 abosolute ">
         <a href="/detail"
             class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
             type="button">
