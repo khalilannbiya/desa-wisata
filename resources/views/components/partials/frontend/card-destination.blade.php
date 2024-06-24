@@ -9,18 +9,14 @@
     </div>
     <div class="p-6">
         <div class="mb-3">
-            <h5 class="blockc title font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
-                Wooden House, Florida Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, expedita
-                qui sunt quibusdam harum, inventore dolores enim magnam explicabo eligendi asperiores tempore? Laborum
-                quasi ut voluptatum magnam? Esse aspernatur debitis ullam ratione perspiciatis, eaque magni incidunt
-                quam, minima eligendi nesciunt.
-            </h5>
+            <h1 class="block title font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
+                {{ $destination->name }}
+            </h1>
 
         </div>
         <p class="elipsis block font-sans text-base  antialiased font-light leading-relaxed text-white">
-            Enter a freshly Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore ducimus, labore pariatur ad
-            exercitationem minima, possimus quo qui natus corporis consequuntur deserunt vitae voluptatem aliquam
-            similique commodi quae alias dolores.
+            {{ $destination->description }}
+        </p>
     </div>
     <div class="p-6 pt-3 abosolute ">
         <a href="/detail"
@@ -30,8 +26,6 @@
         </a>
     </div>
 </div>
-
-
 
 
 <script>
