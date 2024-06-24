@@ -2,13 +2,13 @@
 
     <x-slot:title>Tempat Wisata | </x-slot:title>
 
-    <section class="py-30 px-6 ">
-        <div class="text-center text-4xl font-extrabold">
+    <section class="px-6 py-30 ">
+        <div class="text-4xl font-extrabold text-center">
             <h1>Tempat Wisata</h1>
         </div>
         <div class="">
 
-            <form class="max-w-lg mx-auto my-15 px-2">
+            <form class="max-w-lg px-2 mx-auto my-15">
                 <div class="flex ">
                     <label for="search-dropdown"
                         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
@@ -28,15 +28,15 @@
                             </li>
                             <li>
                                 <button type="button"
-                                    class="inline-flex w-full px-4 py-2 hover:bg-green-new dark:hover:bg-green-new hover:text-white  dark:hover:text-white">Templates</button>
+                                    class="inline-flex w-full px-4 py-2 hover:bg-green-new dark:hover:bg-green-new hover:text-white dark:hover:text-white">Templates</button>
                             </li>
                             <li>
                                 <button type="button"
-                                    class="inline-flex w-full px-4 py-2 hover:bg-green-new dark:hover:bg-green-new hover:text-white  dark:hover:text-white">Design</button>
+                                    class="inline-flex w-full px-4 py-2 hover:bg-green-new dark:hover:bg-green-new hover:text-white dark:hover:text-white">Design</button>
                             </li>
                             <li>
                                 <button type="button"
-                                    class="inline-flex w-full px-4 py-2 hover:bg-green-new dark:hover:bg-green-new hover:text-white  dark:hover:text-white">Logos</button>
+                                    class="inline-flex w-full px-4 py-2 hover:bg-green-new dark:hover:bg-green-new hover:text-white dark:hover:text-white">Logos</button>
                             </li>
                         </ul>
                     </div>
@@ -58,11 +58,12 @@
             </form>
 
         </div>
-        <div
-            class="grid xl:grid-cols-4 lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1 items-center justify-items-center  gap-4">
-            @for ($i = 1; $i <= 20; $i++)
-                <x-partials.frontend.card-destination />
-            @endfor
+        <div class="grid items-center gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-items-center">
+            @forelse ($destinations as $destination)
+                <x-partials.frontend.card-destination :$destination />
+            @empty
+                <p class="font-semibold text-center text-gray-500">Belum ada tempat wisata</p>
+            @endforelse
         </div>
     </section>
     <script>

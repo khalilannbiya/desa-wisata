@@ -10,13 +10,13 @@
     </div>
     <div class="p-6">
         <div class="mb-3">
-            <h5 class="blockc title font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
-                Wooden Ho
-            </h5>
+            <h1 class="block title font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
+                {{ $destination->name }}
+            </h1>
         </div>
 
         <p class="elipsis block font-sans text-base  antialiased font-light leading-relaxed text-white">
-            Enter a freshly
+            {{ $destination->description }}
         </p>
     </div>
     <div class="p-6 pt-3 abosolute ">
@@ -27,8 +27,6 @@
         </a>
     </div>
 </div>
-
-
 
 
 <script>
