@@ -1,5 +1,5 @@
 <x-layouts.dashboard>
-    <x-slot:title>Data Wisata | </x-slot:title>
+    <x-slot:title>Data Acara | </x-slot:title>
 
     <section>
         {{-- Breadcrumb --}}
@@ -8,20 +8,21 @@
                 <li>
                     <a class="font-medium" href="{{ route(auth()->user()->role . '.dashboard') }}">Dashboard /</a>
                 </li>
-                <li class="font-medium text-primary">Wisata</li>
+                <li class="font-medium text-primary">Acara</li>
             </ol>
         </nav>
 
         {{-- Button add destination --}}
-        <a href="{{ route(auth()->user()->role . '.destinations.create') }}"
-            class="flex justify-center px-3 py-3 mb-5 rounded w-44 bg-primary text-white-dahsboard">Tambah Wisata</a>
+        <a href="{{ route(auth()->user()->role . '.events.create') }}"
+            class="flex justify-center px-3 py-3 mb-5 rounded w-44 bg-primary text-white-dahsboard">Tambah Acara</a>
 
         <table id="crudTable">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nama Wisata</th>
-                    <th>Status</th>
+                    <th>Nama Acara</th>
+                    <th>Tanggal Mulai</th>
+                    <th>Tanggal Akhir</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -35,20 +36,26 @@
                 $('#crudTable').DataTable({
                     serverSide: true,
                     ajax: {
-                        url: '{!! url()->current() !!}'
+                        url: '{!! url()->current() !!}',
+                        type: 'GET'
                     },
                     columns: [{
                             data: 'id',
                             name: 'id',
-                            width: '5%'
+                            width: '5%',
+                            orderable: true
                         },
                         {
                             data: 'name',
                             name: 'name',
                         },
                         {
-                            data: 'status',
-                            name: 'status',
+                            data: 'start_date',
+                            name: 'start_date',
+                        },
+                        {
+                            data: 'end_date',
+                            name: 'end_date',
                         },
                         {
                             data: 'action',

@@ -28,7 +28,7 @@ class DestinationController extends Controller
             if (auth()->user()->role === 'owner') {
                 $destination->where('owner_id', auth()->user()->id);
             }
-            $destination->latest();
+            $destination->get();
             return DataTables::of($destination)
                 ->addColumn('action', function ($item) {
                     $roleName = auth()->user()->role;
