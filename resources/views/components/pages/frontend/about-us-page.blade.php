@@ -1,4 +1,4 @@
-<x-Layouts.navbar>
+<x-Layouts.visitor-layout>
     <x-slot:title>Beranda | </x-slot:title>
     <header>
         <x-partials.frontend.header />
@@ -8,11 +8,8 @@
         <x-partials.frontend.description/>
     </section>
 
-    <section class="mt-20">
+    {{-- <section class="mt-20">
         <x-partials.frontend.footer />
-    </section>
+    </section> --}}
 
-
-    
-
-</x-Layouts.navbar>
+</x-Layouts.visitor-layout>

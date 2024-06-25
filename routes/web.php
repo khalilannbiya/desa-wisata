@@ -28,6 +28,10 @@ Route::get('/detail-artikel', function () {
     return view('components.pages.frontend.detail-article');
 });
 
+Route::get('/event-detail', function () {
+    return view('components.pages.frontend.detail-event');
+});
+
 Route::get('/event', function () {
     return view('components.pages.frontend.event');
 });
