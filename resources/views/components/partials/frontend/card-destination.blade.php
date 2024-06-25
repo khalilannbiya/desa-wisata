@@ -1,29 +1,39 @@
 <div
-    class="relative h-115 card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
+    class="relative h-[28rem] card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-        <img src={{ asset('assets/img/wisata-rakutak-2.jpeg') }} alt="ui/ux review check" />
+        <img class="object-cover object-center w-full h-45" src={{ Storage::url($destination->galleries[0]->image_url) }}
+            alt="gambar wisata" />
         <div
             class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
         </div>
     </div>
-    <div class="p-6">
-        <div class="mb-3">
-            <h1 class="block title font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white">
+    <div class="p-6 h-[11rem]">
+        <div class="mb-1">
+            <h1
+                class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white capitalize title">
                 {{ $destination->name }}
             </h1>
-
         </div>
-        <p class="elipsis block font-sans text-base  antialiased font-light leading-relaxed text-white">
-            {{ $destination->description }}
+        <p class="block font-sans text-base antialiased font-light leading-relaxed text-white elipsis">
+            {{ $destination->description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero voluptate
+            repudiandae nobis, provident voluptas temporibus perferendis quas. Cum, cumque minus!
         </p>
     </div>
-    <div class="p-6 pt-3 abosolute ">
-        <a href="/detail"
-            class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
-            type="button">
-            Detail
-        </a>
+    <div class="p-6 pt-3">
+        @if ($destination->status === 'active')
+            <a href="{{ route('destinations.show', $destination->slug) }}"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                type="button">
+                Detail
+            </a>
+        @else
+            <button type="button"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                type="button">
+                Tempat Wisata Tutup
+            </button>
+        @endif
     </div>
 </div>
 

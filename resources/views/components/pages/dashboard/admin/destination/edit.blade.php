@@ -89,11 +89,22 @@
                     <label for="location" class="block mb-1 text-sm font-medium text-black dark:text-white">
                         Lokasi Tempat Wisata <span class="text-red-500">*</span>
                     </label>
-                    <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukkan URL/link google maps</p>
+                    <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukkan alamat lengkap</p>
                     <input name="location" id="location" value="{{ $destination->location }}" autocomplete="location"
                         required type="text" placeholder="Lokasi Tempat Wisata"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
                     <x-partials.dashboard.input-error :messages="$errors->get('location')" />
+                </div>
+
+                <div class="w-full mb-6 ">
+                    <label for="gmaps_url" class="block mb-1 text-sm font-medium text-black dark:text-white">
+                        Google Maps URL <span class="text-red-500">*</span>
+                    </label>
+                    <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukkan URL/link google maps</p>
+                    <input name="gmaps_url" id="gmaps_url" value="{{ $destination->gmaps_url }}"
+                        autocomplete="gmaps_url" required type="text" placeholder="Google Maps URL"
+                        class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
+                    <x-partials.dashboard.input-error :messages="$errors->get('gmaps_url')" />
                 </div>
 
                 <div class="w-full mb-6 ">
@@ -423,7 +434,7 @@
             {{-- START TAB CONTENT FACILITY/FASILITAS --}}
             <div class="hidden p-4 rounded-lg " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                 <div class="mb-6 text-center text-black dark:text-white">
-                    <h2>Akomodasi</h2>
+                    <h2>Fasilitas</h2>
                 </div>
 
                 @forelse ($destination->facilities as $facility)

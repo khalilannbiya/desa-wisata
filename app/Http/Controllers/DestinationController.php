@@ -114,6 +114,7 @@ class DestinationController extends Controller
             'name' => $request->name_destination,
             'description' => $request->description,
             'location' => $request->location,
+            'gmaps_url' => $request->gmaps_url,
             'price_range' => $request->price_range,
             'status' => $request->status,
             'slug' => Str::slug($request->name_destination . '-' . Str::ulid())
@@ -159,7 +160,7 @@ class DestinationController extends Controller
 
     private function storeFacilities($request, $destination)
     {
-        if ($request->has('facilities.*')) {
+        if ($request->has('facilities')) {
             foreach ($request->facilities as $facility) {
                 Facility::create([
                     'destination_id' => $destination->id,
@@ -171,7 +172,7 @@ class DestinationController extends Controller
 
     private function storeAccomodation($request, $destination)
     {
-        if ($request->has('accommodations.*')) {
+        if ($request->has('accommodations')) {
             foreach ($request->accommodations as $accommodation) {
                 Accommodation::create([
                     'destination_id' => $destination->id,
@@ -254,9 +255,12 @@ class DestinationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $destination = Destination::with(['contactDetail', 'accommodations', 'facilities', 'openingHours', 'galleries'])->where('slug', $slug)->firstOrFail();
+        $openingHours = $this->formatOpeningHours($destination->openingHours->toArray());
+
+        return view('components.pages.frontend.detail-destination', compact('destination', 'openingHours'));
     }
 
     /**
@@ -314,6 +318,7 @@ class DestinationController extends Controller
                 'name' => $request->name_destination,
                 'description' => $request->description,
                 'location' => $request->location,
+                'gmaps_url' => $request->gmaps_url,
                 'price_range' => $request->price_range,
                 'status' => $request->status,
                 'slug' => Str::slug($request->name_destination . '-' . Str::ulid())
