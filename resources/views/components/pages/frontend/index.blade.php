@@ -9,12 +9,14 @@
         <div class="mb-8 text-4xl font-extrabold text-center">
             <h1 class="font-montserrat">Tempat Wisata</h1>
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-4 px-4  md:px-0">
-            @for ($i = 1; $i <= 3; $i++)
+        <div class="flex flex-wrap items-center justify-center gap-4 px-4 md:px-0">
+            @forelse ($destinations as $destination)
                 <div class="card-container">
-                    <x-partials.frontend.card-destination />
+                    <x-partials.frontend.card-destination :$destination />
                 </div>
-            @endfor
+            @empty
+                <p class="font-semibold text-center text-gray-500">Belum ada tempat wisata</p>
+            @endforelse
         </div>
         <div class="mt-10 text-center">
             <a href="{{ route('destinations') }}"
@@ -39,9 +41,9 @@
                     Mari jadikan momen liburan Anda di Sukarame semakin berkesan dengan mengikuti berbagai acara seru
                     yang tersedia.
                 </p>
-                <div class="  mt-6">
-                    <a href="/event"
-                        class=" px-4 py-2 rounded-md border-2 border-white hover:shadow-lg transition-transform duration-300 transform">SELENGKAPNYA</a>
+                <div class="mt-6 ">
+                    <a href=""
+                        class="px-4 py-2 transition-transform duration-300 transform border-2 border-white rounded-md hover:shadow-lg">SELENGKAPNYA</a>
                 </div>
             </div>
             <div class="overflow-x-auto no-scrollbar ">

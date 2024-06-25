@@ -15,7 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \App\Http\Middleware\CheckRole::class,
             'prevent.superadmin.edit' => \App\Http\Middleware\PreventSuperAdminEdit::class,
             'prevent.superadmin.update' => \App\Http\Middleware\PreventSuperAdminUpdate::class,
-            'prevent.superadmin.create' => \App\Http\Middleware\PreventSuperAdminCreate::class
+            'prevent.superadmin.create' => \App\Http\Middleware\PreventSuperAdminCreate::class,
+            'check.destination.active' => \App\Http\Middleware\CheckDestinationActive::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

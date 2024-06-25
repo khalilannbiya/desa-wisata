@@ -7,10 +7,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
 
-Route::get('/detail ', function () {
-    return view('components.pages.frontend.detail-destination');
-});
-
 Route::get('/galeri', function () {
     return view('components.pages.frontend.gallery');
 });
@@ -29,6 +25,7 @@ Route::get('/event', function () {
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
+Route::get('/destinations/{slug}/show', [DestinationController::class, 'show'])->middleware('check.destination.active')->name('destinations.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

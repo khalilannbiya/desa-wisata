@@ -25,7 +25,7 @@ class UserController extends Controller
                     $roleName = auth()->user()->role;
                     $editUrl = route("{$roleName}.users.edit", $item->id);
                     $deleteUrl = route("{$roleName}.users.destroy", $item->id);
-                    $deleteButton = $roleName === 'admin' ? '' : '
+                    $deleteButton = '
                         <div>
                             <form action="' . $deleteUrl . '" method="POST">
                                 ' . method_field('DELETE') . '
