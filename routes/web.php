@@ -22,6 +22,10 @@ Route::get('/event', function () {
     return view('components.pages.frontend.event');
 });
 
+Route::get('/dashboard-admin', function () {
+    return view('components.pages.dashboard.admin.destination.dashboard');
+});
+
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
