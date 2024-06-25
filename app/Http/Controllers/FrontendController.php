@@ -13,9 +13,15 @@ class FrontendController extends Controller
         return view('components.pages.frontend.index', compact('destinations'));
     }
 
-    public function destinations()
+    public function destinations(Request $request)
     {
-        $destinations = Destination::with('galleries')->paginate(8);
+
+        $destinations = Destination::with(['galleries']);
+        if ($request->has('keyword')) {
+            $destinations = $destinations->where('name', 'like', '%' . $request->keyword . '%');
+        }
+
+        $destinations = $destinations->paginate(8);
         return view('components.pages.frontend.destination', compact('destinations'));
     }
 }
