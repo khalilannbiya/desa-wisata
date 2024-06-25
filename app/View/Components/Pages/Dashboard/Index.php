@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Pages\Dashboard\Admin\Destination;
+namespace App\View\Components\Pages\Dashboard;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Dashboard extends Component
+class Index extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Dashboard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.pages.dashboard.admin.destination.dashboard');
+        return view('components.pages.dashboard.index');
     }
 }

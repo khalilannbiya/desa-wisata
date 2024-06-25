@@ -23,8 +23,8 @@ Route::get('/event', function () {
     return view('components.pages.frontend.event');
 });
 
-Route::get('/dashboard-admin', function () {
-    return view('components.pages.dashboard.admin.destination.dashboard');
+Route::get('/dashboard-1', function () {
+    return view('components.pages.dashboard.index');
 });
 
 
