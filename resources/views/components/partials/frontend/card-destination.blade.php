@@ -2,7 +2,8 @@
     class="relative h-[28rem] card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-        <img class="object-cover object-center w-full h-45" src={{ Storage::url($destination->galleries[0]->image_url) }}
+        <img class="object-cover object-center w-full h-45"
+            src={{ isset($destination->galleries[0]) ? Storage::url($destination->galleries[0]->image_url) : 'default-image-url' }}
             alt="gambar wisata" />
         <div
             class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
@@ -16,7 +17,7 @@
             </h1>
         </div>
         <p class="block font-sans text-base antialiased font-light leading-relaxed text-white elipsis">
-            {{ $destination->description }} 
+            {{ $destination->description }}
         </p>
     </div>
     <div class="p-6 pt-3">

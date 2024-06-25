@@ -9,7 +9,7 @@
     </div>
     <div
         class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-        <h1 class="elips font-dmserif text-3xl font-bold text-white">Beauty lorem adawdadawd</h1>
+        <h1 class="elips font-dmserif text-3xl font-bold text-white">Kesenin Tradisi</h1>
         <p
             class="elipsis elimb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             Lorem
