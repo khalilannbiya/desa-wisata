@@ -16,8 +16,7 @@
             </h1>
         </div>
         <p class="block font-sans text-base antialiased font-light leading-relaxed text-white elipsis">
-            {{ $destination->description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero voluptate
-            repudiandae nobis, provident voluptas temporibus perferendis quas. Cum, cumque minus!
+            {{ $destination->description }} 
         </p>
     </div>
     <div class="p-6 pt-3">
