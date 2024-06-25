@@ -60,7 +60,7 @@ Route::middleware([
         'role:super_admin'
     ])->name('super_admin.')->prefix('super-admin')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
 
         Route::resource('events', EventController::class)->except([
@@ -96,7 +96,7 @@ Route::middleware([
         'role:admin'
     ])->name('admin.')->prefix('admin')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
 
         Route::resource('events', EventController::class)->except([
@@ -133,7 +133,7 @@ Route::middleware([
         'role:owner'
     ])->name('owner.')->prefix('owner')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
 
         Route::post('/destinations/{destination}/galleries', [DestinationController::class, 'addGalleries'])->name('destinations.addGalleries');
@@ -158,7 +158,7 @@ Route::middleware([
         'role:writer'
     ])->name('writer.')->prefix('writer')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
     });
 
