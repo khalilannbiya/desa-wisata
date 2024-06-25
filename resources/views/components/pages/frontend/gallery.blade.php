@@ -7,8 +7,8 @@
             @for ($i = 1; $i <= 20; $i++)
                 <div data-aos="zoom-in" data-aos-duration="1000"
                     class=" transition-transform duration-300 hover:transform hover:scale-105">
-                    <img class="h-auto max-w-full rounded-lg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                    <img class="h-auto max-w-full rounded-lg" src="{{ asset('assets/img/desa' . $i . '.jpeg') }}"
+                        alt="">
                 </div>
             @endfor
         </div>
