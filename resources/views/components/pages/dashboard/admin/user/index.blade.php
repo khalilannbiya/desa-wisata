@@ -14,7 +14,7 @@
 
         {{-- Button add destination --}}
         <a href="{{ route(auth()->user()->role . '.users.create') }}"
-            class="px-3 inline-block py-3 mb-5 rounded bg-primary text-white-dahsboard z-10">Tambah
+            class="z-10 inline-block px-3 py-3 mb-5 rounded bg-primary text-white-dahsboard">Tambah
             Pengguna</a>
 
         <table id="crudTable">
@@ -64,7 +64,10 @@
                             orderable: false,
                             searchable: false,
                         }
-                    ]
+                    ],
+                    order: [
+                        [0, 'desc']
+                    ], // Default sorting
                 });
             })
             // AJAX Datatable
