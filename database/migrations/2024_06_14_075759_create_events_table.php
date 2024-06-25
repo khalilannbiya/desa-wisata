@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('admin_id')->nullable(false);
+            $table->string('image_url')->nullable(false);
             $table->string('name', 100)->nullable(false);
             $table->text('description');
             $table->dateTime('start_date')->nullable(false);
             $table->dateTime('end_date')->nullable(false);
             $table->string('location')->nullable(false);
+            $table->string('gmaps_url')->nullable(false);
             $table->string('slug')->nullable(false);
             $table->timestamps();
 
