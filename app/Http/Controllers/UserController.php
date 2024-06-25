@@ -19,13 +19,13 @@ class UserController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $users = User::where('role', '!=', 'super_admin')->latest();
+            $users = User::where('role', '!=', 'super_admin')->get();
             return DataTables::of($users)
                 ->addColumn('action', function ($item) {
                     $roleName = auth()->user()->role;
                     $editUrl = route("{$roleName}.users.edit", $item->id);
                     $deleteUrl = route("{$roleName}.users.destroy", $item->id);
-                    $deleteButton = $roleName === 'admin' ? '' : '
+                    $deleteButton = '
                         <div>
                             <form action="' . $deleteUrl . '" method="POST">
                                 ' . method_field('DELETE') . '

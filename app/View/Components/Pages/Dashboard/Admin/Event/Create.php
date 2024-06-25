@@ -1,19 +1,18 @@
 <?php
 
-namespace App\View\Components\Partials\Frontend;
+namespace App\View\Components\Pages\Dashboard\\Admin\Event;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class CardDestination extends Component
+class Create extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(
-        public $destination
-    ) {
+    public function __construct()
+    {
         //
     }
 
@@ -22,6 +21,6 @@ class CardDestination extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.partials.frontend.card-destination');
+        return view('components.pages.dashboard..admin.event.create');
     }
 }

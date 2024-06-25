@@ -3,19 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
-
-Route::get('/', function () {
-    return view('components.pages.frontend.index');
-});
-Route::get('/wisata', function () {
-    return view('components.pages.frontend.destination');
-});
-
-Route::get('/detail ', function () {
-    return view('components.pages.frontend.detail-destination');
-});
 
 Route::get('/galeri', function () {
     return view('components.pages.frontend.gallery');
@@ -36,7 +27,18 @@ Route::get('/event', function () {
     return view('components.pages.frontend.event');
 });
 
+Route::get('/event/create', function () {
+    return view('components.pages.dashboard.writer.add');
+});
 
+Route::get('/dashboard-1', function () {
+    return view('components.pages.dashboard.index');
+});
+
+
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
+Route::get('/destinations/{slug}/show', [DestinationController::class, 'show'])->middleware('check.destination.active')->name('destinations.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -61,6 +63,10 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
 
+        Route::resource('events', EventController::class)->except([
+            'show'
+        ]);
+
         Route::post('/destinations/{destination}/galleries', [DestinationController::class, 'addGalleries'])->name('destinations.addGalleries');
         Route::post('/destinations/{destination}/facility', [DestinationController::class, 'storeFacility'])->name('destinations.storeFacility');
         Route::post('/destinations/{destination}/accommodation', [DestinationController::class, 'storeAccommodation'])->name('destinations.storeAccommodation');
@@ -79,6 +85,10 @@ Route::middleware([
         Route::resource('users', UserController::class)->except([
             'show', 'edit', 'update', 'store'
         ]);
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
     // Admin
@@ -89,6 +99,10 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
 
+        Route::resource('events', EventController::class)->except([
+            'show'
+        ]);
+
         Route::post('/destinations/{destination}/galleries', [DestinationController::class, 'addGalleries'])->name('destinations.addGalleries');
         Route::post('/destinations/{destination}/facility', [DestinationController::class, 'storeFacility'])->name('destinations.storeFacility');
         Route::post('/destinations/{destination}/accommodation', [DestinationController::class, 'storeAccommodation'])->name('destinations.storeAccommodation');
@@ -107,6 +121,11 @@ Route::middleware([
         Route::resource('users', UserController::class)->except([
             'show', 'edit', 'update', 'store'
         ]);
+
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
     // owner
@@ -128,6 +147,10 @@ Route::middleware([
         Route::resource('destinations', DestinationController::class)->except([
             'show'
         ]);
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
     // Writer
@@ -138,6 +161,10 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
     });
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::get('/home', function () {

@@ -98,7 +98,7 @@
                     <label for="location" class="block mb-1 text-sm font-medium text-black dark:text-white">
                         Lokasi Tempat Wisata <span class="text-red-500">*</span>
                     </label>
-                    <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukkan URL/link google maps</p>
+                    <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukkan alamat lengkap</p>
                     <input name="location" id="location" value="{{ old('location') }}" autocomplete="location" required
                         type="text" placeholder="Lokasi Tempat Wisata"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
@@ -106,12 +106,23 @@
                 </div>
 
                 <div class="w-full mb-6 ">
+                    <label for="gmaps_url" class="block mb-1 text-sm font-medium text-black dark:text-white">
+                        Google Maps URL <span class="text-red-500">*</span>
+                    </label>
+                    <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukkan URL/link google maps</p>
+                    <input name="gmaps_url" id="gmaps_url" value="{{ old('gmaps_url') }}" autocomplete="gmaps_url"
+                        required type="text" placeholder="Google Maps URL"
+                        class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
+                    <x-partials.dashboard.input-error :messages="$errors->get('gmaps_url')" />
+                </div>
+
+                <div class="w-full mb-6 ">
                     <label for="price_range" class="block mb-3 text-sm font-medium text-black dark:text-white">
                         Harga Tempat Wisata <span class="text-red-500">*</span>
                     </label>
                     <p class="text-xs font-medium text-red-500">* Jika gratis/free masukan nilai 0</p>
-                    <input id="price_range" value="{{ old('price_range') }}" required name="price_range" type="number"
-                        placeholder="Harga Tempat Wisata"
+                    <input id="price_range" value="{{ old('price_range') }}" required name="price_range"
+                        type="number" placeholder="Harga Tempat Wisata"
                         class="w-full mt-3 rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
                 </div>
 
@@ -216,7 +227,7 @@
                             <div>
                                 <label for="opening_hours-open"
                                     class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                    Jam Buka
+                                    Jam Buka <span class="text-red-500">*</span>
                                 </label>
                                 <input required id="opening_hours-open"
                                     class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -226,7 +237,7 @@
                             <div>
                                 <label for="opening_hours-close"
                                     class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                    Jam Tutup
+                                    Jam Tutup <span class="text-red-500">*</span>
                                 </label>
                                 <input required id="opening_hours-close"
                                     class="rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -291,7 +302,7 @@
         <div class="grid gap-4 mb-6 sm:grid-cols-2">
             <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
                 <div class="mb-6 text-center text-black dark:text-white">
-                    <h2>Fasilitas</h2>
+                    <h2>Fasilitas <span class="text-red-500">*</span></h2>
                 </div>
 
                 <div class="mb-6">
@@ -313,7 +324,7 @@
 
             <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
                 <div class="mb-6 text-center text-black dark:text-white">
-                    <h2>Akomondasi</h2>
+                    <h2>Akomondasi <span class="text-red-500">*</span></h2>
                 </div>
 
                 <div class="mb-6">

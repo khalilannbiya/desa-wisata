@@ -14,12 +14,11 @@
 
                 </div>
                 <h3 class="mb-4 font-semibold group-hover:text-white  text-2xl">
-                    <a href="" class="elips transition-all group-hover:text-white text-black ">laboriosam
-                        doloribus quas Voluptatum Lorem ipsum dolor sit amet.</a>
+                    <a href="" class="elips transition-all group-hover:text-white text-black ">Pembaruan
+                        Wahana</a>
                 </h3>
                 <p class="elipsis text-black group-hover:text-white text-sm mb-0">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore laborum iste laboriosam doloribus
-                    quas. Voluptatum
+                    pemabaruan wahana
                 </p>
             </div>
             <div class="mt-auto">

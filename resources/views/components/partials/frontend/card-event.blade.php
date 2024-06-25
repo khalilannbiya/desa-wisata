@@ -1,5 +1,5 @@
 <div
-    class="group mx-4 relative cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+    class="group mx-4 relative w-[292px] cursor-pointer rounded-md items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
     <div class="h-96 w-73">
         <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
             src="{{ asset('assets/img/dummy-vilage.jpg') }}" alt="" />
@@ -9,7 +9,7 @@
     </div>
     <div
         class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
-        <h1 class="elips font-dmserif text-3xl font-bold text-white">Beauty lorem adawdadawd</h1>
+        <h1 class="elips font-dmserif text-3xl font-bold text-white">Kesenin Tradisi</h1>
         <p
             class="elipsis elimb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             Lorem

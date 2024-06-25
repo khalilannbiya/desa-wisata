@@ -69,8 +69,8 @@
             <div class="relative" x-data="{ dropdownOpen: false }" @click.outside="dropdownOpen = false">
                 <a class="flex items-center gap-4" href="#" @click.prevent="dropdownOpen = ! dropdownOpen">
                     <span class="hidden text-right lg:block">
-                        <span class="block text-sm font-medium text-black dark:text-white-dahsboard">Syeich
-                            Khalil</span>
+                        <span
+                            class="block text-sm font-medium text-black dark:text-white-dahsboard">{{ auth()->user()->name }}</span>
                     </span>
 
                     <span class="w-12 h-12 rounded-full">
@@ -90,7 +90,7 @@
                     class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
                     <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
                         <li>
-                            <a href="#"
+                            <a href="{{ route(auth()->user()->role . '.profile.edit') }}"
                                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                 <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">

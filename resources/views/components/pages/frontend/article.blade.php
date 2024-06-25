@@ -1,7 +1,7 @@
 <x-layouts.visitor-layout>
 
     <div class="pt-30 mx-auto ">
-        <div class="grid lg:grid-cols-2 lg:px-25 items-center justify-items-center ">
+        <div class="grid hidden lg:block lg:grid-cols-2 lg:px-25 items-center justify-items-center ">
             <div class=" mx-auto space-y-3 hidden lg:block ">
                 <div
                     class="pb-3  border-b group-hover:text-white border-stone-200 text-xs font-medium flex justify-between text-black">
@@ -38,13 +38,9 @@
                     <img src="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="">
-                <div class="">
-                    <x-partials.frontend.card-article />
-                </div>
-            </div>
+
         </div>
-        <div class="grid lg:grid-cols-4 justify-items-center gap-4 mt-10 px-3">
+        <div class="grid xl:grid-cols-4 lg:grid-cols-3   justify-items-center gap-4 mt-10 px-3">
             @for ($i = 1; $i <= 10; $i++)
                 <div class="">
                     <x-partials.frontend.card-article />

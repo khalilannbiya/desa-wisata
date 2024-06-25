@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestinationUpdateRequest extends FormRequest
+class EventCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +23,17 @@ class DestinationUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name_destination' => 'required|string|min:5|max:100',
+            'name' => 'required|string|min:5|max:100',
             'description' => 'required|string',
             'location' => 'required|string',
             'gmaps_url' => 'required|string',
-            'price_range' => 'required|numeric|regex:/^[0-9]+$/',
-            'status' => 'required|string|in:active,inactive',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:1048|',
+            'start_date' => 'required|date|after_or_equal:now',
+            'end_date' => 'required|date|after_or_equal:now'
         ];
 
-        if (auth()->user()->role !== 'owner') {
-            $rules['owner'] = 'required';
+        if (auth()->user()->role === 'super_admin') {
+            $rules['admin'] = 'required';
         }
 
         return $rules;
@@ -41,8 +42,8 @@ class DestinationUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'price_range.regex' => 'Harap isi dengan angka!',
-            'status.in' => 'Status harus berisi active atau inactive!',
+            'start_date.after_or_equal' => 'Tanggal dan waktu acara harus merupakan tanggal dan waktu setelah atau sama dengan sekarang',
+            'end_date.after_or_equal' => 'Tanggal dan waktu acara harus merupakan tanggal dan waktu setelah atau sama dengan sekarang',
         ];
     }
 }
