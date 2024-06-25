@@ -31,6 +31,7 @@ class DestinationSeeder extends Seeder
                 'name' => $nameDestination,
                 'description' => $faker->paragraph(),
                 'location' => $faker->address(),
+                'gmaps_url' => 'https://maps.app.goo.gl/FL4CuzCR4HDZhPT59',
                 'price_range' => $faker->numberBetween(20000, 500000),
                 'status' => $faker->randomElement(['active', 'inactive']),
                 'slug' => Str::slug($nameDestination . '-' . Str::ulid()),

@@ -2,9 +2,9 @@
 
     <x-slot:title>Tempat Wisata | </x-slot:title>
 
-    <section class="px-6 py-30 ">
+    <section class="px-6 mx-auto py-30 max-w-7xl">
         <div class="text-4xl font-extrabold text-center">
-            <h1>Tempat Wisata</h1>
+            <h1 class="font-montserrat">Tempat Wisata</h1>
         </div>
         <div class="">
 
@@ -37,6 +37,12 @@
                 <p class="font-semibold text-center text-gray-500">Belum ada tempat wisata</p>
             @endforelse
         </div>
+
+        @if ($destinations->lastPage() > 1)
+            <div class="mt-10">
+                {{ $destinations->links() }}
+            </div>
+        @endif
     </section>
     <script>
         // use a script tag or an external JS file

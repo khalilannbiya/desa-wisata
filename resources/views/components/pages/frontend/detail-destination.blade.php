@@ -1,21 +1,17 @@
 <x-layouts.visitor-layout>
-    <div class="grid md:grid-cols-2 gap-5 md:px-6 px-4 pt-35 mx-auto">
+    <div class="grid gap-5 px-4 mx-auto max-w-7xl md:grid-cols-2 md:px-6 pt-35">
         <div class="">
             <div class="grid gap-4">
                 <div>
-                    <img class="h-auto max-w-full rounded-lg" id="expandedImg"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                    <img class="object-cover object-center w-full h-auto max-w-full rounded-lg aspect-[4/3]"
+                        id="expandedImg" src="{{ Storage::url($destination->galleries[0]->image_url) }}" alt="">
                 </div>
                 <div class="overflow-x-auto">
                     <div class="inline-flex gap-3 h-15">
-                        <img class="imgClick h-auto max-w-full rounded-lg"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
-                        <img class=" imgClick h-auto max-w-full rounded-lg"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                        <img class="imgClick h-auto max-w-full rounded-lg"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                        <img class="imgClick h-auto max-w-full rounded-lg"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
+                        @foreach ($destination->galleries as $gallery)
+                            <img class="h-auto max-w-full object-cover object-center rounded-lg aspect-[4/3] imgClick"
+                                src="{{ Storage::url($gallery->image_url) }}" alt="">
+                        @endforeach
                     </div>
                 </div>
 
@@ -24,19 +20,26 @@
         </div>
         <div class="">
             <div class="space-y-5">
-                <h1 class="md:text-3xl text-xl font-bold">Judul</h1>
-                <p class="md:text-lg text-gray-500 elipsis">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Iure
-                    dolorum
-                    quam provident
-                    atque
-                    voluptatem dolores ut adipisci ex voluptatibus perspiciatis in eveniet placeat, consectetur dolorem
-                    similique cum, natus sapiente sed! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Cupiditate tempora odio obcaecati rerum vitae ducimus aspernatur earum quidem, eum temporibus atque,
-                    ullam quis consequuntur magnam in error. Accusamus aperiam illo repellendus expedita reprehenderit
-                    sint, placeat ipsum, nulla atque necessitatibus molestiae, qui tenetur! Eum quisquam earum
-                    consequuntur temporibus nulla? Cum, quas.</p>
-                <h1 class="md:text-2xl font-bold pb-4">Mulai dari Rp. 10.000</h1>
+                <h1 class="text-2xl font-bold md:text-3xl">{{ $destination->name }}</h1>
+                <div class="flex gap-2">
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                            <path
+                                d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z">
+                            </path>
+                        </svg>
+                    </div>
+                    <a href="{{ $destination->gmaps_url }}" target="_blank">
+                        <address class="text-sm text-gray-700 capitalize lg:text-base">
+                            {{ $destination->location }}
+                        </address>
+                    </a>
+                </div>
+                <p class="text-gray-500 md:text-lg">{{ $destination->description }}</p>
+                <h1 class="pb-4 font-bold md:text-2xl">
+                    {{ $destination->price_range == 0 ? 'Masuk Gratis' : 'Mulai dari Rp. ' . number_format($destination->price_range) }}
+                </h1>
             </div>
             <div class="">
 
@@ -70,55 +73,74 @@
                     </ul>
                 </div>
                 <div id="default-tab-content">
-                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel"
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="profile" role="tabpanel"
                         aria-labelledby="profile-tab">
-                        <ul class="list-check">
-                            <li>Senin</li>
-                            <li>Sabtu</li>
-                            <li>Selasa</li>
-                            <li>Minggu</li>
-                            <li>Minggu</li>
-                            <li>Minggu</li>
-                        </ul>
+                        <p class="capitalize">
+                            {{ $openingHours[0] . '-' . $openingHours[1] . ', ' . date('H:i', strtotime($openingHours[2])) . '-' . date('H:i', strtotime($openingHours[3])) . ' WIB' }}
+                        </p>
                     </div>
-                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel"
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="dashboard" role="tabpanel"
                         aria-labelledby="dashboard-tab">
                         <ul class="list-check">
-                            <li>Senin</li>
-                            <li>Sabtu</li>
-                            <li>Selasa</li>
-                            <li>Minggu</li>
-                            <li>Minggu</li>
-                            <li>Minggu</li>
+                            @forelse ($destination->facilities as $facility)
+                                <li>{{ $facility->name }}</li>
+                            @empty
+                                <p>Belum ada fasilitas</p>
+                            @endforelse
                         </ul>
                     </div>
-                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel"
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel"
                         aria-labelledby="settings-tab">
                         <ul class="list-check">
-                            <li>Senin</li>
-                            <li>Sabtu</li>
-                            <li>Selasa</li>
-                            <li>Minggu</li>
-                            <li>Minggu</li>
-                            <li>Minggu</li>
+                            @forelse ($destination->accommodations as $accommodation)
+                                <li>{{ $accommodation->name }}</li>
+                            @empty
+                                <p>Belum ada akomodasi</p>
+                            @endforelse
                         </ul>
                     </div>
-                    <div class="hidden px-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel"
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="contacts" role="tabpanel"
                         aria-labelledby="contacts-tab">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-                            <strong class="font-medium text-gray-800 dark:text-white">Contacts tab's associated
-                                content</strong>. Clicking another tab will toggle the visibility of this one for the
-                            next. The tab JavaScript swaps classes to control the content visibility and styling.
-                        </p>
+                        @if ($destination->contactDetail->phone)
+                            <div class="flex gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z">
+                                    </path>
+                                </svg>
+                                {{ $destination->contactDetail->phone }}
+                            </div>
+                        @endif
+
+                        @if ($destination->contactDetail->email)
+                            <div class="flex gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z">
+                                    </path>
+                                </svg>
+                                {{ $destination->contactDetail->email }}
+                            </div>
+                        @endif
+
+                        @if ($destination->contactDetail->social_media)
+                            <div class="flex gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z">
+                                    </path>
+                                </svg>
+                                <a href="{{ $destination->contactDetail->social_media }}" class="underline">Klik
+                                    untuk melihat sosial media</a>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-
-
-
     </x-layouts.visitor>
 
     <script>
