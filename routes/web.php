@@ -23,6 +23,10 @@ Route::get('/event', function () {
     return view('components.pages.frontend.event');
 });
 
+Route::get('/event/create', function () {
+    return view('components.pages.dashboard.writer.add');
+});
+
 Route::get('/dashboard-1', function () {
     return view('components.pages.dashboard.index');
 });
