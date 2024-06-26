@@ -7,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/galeri', function () {
     return view('components.pages.frontend.gallery');
@@ -69,6 +70,10 @@ Route::middleware([
         Route::post('/users', [UserController::class, 'store'])->middleware('prevent.superadmin.create')->name('users.store');
         Route::resource('users', UserController::class)->except([
             'show', 'edit', 'update', 'store'
+        ]);
+
+        Route::resource('articles', ArticleController::class)->except([
+            'show'
         ]);
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -145,15 +150,16 @@ Route::middleware([
         Route::get('/dashboard', function () {
             return view('components.pages.dashboard.index');
         })->name('dashboard');
+
+
+        Route::resource('articles', ArticleController::class)->except([
+            'show'
+        ]);
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::get('/home', function () {
-    return view('components.pages.frontend.index');
 });
 
 require __DIR__ . '/auth.php';
