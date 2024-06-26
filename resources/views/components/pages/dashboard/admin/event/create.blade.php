@@ -39,7 +39,7 @@
                 @if (auth()->user()->role == 'super_admin')
                     <div class="mb-4.5">
                         <label for="admin" class="block mb-3 text-sm font-medium text-black dark:text-white">
-                            Pemmbuat Event <span class="text-red-500">*</span>
+                            Pembuat Event <span class="text-red-500">*</span>
                         </label>
                         <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
                             <select required id="admin" name="admin"

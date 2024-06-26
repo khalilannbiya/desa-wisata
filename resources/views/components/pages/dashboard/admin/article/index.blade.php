@@ -32,17 +32,15 @@
     @push('script')
         <script type="text/javascript">
             $(document).ready(function() {
-                let counter = 1;
                 $('#crudTable').DataTable({
                     serverSide: true,
                     ajax: {
                         url: '{!! url()->current() !!}'
                     },
                     columns: [{
-                            "render": function(data, type, row) {
-                                return counter++; // Increment counter and return the value
-                            },
-                            "width": "5%"
+                            data: 'id',
+                            name: 'id',
+                            width: '5%'
                         },
                         {
                             data: 'title',
@@ -57,6 +55,7 @@
                             name: 'action',
                             orderable: false,
                             searchable: false,
+
                         }
                     ]
                 });
