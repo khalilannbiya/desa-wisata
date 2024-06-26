@@ -4,7 +4,7 @@
     <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
         <div class="mr-auto place-self-center lg:col-span-7">
             <h1 id="slogan"
-                class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight font-montserrat md:text-5xl xl:text-6xl S">
+                class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight font-inter md:text-5xl xl:text-6xl S">
             </h1>
             <p class="max-w-2xl mb-6 font-light text-gray-700 lg:mb-8 md:text-lg lg:text-xl">Desa Wisata Sukarame,
                 terletak di provinsi Jawa Barat, telah diakui sebagai salah satu Desa Wisata Indonesia. Julukan ini

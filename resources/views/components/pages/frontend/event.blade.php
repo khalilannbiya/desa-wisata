@@ -4,7 +4,7 @@
         <section class="bg-green-new mb-6">
             <div class="grid py-20 md:grid-cols-2 max-w-7xl mx-auto">
                 <div class="pl-10 mb-8 space-y-10 text-white text-balance ">
-                    <h1 class="text-4xl font-extrabold font-montserrat">Info Acara Terbaru</h1>
+                    <h1 class="text-4xl font-extrabold font-inter">Info Acara Terbaru</h1>
                     <p class="w-3/4 ">
                         Informasi terbaru dan terlengkap tentang berbagai acara menarik di tempat wisata Sukarame.
                         Temukan
@@ -33,7 +33,7 @@
 
         <div class="">
             <div class="px-10 mb-10">
-                <h1 class="text-3xl text-center font-montserrat font-extrabold">
+                <h1 class="text-3xl text-center font-inter font-extrabold">
                     Semua Acara
                 </h1>
             </div>

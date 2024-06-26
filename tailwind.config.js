@@ -67,6 +67,7 @@ export default {
             fontFamily: {
                 oswald: ["Oswald", ...defaultTheme.fontFamily.sans],
                 montserrat: ["Montserrat", ...defaultTheme.fontFamily.sans],
+                inter:['Inter',...defaultTheme.fontFamily.sans]
             },
             screens: {
                 "2xsm": "375px",

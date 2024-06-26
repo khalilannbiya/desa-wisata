@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1">
+<div class="grid grid-cols-1 font-inter">
     <div class="items-center">
         <p class="font-bold text-center m-5 lg:mb-8 text-[22px] mb-0 lg:text-[30px]">
             Visi Desa Sukarame
