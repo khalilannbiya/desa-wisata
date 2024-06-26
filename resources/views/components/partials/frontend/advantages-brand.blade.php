@@ -13,7 +13,7 @@
                 Pacet ini yang dia beri nama Sukarame. Beliau memimpin masyarakat/warga Sukarame sekitar tahun 1918
                 sampai tahun 1925.
             </p>
-            <a href="#"
+            <a href="{{ route('about-us') }}"
                 class="gs_reveal gs_reveal_fromLeft inline-flex mt-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-new rounded-md focus:ring-4 focus:outline-none focus:ring-blue-300 hover:bg-opacity-90 ">
                 SELENGKAPNYA
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

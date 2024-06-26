@@ -77,9 +77,9 @@
                             </option>
                             <option value="active" class="text-body"
                                 {{ $destination->status == 'active' ? 'selected' : '' }}>
-                                Aktif</option>
+                                Beroperasi</option>
                             <option value="inactive" class="text-body"
-                                {{ $destination->status == 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
+                                {{ $destination->status == 'inactive' ? 'selected' : '' }}>Tidak Beroperasi</option>
                         </select>
                         <x-partials.dashboard.input-error :messages="$errors->get('status')" />
                     </div>

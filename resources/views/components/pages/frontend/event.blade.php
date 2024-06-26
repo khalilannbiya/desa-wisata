@@ -14,10 +14,10 @@
             </div>
             <div class="overflow-x-auto no-scrollbar col-span-2 ">
                 <div class="">
-                    <div class="inline-flex py-4  gap-10 justify-center items-center">
-                        @for ($i = 1; $i <= 6; $i++)
+                    <div class="inline-flex py-4 gap-10 justify-center items-center">
+                        @foreach ($newEvents as $event)
                             <x-partials.frontend.card-event />
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
             </div>

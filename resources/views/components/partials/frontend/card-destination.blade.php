@@ -2,8 +2,7 @@
     class="relative h-[28rem] card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-        <img class="object-cover object-center w-full h-45"
-            src={{ isset($destination->galleries[0]) ? Storage::url($destination->galleries[0]->image_url) : 'default-image-url' }}
+        <img class="object-cover object-center w-full h-45" src={{ Storage::url($destination->galleries[0]->image_url) }}
             alt="gambar wisata" />
         <div
             class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
@@ -25,13 +24,13 @@
             <a href="{{ route('destinations.show', $destination->slug) }}"
                 class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
-                Detail
+                Selengkapnya
             </a>
         @else
             <button type="button"
                 class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
-                Tempat Wisata Tutup
+                Wisata Tidak Beroperasi
             </button>
         @endif
     </div>
