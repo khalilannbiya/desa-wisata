@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Pages\Dashboard\\Admin\Event;
+namespace App\View\Components\Pages\Dashboard\Admin\Event;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,6 +21,6 @@ class Create extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.pages.dashboard..admin.event.create');
+        return view('components.pages.dashboard.admin.event.create');
     }
 }
