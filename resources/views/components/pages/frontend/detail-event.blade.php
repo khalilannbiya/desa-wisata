@@ -8,20 +8,20 @@
                         <div class=" text-white">
                             <h1
                                 class="text-3xl font-bold tracking-tighter text-primary-foreground sm:text-5xl xl:text-6xl/none">
-                                Web Development Conference 2024</h1>
+                                {{ $event->name }}</h1>
 
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-lg p-6 space-y-4">
 
                         <div>
-                            <h3 class="text-lg font-semibold">Date &amp; Time</h3>
-                            <p class="text-muted-foreground">June 26-28, 2024 | 9:00 AM - 5:00 PM</p>
+                            <h3 class="text-lg font-semibold">Tanggal &amp; Waktu</h3>
+                            <p class="text-muted-foreground">
+                                {{ \Carbon\Carbon::parse($event->start_date)->format('d-m-Y, H:i') . ' - ' . \Carbon\Carbon::parse($event->end_date)->format('d-m-Y, H:i') }}
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold">Lokasi</h3>
-                            <p class="text-muted-foreground">San Francisco Marriott Marquis<br>780 Mission St, San
-                                Francisco, CA 94103</p>
+                            <a href="{{ $event->gmaps_url }}" class="text-muted-foreground">{{ $event->location }}</a>
                         </div>
                     </div>
                 </div>
@@ -32,14 +32,8 @@
                 <div class="grid gap-12 ">
                     <div>
                         <h2 class="text-3xl font-bold tracking-tighter mb-6">Tentang Acara</h2>
-                        <p class="text-muted-foreground mb-6">The Web Development Conference is the premier event for
-                            web developers, designers, and industry professionals. This three-day conference will
-                            feature a variety of sessions, workshops, and networking opportunities, covering the latest
-                            trends, technologies, and best practices in web development.</p>
-
-
+                        <p class="text-muted-foreground mb-6">{{ $event->description }}</p>
                     </div>
-
                 </div>
             </div>
         </section>
