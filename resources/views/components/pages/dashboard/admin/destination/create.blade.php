@@ -302,7 +302,7 @@
         <div class="grid gap-4 mb-6 sm:grid-cols-2">
             <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
                 <div class="mb-6 text-center text-black dark:text-white">
-                    <h2>Fasilitas <span class="text-red-500">*</span></h2>
+                    <h2>Fasilitas</h2>
                 </div>
 
                 <div class="mb-6">
@@ -324,7 +324,7 @@
 
             <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
                 <div class="mb-6 text-center text-black dark:text-white">
-                    <h2>Akomondasi <span class="text-red-500">*</span></h2>
+                    <h2>Akomondasi</h2>
                 </div>
 
                 <div class="mb-6">

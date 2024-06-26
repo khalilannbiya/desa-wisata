@@ -49,6 +49,9 @@
                         {
                             data: 'status',
                             name: 'status',
+                            render: function(data, type, row) {
+                            return data === 'active' ? 'Beroperasi' : 'Tidak Beroperasi';
+                            }
                         },
                         {
                             data: 'action',
