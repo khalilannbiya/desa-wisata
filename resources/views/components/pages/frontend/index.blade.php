@@ -29,8 +29,8 @@
         <x-partials.frontend.advantages-brand />
     </section>
 
-    <section class="mb-10">
-        <div class="grid py-20 md:grid-cols-2 bg-green-new">
+    <section class="bg-green-new">
+        <div class="grid py-20 md:grid-cols-2 max-w-7xl mx-auto">
             <div class="pl-10 mb-8 space-y-10 text-white text-balance ">
                 <h1 class="text-4xl font-extrabold font-montserrat">Info Acara</h1>
                 <p class="w-3/4 ">
