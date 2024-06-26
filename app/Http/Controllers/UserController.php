@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $users = User::where('role', '!=', 'super_admin')->latest();
+            $users = User::where('role', '!=', 'super_admin')->get();
             return DataTables::of($users)
                 ->addColumn('action', function ($item) {
                     $roleName = auth()->user()->role;

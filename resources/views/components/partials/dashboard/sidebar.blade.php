@@ -29,8 +29,8 @@
                 <ul class="mb-6 flex flex-col gap-1.5">
                     <!-- Menu Item Dashboard -->
                     <li>
-                        <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4"
-                            href="#">
+                        <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ in_array(Route::current()->getName(), [auth()->user()->role . '.dashboard']) ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
+                            href="{{ route(auth()->user()->role . '.dashboard') }}">
                             <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -67,6 +67,24 @@
                                         d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z">
                                     </path>
                                 </svg> Pengguna
+                            </a>
+                        </li>
+
+                        <li>
+                            @php
+                                $roleName = auth()->user()->role;
+                                $routeName = $roleName . '.events.index';
+                            @endphp
+
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ in_array(Route::current()->getName(), [$roleName . '.events.index', $roleName . '.events.create', $roleName . '.events.edit']) ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
+                                href="{{ route($routeName) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+                                    <path d="M11 12h6v6h-6z"></path>
+                                    <path
+                                        d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm.001 16H5V8h14l.001 12z">
+                                    </path>
+                                </svg> Acara
                             </a>
                         </li>
                     @endif
