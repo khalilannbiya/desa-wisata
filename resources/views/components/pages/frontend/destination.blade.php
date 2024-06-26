@@ -2,9 +2,9 @@
 
     <x-slot:title>Tempat Wisata | </x-slot:title>
 
-    <section class="px-6 mx-auto py-30 max-w-7xl">
+    <section class="px-6 mx-auto py-30 max-w-7xl font-inter">
         <div class="text-4xl font-extrabold text-center">
-            <h1 class="font-montserrat">Tempat Wisata</h1>
+            <h1 class="font-inter">Tempat Wisata</h1>
         </div>
         <div class="">
 

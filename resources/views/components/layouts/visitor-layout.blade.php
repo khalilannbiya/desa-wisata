@@ -13,12 +13,17 @@
     {{-- Aos --}}
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    {{-- google fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title ?? '' }} Desa Wisata Sukarame</title>
 </head>
 
 <body>
-    <header class="fixed z-50 w-full font-montserrat" id="myElement">
+    <header class="fixed z-50 w-full font-inter" id="myElement">
         <nav class="bg-white border-gray-200 py-2.5  ">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto lg:px-8 ">
                 <div href="#" class="flex items-center">
@@ -62,7 +67,7 @@
 
                         <li>
                             <a href="{{ route('events') }}"
-                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 {{ in_array(Route::current()->getName(), ['events']) ? 'text-green-new' : '' }}">Acara</a>
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 {{ in_array(Route::current()->getName(), ['events', 'events.show']) ? 'text-green-new' : '' }}">Acara</a>
                         </li>
                         <li>
                             <a href="/artikel"

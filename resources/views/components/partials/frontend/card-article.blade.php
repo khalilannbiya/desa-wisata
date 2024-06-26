@@ -1,5 +1,6 @@
         {{-- card  --}}
-        <div class="max-w-sm group shadow-lg border-2 rounded-md hover:bg-green-new transition-all duration-500 ">
+        <div
+            class="max-w-sm group shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
             <div class="p-6">
                 <div
                     class="pb-3 mb-4 border-b group-hover:text-white border-stone-200 text-xs font-medium flex justify-between text-black">
@@ -28,7 +29,7 @@
             <div class="text-center">
                 <a href="/detail-artikel"
                     class="my-6 inline-flex items-center px-3 py-2 text-sm font-medium text-center group-hover:bg-white group-hover:text-green-new text-white bg-green-new rounded-md focus:ring-4 focus:outline-none focus:ring-blue-300 ">
-                    DETAIL ARTIKEL
+                    Selengkapnya
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

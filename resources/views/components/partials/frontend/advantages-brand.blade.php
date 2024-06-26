@@ -1,4 +1,4 @@
-<div class="max-w-screen-xl font-montserrat px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-20 lg:px-6">
+<div class="max-w-screen-xl font-inter px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-20 lg:px-6">
     <!-- Row -->
     <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
         <div class="text-gray-700 sm:text-lg ">

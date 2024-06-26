@@ -5,9 +5,8 @@
     </header>
 
     <section class="">
-
         <div class="mb-8 text-4xl font-extrabold text-center">
-            <h1 class="font-montserrat">Tempat Wisata</h1>
+            <h1 class="font-inter">Tempat Wisata</h1>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-4 px-4 md:px-0">
             @forelse ($destinations as $destination)
@@ -29,10 +28,10 @@
         <x-partials.frontend.advantages-brand />
     </section>
 
-    <section class="mb-10">
-        <div class="grid py-20 md:grid-cols-2 bg-green-new">
+    <section class="bg-green-new">
+        <div class="grid py-20 md:grid-cols-2 max-w-7xl mx-auto">
             <div class="pl-10 mb-8 space-y-10 text-white text-balance ">
-                <h1 class="text-4xl font-extrabold font-montserrat">Info Acara</h1>
+                <h1 class="text-4xl font-extrabold font-inter">Info Acara</h1>
                 <p class="w-3/4 ">
                     Informasi terbaru dan terlengkap tentang berbagai acara menarik di tempat wisata Sukarame. Temukan
                     berbagai acara seru yang sesuai dengan minat Anda dan dapatkan informasi lengkap tentang setiap
@@ -48,12 +47,14 @@
                         Semua</a>
                 </div>
             </div>
-            <div class="overflow-x-auto no-scrollbar ">
+            <div class="overflow-x-auto no-scrollbar text-center">
                 <div class="">
                     <div class="inline-flex items-center justify-center gap-10 py-4">
-                        @for ($i = 1; $i <= 6; $i++)
-                            <x-partials.frontend.card-event />
-                        @endfor
+                        @forelse ($events as $event)
+                            <x-partials.frontend.card-event :event="$event" />
+                        @empty
+                            <p class="font-semibold text-center text-white text-xl">Belum ada acara</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -71,7 +72,7 @@
     </section>
     <section class="relative px-3 md:px-0 mt-29">
         <div class="mb-8 text-4xl font-extrabold text-center">
-            <h1 class="font-montserrat">Informasi Tentang Desa Wisata</h1>
+            <h1 class="font-inter">Informasi Tentang Desa Wisata</h1>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-4 py-4">
             @for ($i = 1; $i <= 3; $i++)

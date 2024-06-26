@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -8,6 +7,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/galeri', function () {
     return view('components.pages.frontend.gallery');
@@ -30,6 +30,7 @@ Route::get('/event/create', function () {
 });
 
 Route::get('/events', [FrontendController::class, 'events'])->name('events');
+Route::get('/events/{slug}/show', [EventController::class, 'show'])->name('events.show');
 Route::view('/about-us', 'components.pages.frontend.about-us-page')->name('about-us');
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
@@ -112,14 +113,14 @@ Route::middleware([
             'show', 'edit', 'update', 'store'
         ]);
 
+        Route::resource('articles', ArticleController::class)->except([
+            'show'
+        ]);
+
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-        Route::resource('articles', ArticleController::class)->except([
-            'show'
-        ]);
     });
 
     // owner
@@ -155,6 +156,7 @@ Route::middleware([
             return view('components.pages.dashboard.index');
         })->name('dashboard');
 
+
         Route::resource('articles', ArticleController::class)->except([
             'show'
         ]);
@@ -163,10 +165,6 @@ Route::middleware([
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
-});
-
-Route::get('/home', function () {
-    return view('components.pages.frontend.index');
 });
 
 require __DIR__ . '/auth.php';

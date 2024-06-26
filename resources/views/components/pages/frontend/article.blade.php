@@ -1,46 +1,35 @@
 <x-layouts.visitor-layout>
 
-    <div class="pt-30 mx-auto ">
-        <div class="grid hidden lg:block lg:grid-cols-2 lg:px-25 items-center justify-items-center ">
-            <div class=" mx-auto space-y-3 hidden lg:block ">
-                <div
-                    class="pb-3  border-b group-hover:text-white border-stone-200 text-xs font-medium flex justify-between text-black">
-                    <span class="flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        7 March, 2022
-                    </span>
 
-                </div>
-                <a class="space-y-3 hover:text-green-new transition-all duration-500 cursor-pointer">
-                    <h1 class="title text-2xl font-bold">Lorem, ipsum dolor sit amet consectetur Lorem ipsum dolor sit
-                        amet consectetur, adipisicing elit. Reprehenderit sunt provident maxime ducimus accusamus nam.
-                        Eligendi odit ipsum obcaecati totam.</h1>
-                    <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-                        voluptatibus
-                        quia eaque ut
-                        illum sint ad beatae, consectetur quis est! Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Modi beatae aliquam quos eaque, quas quidem adipisci ea laborum impedit dolores?
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, pariatur quos quod quam minus
-                        nulla, asperiores repellat id perferendis similique accusantium enim? Nam sed tempora ut fugiat
-                        voluptates atque dolores saepe animi non, esse quos modi consequatur ducimus. Ab at veritatis a
-                        recusandae explicabo quos earum quaerat aliquam voluptatum omnis odio, debitis laudantium!
-                        Molestiae cum obcaecati ab ratione nobis quis praesentium labore veniam! Hic a eum distinctio,
-                        placeat dolores earum officia, aut repellendus doloribus quibusdam omnis eos nulla possimus
-                        soluta illo sint harum et recusandae saepe assumenda, atque numquam! Magnam corporis obcaecati
-                        vel consectetur distinctio ipsam vero aliquid repudiandae praesentium?
-                    </p>
-                </a>
-                <div class="">
-                    <img src="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}" alt="">
-                </div>
-            </div>
+    <div class="pt-30 font-inter  ">
+        <div class="text-4xl font-extrabold text-center">
+            <h1 class="font-inter">Artikel</h1>
 
         </div>
-        <div class="grid xl:grid-cols-4 lg:grid-cols-3   justify-items-center gap-4 mt-10 px-3">
+        <div class="">
+
+            <form class="max-w-md mx-auto my-10" action="{{ route('destinations') }}" method="GET">
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="text" name="keyword" id="default-search"
+                        class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-green-new focus:border-green-new dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Cari Tempat Wisata..." required />
+                    <button type="submit"
+                        class="text-white absolute end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                </div>
+            </form>
+
+
+        </div>
+        <div class="grid xl:grid-cols-4 lg:grid-cols-3 mx-auto max-w-7xl  justify-items-center gap-4 mt-10 px-3">
             @for ($i = 1; $i <= 10; $i++)
                 <div class="">
                     <x-partials.frontend.card-article />
