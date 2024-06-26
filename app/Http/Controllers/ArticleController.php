@@ -149,12 +149,12 @@ class ArticleController extends Controller
             ]);
 
             $article = Article::findOrFail($id);
+
             if ($article->image_url) {
                 Storage::delete($article->image_url);
             }
 
             $article->update([
-                'author_id' =>  auth()->user()->role != "writer" ? $request->input('author_id') : auth()->user()->id,
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
                 'image_url' => $request->file('image_url')->store('public/articles'),

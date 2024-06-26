@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accommodations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('destination_id')->nullable(false);
-            $table->string('name', 50)->nullable(false);
+            $table->string('name', 50)->nullable();
 
             $table->foreign('destination_id')->references('id')->on('destinations')->cascadeOnDelete();
         });
