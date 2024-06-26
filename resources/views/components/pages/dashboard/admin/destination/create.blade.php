@@ -86,9 +86,9 @@
                                 Pilih Status Tempat Wisata
                             </option>
                             <option value="active" class="text-body" {{ old('status') == 'active' ? 'selected' : '' }}>
-                                Aktif</option>
+                                Beroperasi</option>
                             <option value="inactive" class="text-body"
-                                {{ old('status') == 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
+                                {{ old('status') == 'inactive' ? 'selected' : '' }}>Tidak Beroperasi</option>
                         </select>
                         <x-partials.dashboard.input-error :messages="$errors->get('status')" />
                     </div>

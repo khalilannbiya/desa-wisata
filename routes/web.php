@@ -23,32 +23,17 @@ Route::get('/event-detail', function () {
     return view('components.pages.frontend.detail-event');
 });
 
-Route::get('/event', function () {
-    return view('components.pages.frontend.event');
-});
 
 Route::get('/event/create', function () {
     return view('components.pages.dashboard.writer.add');
 });
 
-Route::get('/dashboard-1', function () {
-    return view('components.pages.dashboard.index');
-});
-
+Route::get('/events', [FrontendController::class, 'events'])->name('events');
+Route::view('/about-us', 'components.pages.frontend.about-us-page')->name('about-us');
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
 Route::get('/destinations/{slug}/show', [DestinationController::class, 'show'])->middleware('check.destination.active')->name('destinations.show');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 Route::middleware([
     'auth',
@@ -169,10 +154,6 @@ Route::middleware([
 
 Route::get('/home', function () {
     return view('components.pages.frontend.index');
-});
-
-Route::get('/aboutus', function () {
-    return view('components.pages.frontend.about-us-page');
 });
 
 require __DIR__ . '/auth.php';
