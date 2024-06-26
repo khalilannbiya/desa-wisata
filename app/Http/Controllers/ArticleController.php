@@ -10,6 +10,8 @@ use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\ArticleCreateRequest;
+use App\Http\Requests\ArticleUpdateRequest;
 
 class ArticleController extends Controller
 {
@@ -30,7 +32,7 @@ class ArticleController extends Controller
             }
 
             // Mengurutkan data berdasarkan yang terbaru
-            $article->latest();
+            $article->get();
 
             // Mengembalikan data dalam format DataTables
             return DataTables::of($article)
@@ -75,29 +77,30 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('components.pages.dashboard.admin.article.create');
+        $writers = [];
+
+        if (auth()->user()->role != 'writer') {
+            $writers = User::where('role', 'writer')->get();
+        }
+        return view('components.pages.dashboard.admin.article.create', compact('writers'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ArticleCreateRequest $request)
     {
         try {
             DB::beginTransaction();
 
-            $request->validate([
-                'title' => 'required|string|max:255',
-                'content' => 'required|string',
-                'image_url' => 'required|image|mimes:jpg,jpeg,png|max:1048'
-            ]);
-
+            $photo = $request->file('image');
+            $path = $photo->storePublicly("gallery", "public");
             Article::create([
-                'author_id' => auth()->user()->id,
-                'title' => $request->input('title'),
-                'content' => $request->input('content'),
-                'image_url' => $request->file('image_url')->store('public/articles'),
-                'slug' => Str::slug($request->input('title') . '-' . Str::ulid())
+                'author_id' => auth()->user()->role != "writer" ? $request->writer : auth()->user()->id,
+                'title' => $request->title,
+                'content' => $request->content,
+                'image_url' => $path,
+                'slug' => Str::slug($request->title . '-' . Str::ulid())
             ]);
 
             DB::commit();
@@ -125,46 +128,40 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
 
-        $author = [];
+        $admins = [];
 
-        if (auth()->user()->role !== 'writer') {
-            $author = User::where('role', 'writer')->get();
+        if (auth()->user()->role != 'writer') {
+            $admins = User::where('role', 'writer')->get();
         }
 
-        return view('components.pages.dashboard.admin.article.edit', compact('article', 'author'));
+        return view('components.pages.dashboard.admin.article.edit', compact('article', 'admins'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ArticleUpdateRequest $request, string $id)
     {
         try {
             DB::beginTransaction();
 
-            $request->validate([
-                'title' => 'required|string|max:255',
-                'content' => 'required|string',
-                'image_url' => 'required|image|mimes:jpg,jpeg,png'
-            ]);
-
             $article = Article::findOrFail($id);
-           
-           // Periksa apakah ada gambar baru yang diunggah
-            if ($request->hasFile('image_url')) {
-                $photo = $request->file('image_url');
+
+            // Periksa apakah ada gambar baru yang diunggah
+            if ($request->hasFile('image')) {
+                $photo = $request->file('image');
                 $path = $photo->storePublicly("gallery", "public");
-                Storage::delete($article->image_url);
+                Storage::delete($article->image);
             } else {
-                $path = $event->image_url;
+                $path = $article->image_url;
             }
 
             $article->update([
-                'author_id' =>  auth()->user()->role != "writer" ? $request->input('author_id') : auth()->user()->id,
-                'title' => $request->input('title'),
-                'content' => $request->input('content'),  
+                'author_id' => auth()->user()->role != "writer" ? $request->writer : auth()->user()->id,
+                'title' => $request->title,
+                'content' => $request->content,
                 'image_url' => $path,
-                'slug' => Str::slug($request->input('title') . '-' . Str::ulid())
+                'slug' => Str::slug($request->title . '-' . Str::ulid())
             ]);
 
             DB::commit();
