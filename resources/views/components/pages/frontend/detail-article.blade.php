@@ -1,5 +1,5 @@
 <x-layouts.visitor-layout>
-    <section class="pt-20 ">
+    <section class="pt-20 font-inter ">
         <div class="max-w-screen-xl px-4 py-8 mx-auto relative z-10">
             <img class="w-full object-cover md:h-125 rounded-md" src="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}"
                 alt="">
