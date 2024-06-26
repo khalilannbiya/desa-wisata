@@ -65,8 +65,7 @@ export default {
                 warning: "#FFA70B",
             },
             fontFamily: {
-                oswald: ["Oswald", ...defaultTheme.fontFamily.sans],
-                montserrat: ["Montserrat", ...defaultTheme.fontFamily.sans],
+
                 inter:['Inter',...defaultTheme.fontFamily.sans]
             },
             screens: {
