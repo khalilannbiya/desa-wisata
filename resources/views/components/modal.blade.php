@@ -10,7 +10,7 @@
     ][$maxWidth];
 @endphp
 
-<div class="mt-30 lg:mt-20" x-data="{
+<div class="mt-30 lg:mt-20 dark:text-white " x-data="{
     show: @js($show),
     focusables() {
         // All focusable element types...

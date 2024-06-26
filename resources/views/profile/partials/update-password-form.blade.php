@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium dark:text-white text-gray-900">
             {{ __('Ganti Password') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm dark:text-white  text-gray-600">
             {{ __('Pastikan password yang anda masukkan benar, dan random untuk tetap aman') }}
         </p>
     </header>
