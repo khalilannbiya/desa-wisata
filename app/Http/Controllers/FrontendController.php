@@ -11,7 +11,8 @@ class FrontendController extends Controller
     public function index()
     {
         $destinations = Destination::with('galleries')->limit(3)->latest()->get();
-        return view('components.pages.frontend.index', compact('destinations'));
+        $events = Event::limit(3)->latest()->get();
+        return view('components.pages.frontend.index', compact('destinations', 'events'));
     }
 
     public function destinations(Request $request)
@@ -29,6 +30,11 @@ class FrontendController extends Controller
     public function events()
     {
         $newEvents = Event::limit(5)->latest()->get();
-        return view('components.pages.frontend.event', compact('newEvents'));
+        $events = Event::latest()->get();
+        return view('components.pages.frontend.event', compact('newEvents', 'events'));
+    }
+
+    public function detailEvent()
+    {
     }
 }

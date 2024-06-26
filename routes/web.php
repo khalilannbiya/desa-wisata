@@ -30,6 +30,7 @@ Route::get('/event/create', function () {
 });
 
 Route::get('/events', [FrontendController::class, 'events'])->name('events');
+Route::get('/events/{slug}/show', [EventController::class, 'show'])->name('events.show');
 Route::view('/about-us', 'components.pages.frontend.about-us-page')->name('about-us');
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
