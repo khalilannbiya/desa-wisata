@@ -1,13 +1,9 @@
 <x-layouts.visitor-layout>
-
-
     <div class="pt-30 font-inter  ">
         <div class="text-4xl font-extrabold text-center">
             <h1 class="font-inter">Artikel</h1>
-
         </div>
-        <div class="">
-
+        <div class="px-5">
             <form class="max-w-md mx-auto my-10" action="{{ route('destinations') }}" method="GET">
                 <label for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -26,8 +22,6 @@
                         class="text-white absolute end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
             </form>
-
-
         </div>
         <div class="grid xl:grid-cols-4 lg:grid-cols-3 mx-auto max-w-7xl  justify-items-center gap-4 mt-10 px-3">
             @for ($i = 1; $i <= 10; $i++)
