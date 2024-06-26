@@ -4,7 +4,9 @@
         <x-partials.frontend.header />
     </header>
 
-    <section class="justify-center mx-auto max-w-7xl">
+
+    <section class=" mx-auto max-w-7xl">
+
         <x-partials.frontend.description />
     </section>
 

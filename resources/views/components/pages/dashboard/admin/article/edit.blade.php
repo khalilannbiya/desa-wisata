@@ -25,10 +25,10 @@
             <label for="image" class="block mb-2 text-sm font-medium text-black dark:text-white">
                 Ubah Foto <span class="text-red-500">*</span>
             </label>
-            <input type="file" accept="image/*" name="image_url" id="image" class="mt-3 block w-full">
+            <input type="file" accept="image/*" name="image" id="image" class="mt-3 block w-full">
             <p class="text-xs font-medium text-red-500 mt-2">* Pastikan file bertipe jpeg, jpg, png</p>
             <p class="text-xs font-medium text-red-500">* Maksimal file 1MB</p>
-            <x-partials.dashboard.input-error :messages="$errors->get('image_url')" />
+            <x-partials.dashboard.input-error :messages="$errors->get('image')" />
         </div>
         <div class="overflow-hidden rounded-lg shadow-md max-w-xs w-32 ml-4">
             <img class="w-full h-auto rounded-lg object-cover" src="{{ Storage::url($article->image_url) }}" alt="Gambar Wisata">
@@ -37,8 +37,33 @@
     <div id="imagePreviewContainer" class="flex flex-wrap gap-5 mt-3"></div>
 </div>
 
-
             <div class="px-6 py-6 mb-6 bg-white rounded-lg shadow-lg dark:bg-black">
+                @if (auth()->user()->role != 'writer')
+                    <div class="mb-4.5">
+                        <label for="author" class="block mb-3 text-sm font-medium text-black dark:text-white">
+                            Pembuat Artikel <span class="text-red-500">*</span>
+                        </label>
+                        <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
+                            <select required id="author" name="writer"
+                                class="relative z-20 w-full px-5 py-3 transition bg-transparent border border-black rounded outline-none appearance-none focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                :class="isOptionSelected && 'text-black dark:text-white'"
+                                @change="isOptionSelected = true">
+                                <option value="" hidden class="text-body">
+                                    Pilih Pembuat Artikel
+                                </option>
+                                @forelse ($admins as $admin)
+                                    <option value="{{ $admin->id }}" class="text-body"
+                                        {{ $article->author_id == $admin->id ? 'selected' : '' }}>
+                                        {{ $admin->name }}</option>
+                                @empty
+                                    <option value="" class="text-body" selected>Belum ada Pembuat Artikel
+                                    </option>
+                                @endforelse
+                            </select>
+                            <x-partials.dashboard.input-error :messages="$errors->get('author')" />
+                        </div>
+                    </div>
+                @endif
                 <div class="mb-4.5">
                     <label for="title" class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
                         Judul <span class="text-red-500">*</span>

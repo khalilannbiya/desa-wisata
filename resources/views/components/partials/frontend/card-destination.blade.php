@@ -11,24 +11,24 @@
     <div class="p-6 h-[11rem]">
         <div class="mb-1">
             <h1
-                class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-white capitalize title">
+                class="block font-inter text-xl antialiased font-medium leading-snug tracking-normal text-white capitalize title">
                 {{ $destination->name }}
             </h1>
         </div>
-        <p class="block font-sans text-base antialiased font-light leading-relaxed text-white elipsis">
+        <p class="block font-inter text-base antialiased font-light leading-relaxed text-white elipsis">
             {{ $destination->description }}
         </p>
     </div>
     <div class="p-6 pt-3">
         @if ($destination->status === 'active')
             <a href="{{ route('destinations.show', $destination->slug) }}"
-                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                class="align-middle select-none font-inter font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
                 Selengkapnya
             </a>
         @else
             <button type="button"
-                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                class="align-middle select-none font-inter font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-white text-green-new shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                 type="button">
                 Wisata Tidak Beroperasi
             </button>
