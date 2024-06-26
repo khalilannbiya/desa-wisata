@@ -2,7 +2,7 @@
 
     <div class="pt-30 ">
         <section class="bg-green-new mb-6">
-            <div class="grid py-20 md:grid-cols-2 max-w-7xl mx-auto">
+            <div class="grid py-20 md:grid-cols-3 max-w-7xl mx-auto">
                 <div class="pl-10 mb-8 space-y-10 text-white text-balance ">
                     <h1 class="text-4xl font-extrabold font-inter">Info Acara Terbaru</h1>
                     <p class="w-3/4 ">
@@ -17,18 +17,18 @@
                         yang tersedia.
                     </p>
 
-            </div>
-            <div class="overflow-x-auto no-scrollbar col-span-2 text-center">
-                <div class="">
-                    <div class="inline-flex py-4 gap-10 justify-center items-center">
-                        @forelse ($newEvents as $event)
-                            <x-partials.frontend.card-event :event="$event" />
-                        @empty
-                            <p class="font-semibold text-center text-white text-xl">Belum ada acara</p>
-                        @endforelse
+                </div>
+                <div class="overflow-x-auto no-scrollbar col-span-2 text-center">
+                    <div class="">
+                        <div class="inline-flex py-4 gap-10 justify-center items-center">
+                            @forelse ($newEvents as $event)
+                                <x-partials.frontend.card-event :event="$event" />
+                            @empty
+                                <p class="font-semibold text-center text-white text-xl">Belum ada acara</p>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
-            </div>
 
         </section>
 
