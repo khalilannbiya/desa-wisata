@@ -1,8 +1,10 @@
 <x-layouts.visitor-layout>
 
+
     <div class="pt-30 font-inter  ">
         <div class="text-4xl font-extrabold text-center">
             <h1 class="font-inter">Artikel</h1>
+
         </div>
         <div class="">
 

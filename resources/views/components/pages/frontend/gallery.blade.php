@@ -6,7 +6,7 @@
         <div class="grid md:grid-cols-4 grid-cols-1 max-w-7xl mx-auto  gap-4">
             @for ($i = 1; $i <= 20; $i++)
                 <div data-aos="zoom-in" data-aos-duration="1000" class=" transition-transform duration-300 ">
-                    <img class=" aspect-square object-cover  max-w-full rounded-lg "
+                    <img class=" aspect-square object-cover  max-w-full rounded-lg"
                         src="{{ asset('assets/img/desa' . $i . '.jpeg') }}" alt="">
                 </div>
             @endfor
