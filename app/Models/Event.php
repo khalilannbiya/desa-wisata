@@ -6,18 +6,20 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Events extends Model
+class Event extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'admin_id',
+        'image_url',
         'name',
         'description',
+        'location',
+        'gmaps_url',
         'start_date',
         'end_date',
-        'location',
-        'slug'
+        'slug',
     ];
 
     public function user()

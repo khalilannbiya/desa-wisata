@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
@@ -19,12 +20,20 @@ Route::get('/detail-artikel', function () {
     return view('components.pages.frontend.detail-article');
 });
 
+Route::get('/event-detail', function () {
+    return view('components.pages.frontend.detail-event');
+});
+
 Route::get('/event', function () {
     return view('components.pages.frontend.event');
 });
 
-Route::get('/dashboard-admin', function () {
-    return view('components.pages.dashboard.admin.destination.dashboard');
+Route::get('/event/create', function () {
+    return view('components.pages.dashboard.writer.add');
+});
+
+Route::get('/dashboard-1', function () {
+    return view('components.pages.dashboard.index');
 });
 
 
@@ -52,8 +61,12 @@ Route::middleware([
         'role:super_admin'
     ])->name('super_admin.')->prefix('super-admin')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
+
+        Route::resource('events', EventController::class)->except([
+            'show'
+        ]);
 
         Route::post('/destinations/{destination}/galleries', [DestinationController::class, 'addGalleries'])->name('destinations.addGalleries');
         Route::post('/destinations/{destination}/facility', [DestinationController::class, 'storeFacility'])->name('destinations.storeFacility');
@@ -77,6 +90,10 @@ Route::middleware([
         Route::resource('articles', ArticleController::class)->except([
             'show'
         ]);
+      
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
     // Admin
@@ -84,8 +101,12 @@ Route::middleware([
         'role:admin'
     ])->name('admin.')->prefix('admin')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
+
+        Route::resource('events', EventController::class)->except([
+            'show'
+        ]);
 
         Route::post('/destinations/{destination}/galleries', [DestinationController::class, 'addGalleries'])->name('destinations.addGalleries');
         Route::post('/destinations/{destination}/facility', [DestinationController::class, 'storeFacility'])->name('destinations.storeFacility');
@@ -121,7 +142,7 @@ Route::middleware([
         'role:owner'
     ])->name('owner.')->prefix('owner')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
 
         Route::post('/destinations/{destination}/galleries', [DestinationController::class, 'addGalleries'])->name('destinations.addGalleries');
@@ -135,6 +156,10 @@ Route::middleware([
         Route::resource('destinations', DestinationController::class)->except([
             'show'
         ]);
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
     // Writer
@@ -142,16 +167,18 @@ Route::middleware([
         'role:writer'
     ])->name('writer.')->prefix('writer')->group(function () {
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            return view('components.pages.dashboard.index');
         })->name('dashboard');
 
         Route::resource('articles', ArticleController::class)->except([
             'show'
         ]);
-
+      
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
-});
+
 
 Route::get('/home', function () {
     return view('components.pages.frontend.index');

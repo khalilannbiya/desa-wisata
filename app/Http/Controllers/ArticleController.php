@@ -145,19 +145,25 @@ class ArticleController extends Controller
             $request->validate([
                 'title' => 'required|string|max:255',
                 'content' => 'required|string',
-                'image_url' => 'required|image|mimes:jpg,jpeg,png|'
+                'image_url' => 'required|image|mimes:jpg,jpeg,png'
             ]);
 
             $article = Article::findOrFail($id);
-
-            if ($article->image_url) {
+           
+           // Periksa apakah ada gambar baru yang diunggah
+            if ($request->hasFile('image_url')) {
+                $photo = $request->file('image_url');
+                $path = $photo->storePublicly("gallery", "public");
                 Storage::delete($article->image_url);
+            } else {
+                $path = $event->image_url;
             }
 
             $article->update([
+                'author_id' =>  auth()->user()->role != "writer" ? $request->input('author_id') : auth()->user()->id,
                 'title' => $request->input('title'),
-                'content' => $request->input('content'),
-                'image_url' => $request->file('image_url')->store('public/articles'),
+                'content' => $request->input('content'),  
+                'image_url' => $path,
                 'slug' => Str::slug($request->input('title') . '-' . Str::ulid())
             ]);
 
