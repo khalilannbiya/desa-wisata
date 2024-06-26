@@ -48,12 +48,14 @@
                         Semua</a>
                 </div>
             </div>
-            <div class="overflow-x-auto no-scrollbar ">
+            <div class="overflow-x-auto no-scrollbar text-center">
                 <div class="">
                     <div class="inline-flex items-center justify-center gap-10 py-4">
-                        @for ($i = 1; $i <= 6; $i++)
-                            <x-partials.frontend.card-event />
-                        @endfor
+                        @forelse ($events as $event)
+                            <x-partials.frontend.card-event :event="$event" />
+                        @empty
+                            <p class="font-semibold text-center text-white text-xl">Belum ada acara</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
