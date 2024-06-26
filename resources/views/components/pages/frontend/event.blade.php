@@ -16,6 +16,7 @@
                         seru
                         yang tersedia.
                     </p>
+
                 </p>
 
             </div>
@@ -27,6 +28,7 @@
                         @empty
                             <p class="font-semibold text-center text-white text-xl">Belum ada acara</p>
                         @endforelse
+
                     </div>
                 </div>
             </div>
