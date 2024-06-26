@@ -112,6 +112,10 @@ Route::middleware([
             'show', 'edit', 'update', 'store'
         ]);
 
+        Route::resource('articles', ArticleController::class)->except([
+            'show'
+        ]);
+
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

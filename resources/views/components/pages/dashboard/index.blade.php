@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="mt-6 w-full">
-                <canvas id="myChart" class="w-full"></canvas>
+                {{-- <canvas id="myChart" class="w-full"></canvas> --}}
 
             </div>
         </div>
@@ -42,9 +42,9 @@
     @endif
 </x-layouts.dashboard>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
-<script>
+{{-- <script>
     const ctx = document.getElementById('myChart');
 
     new Chart(ctx, {
@@ -65,4 +65,4 @@
             }
         }
     });
-</script>
+</script> --}}

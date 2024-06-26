@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('author_id')->nullable(false);
             $table->string('title', 150)->nullable(false);
-            $table->string('image')->nullable(false);
+            $table->string('image_url')->nullable(false);
             $table->text('content')->nullable(false);
             $table->string('slug', 200)->nullable(false);
             $table->timestamps();
