@@ -29,6 +29,10 @@ Route::get('/event/create', function () {
     return view('components.pages.dashboard.writer.add');
 });
 
+Route::get('/404', function () {
+    return view('components.pages.frontend.page-not-found');
+});
+
 Route::get('/events', [FrontendController::class, 'events'])->name('events');
 Route::get('/events/{slug}/show', [EventController::class, 'show'])->name('events.show');
 Route::view('/about-us', 'components.pages.frontend.about-us-page')->name('about-us');
