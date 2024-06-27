@@ -119,6 +119,8 @@ class ArticleController extends Controller
     public function show(string $slug)
     {
         $article = Article::with('user')->where('slug', $slug)->firstOrFail();
+        // Increment the views count
+        $article->increment('views');
         return view('components.pages.frontend.detail-article', compact('article'));
     }
 
