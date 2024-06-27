@@ -3,31 +3,33 @@
             class="max-w-sm group shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
             <div class="p-6">
                 <div
-                    class="pb-3 mb-4 border-b group-hover:text-white border-stone-200 text-xs font-medium flex justify-between text-black">
+                    class="pb-3 mb-4 border-b group-hover:text-white border-stone-200 text-xs font-medium flex space-y-2 flex-col justify-between text-black">
                     <span class="flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        7 March, 2022
+                        {{  \Carbon\Carbon::parse($article->created_at)->locale('id')->translatedFormat('H:i. l, j F Y') }}
+                    </span>
+                    <span class="flex items-center gap-1">
+                        Dibuat Oleh {{ $article->user->name }}
                     </span>
 
                 </div>
                 <h3 class="mb-4 font-semibold group-hover:text-white  text-2xl">
-                    <a href="" class="elips transition-all group-hover:text-white text-black ">Pembaruan
-                        Wahana</a>
+                    <a href="{{ route('articles.show', $article->slug) }}" class="elips transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
                 </h3>
-                <p class="elipsis text-black group-hover:text-white text-sm mb-0">
-                    pemabaruan wahana
-                </p>
+                <div class="elipsis text-black group-hover:text-white text-sm mb-0">
+                    {!! $article->content !!}
+                </div>
             </div>
             <div class="mt-auto">
-                <img src="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}" alt=""
+                <img src="{{ Storage::url($article->image_url) }}" alt=""
                     class="w-full h-48 object-cover">
             </div>
             <div class="text-center">
-                <a href="/detail-artikel"
+                <a href="{{ route('articles.show', $article->slug) }}"
                     class="my-6 inline-flex items-center px-3 py-2 text-sm font-medium text-center group-hover:bg-white group-hover:text-green-new text-white bg-green-new rounded-md focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                     Selengkapnya
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -60,5 +62,5 @@
             }
 
             shortenText(".elipsis", 100, true);
-            shortenText(".elips", 70, true);
+            shortenText(".elips", 25, true);
         </script>

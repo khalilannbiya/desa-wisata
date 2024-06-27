@@ -25,6 +25,9 @@ Route::get('/event/create', function () {
     return view('components.pages.dashboard.writer.add');
 });
 
+Route::get('/articles', [FrontendController::class, 'articles'])->name('articles');
+Route::get('/articles/{slug}/show', [ArticleController::class, 'show'])->name('articles.show');
+
 Route::get('/404', function () {
     return view('components.pages.frontend.page-not-found');
 });

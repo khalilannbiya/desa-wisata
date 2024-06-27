@@ -3,10 +3,11 @@
         <div class="text-4xl font-extrabold text-center">
             <h1 class="font-inter">Artikel</h1>
         </div>
-        <div class="px-5">
-            <form class="max-w-md mx-auto my-10" action="{{ route('destinations') }}" method="GET">
+        
+        <div class="">
+            <form class="max-w-md mx-auto my-10" action="{{ route('articles') }}" method="GET">
                 <label for="default-search"
-                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Cari</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -17,20 +18,28 @@
                     </div>
                     <input type="text" name="keyword" id="default-search"
                         class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-green-new focus:border-green-new dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Cari Tempat Wisata..." required />
+                        placeholder="Cari Artikel..." required />
                     <button type="submit"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        class="text-white absolute end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cari</button>
                 </div>
             </form>
         </div>
         <div class="grid xl:grid-cols-4 lg:grid-cols-3 mx-auto max-w-7xl  justify-items-center gap-4 mt-10 px-3">
-            @for ($i = 1; $i <= 10; $i++)
+            @forelse ($articles as $article)
                 <div class="">
-                    <x-partials.frontend.card-article />
+                    <x-partials.frontend.card-article :article="$article" />
                 </div>
-            @endfor
+            @empty
+               <p class="font-semibold text-center text-white text-xl">Tidak ada Artikel</p>
+            @endforelse
         </div>
     </div>
+
+    @if ($articles->lastPage()>1)
+        <div class="mt-10 max-w-7xl mx-auto px-5">
+            {{ $articles->links() }}
+        </div>
+    @endif
 
 </x-layouts.visitor-layout>
 

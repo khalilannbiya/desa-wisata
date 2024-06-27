@@ -116,9 +116,10 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $article = Article::with('user')->where('slug', $slug)->firstOrFail();
+        return view('components.pages.frontend.detail-article', compact('article'));
     }
 
     /**
