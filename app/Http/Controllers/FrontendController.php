@@ -27,14 +27,16 @@ class FrontendController extends Controller
         return view('components.pages.frontend.destination', compact('destinations'));
     }
 
-    public function events()
+    public function events(Request $request)
     {
         $newEvents = Event::limit(5)->latest()->get();
-        $events = Event::latest()->get();
-        return view('components.pages.frontend.event', compact('newEvents', 'events'));
-    }
 
-    public function detailEvent()
-    {
+        $events = Event::query();
+        if ($request->has('keyword')) {
+            $events = $events->where('name', 'like', '%' . $request->keyword . '%');
+        }
+
+        $events = $events->paginate(8);
+        return view('components.pages.frontend.event', compact('newEvents', 'events'));
     }
 }
