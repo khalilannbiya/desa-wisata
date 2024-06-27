@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Destination;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\EventSeeder;
 use Database\Seeders\DestinationSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +19,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            DestinationSeeder::class
+            DestinationSeeder::class,
+            EventSeeder::class
         ]);
     }
 }

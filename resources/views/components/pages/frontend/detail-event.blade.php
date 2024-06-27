@@ -30,8 +30,8 @@
         <section class="w-full py-10 ">
             <div class="container mx-auto max-w-7xl px-4 md:px-6">
                 <div class="grid gap-10 ">
-                    <a href="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}" target="_blank" class="">
-                        <img src="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}"
+                    <a href="{{ Storage::url($event->image_url) }}" target="_blank" class="">
+                        <img src="{{ Storage::url($event->image_url) }}"
                             class="w-full rounded-lg h-[500px] object-cover" alt="">
                     </a>
                     <div>
