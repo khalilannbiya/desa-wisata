@@ -13,7 +13,8 @@
         </ol>
     </nav>
 
-    <form action="{{ route(strtolower(auth()->user()->role) . '.articles.store') }}" enctype="multipart/form-data" method="POST" novalidate>
+    <form action="{{ route(strtolower(auth()->user()->role) . '.articles.store') }}" enctype="multipart/form-data"
+        method="POST" novalidate>
         @csrf
         <div class="form-1">
             <h1 class="mb-6 text-xl font-bold text-black-dashboard dark:text-white-dahsboard">Tambah Artikel</h1>
@@ -57,23 +58,29 @@
                     </div>
                 @endif
                 <div class="mb-4.5">
-                    <label for="title" class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
+                    <label for="title"
+                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
                         Judul <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" required name="title" autocomplete="title" maxlength="100" placeholder="Masukan Judul" value="{{ old('title') }}" class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black-dashboard outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white-dahsboard dark:focus:border-primary">
+                    <input type="text" required name="title" autocomplete="title" maxlength="35"
+                        placeholder="Masukan Judul" value="{{ old('title') }}"
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black-dashboard outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white-dahsboard dark:focus:border-primary">
                     <x-partials.dashboard.input-error :messages="$errors->get('title')" />
                 </div>
 
                 <div class="mb-4.5">
-                    <label for="content" class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
+                    <label for="content"
+                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
                         Konten <span class="text-red-500">*</span>
                     </label>
-                    <textarea rows="5" cols="30" id="content" required name="content" placeholder="Masukan Konten" class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black-dashboard outline-none transition  active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white-dahsboard ">{{ old('content') }}</textarea>
+                    <textarea rows="5" cols="30" id="content" required name="content" placeholder="Masukan Konten"
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black-dashboard outline-none transition  active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white-dahsboard ">{{ old('content') }}</textarea>
                     <x-partials.dashboard.input-error :messages="$errors->get('content')" />
                 </div>
             </div>
 
-            <button type="submit" class="flex justify-center w-full p-3 font-medium text-white rounded bg-deep-koamaru-600 hover:bg-opacity-90">
+            <button type="submit"
+                class="flex justify-center w-full p-3 font-medium text-white rounded bg-deep-koamaru-600 hover:bg-opacity-90">
                 Kirim
             </button>
         </div>
@@ -82,13 +89,23 @@
 
 </x-layouts.dashboard>
 <script>
-        CKEDITOR.replace('content', {
-            toolbar: [
-                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'] },
-                { name: 'styles', items: ['Styles', 'Format'] },
-                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
-                { name: 'tools', items: ['Maximize'] }
-            ]
-        }); // by name bukan id CKeditor 4
+    CKEDITOR.replace('content', {
+        toolbar: [{
+                name: 'paragraph',
+                items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
+            },
+            {
+                name: 'styles',
+                items: ['Styles', 'Format']
+            },
+            {
+                name: 'basicstyles',
+                items: ['Bold', 'Italic', 'Underline', 'Strike']
+            },
+            {
+                name: 'tools',
+                items: ['Maximize']
+            }
+        ]
+    }); // by name bukan id CKeditor 4
 </script>
-
