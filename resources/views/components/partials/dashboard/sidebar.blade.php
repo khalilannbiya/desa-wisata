@@ -1,5 +1,5 @@
 <aside :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-    class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black-dashboard duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
+    class="absolute font-inter left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black-dashboard duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
     @click.outside="sidebarToggle = false">
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between lg:justify-center gap-2 px-6 py-5.5 lg:py-6.5">
@@ -88,7 +88,7 @@
                             </a>
                         </li>
                     @endif
-                    
+
                     @if (auth()->user()->role != 'writer')
                         <li>
                             @php
@@ -117,7 +117,11 @@
 
                             <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ in_array(Route::current()->getName(), [$roleName . '.articles.index', $roleName . '.articles.create', $roleName . '.articles.edit']) ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
                                 href="{{ route($routeName) }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"></path></svg> Artikel
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;">
+                                    <path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z">
+                                    </path>
+                                </svg> Artikel
                             </a>
                         </li>
                     @endif
