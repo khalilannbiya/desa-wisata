@@ -1,6 +1,6 @@
         {{-- card  --}}
         <div
-            class="max-w-sm group shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
+            class="max-w-sm group h-[480px] flex flex-col justify-between shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
             <div class="p-6">
                 <div
                     class="pb-3 mb-4 border-b group-hover:text-white border-stone-200 text-xs font-medium flex space-y-2 flex-col justify-between text-black">
@@ -10,7 +10,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        {{  \Carbon\Carbon::parse($article->created_at)->locale('id')->translatedFormat('H:i. l, j F Y') }}
+                        {{ \Carbon\Carbon::parse($article->created_at)->locale('id')->translatedFormat('H:i. l, j F Y') }}
                     </span>
                     <span class="flex items-center gap-1">
                         Dibuat Oleh {{ $article->user->name }}
@@ -18,15 +18,15 @@
 
                 </div>
                 <h3 class="mb-4 font-semibold group-hover:text-white  text-2xl">
-                    <a href="{{ route('articles.show', $article->slug) }}" class="elips transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
+                    <a href="{{ route('articles.show', $article->slug) }}"
+                        class="elips transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
                 </h3>
-                <div class="elipsis text-black group-hover:text-white text-sm mb-0">
+                <div class="elipsis overflow-hidden h-[40px] text-black group-hover:text-white text-sm mb-0">
                     {!! $article->content !!}
                 </div>
             </div>
             <div class="mt-auto">
-                <img src="{{ Storage::url($article->image_url) }}" alt=""
-                    class="w-full h-48 object-cover">
+                <img src="{{ Storage::url($article->image_url) }}" alt="" class="w-full h-48 object-cover">
             </div>
             <div class="text-center">
                 <a href="{{ route('articles.show', $article->slug) }}"

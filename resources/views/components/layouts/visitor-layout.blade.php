@@ -92,7 +92,7 @@
     </section>
 
     <footer class="w-full  mt-20 text-gray-700 bg-gray-100 body-font">
-        <div class="flex flex-col md:flex-row items-center  px-5 py-24  ">
+        <div class="flex flex-col md:flex-row items-center  px-5 py-5  ">
             <div class="lg:w-1/2  mx-auto text-center md:mx-0 ">
                 <a class="flex items-center justify-center font-medium text-gray-900 title-font ">
                     <img class="w-20" src="{{ asset('assets/img/logo.png') }}" alt="">
@@ -130,7 +130,7 @@
 
                 <div class="w-full px-4 md:w-1/2">
 
-                    <nav class="mb-10 list-none text-xl">
+                    <nav class="mb-10 list-none text-md">
                         <li class="mt-3">
                             <a href="/" class="text-gray-500 cursor-pointer hover:text-green-new">Beranda</a>
                         </li>
@@ -145,7 +145,7 @@
                 </div>
                 <div class="w-full px-4  md:w-1/2">
 
-                    <nav class="mb-10 list-none text-xl">
+                    <nav class="mb-10 list-none text-md">
                         <li class="mt-3">
                             <a href="/event" class=" cursor-pointer hover:text-green-new">Acara</a>
                         </li>
