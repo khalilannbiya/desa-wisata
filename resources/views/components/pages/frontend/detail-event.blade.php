@@ -15,8 +15,12 @@
 
                         <div>
                             <h3 class="text-lg font-semibold">Tanggal &amp; Waktu</h3>
+                            @php
+                                $start_date = \Carbon\Carbon::parse($event->start_date)->locale('id');
+                                $end_date = \Carbon\Carbon::parse($event->end_date)->locale('id');
+                            @endphp
                             <p class="text-muted-foreground">
-                                {{ \Carbon\Carbon::parse($event->start_date)->format('d-m-Y, H:i') . ' - ' . \Carbon\Carbon::parse($event->end_date)->format('d-m-Y, H:i') }}
+                                {{ $start_date->translatedFormat('l, H:i j F Y') . ' - ' . $end_date->translatedFormat('l, H:i j F Y') }}
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold">Lokasi</h3>

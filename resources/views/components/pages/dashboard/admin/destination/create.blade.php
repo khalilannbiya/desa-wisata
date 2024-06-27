@@ -33,7 +33,7 @@
                 <div id="imagePreviewContainer" class="flex flex-wrap gap-5 mt-3"></div>
                 <input type="file" required multiple accept="image/*" name="galleries[]" id="galleries"
                     class="mt-3">
-                <x-partials.dashboard.input-error :messages="$errors->get('galleries.*')" />
+                <x-partials.dashboard.input-error :messages="$errors->get('galleries.')" />
             </div>
 
             <div class="px-6 py-6 mb-6 bg-white rounded-lg shadow-lg dark:bg-black">
@@ -324,14 +324,14 @@
 
             <div class="px-6 py-6 bg-white rounded-lg shadow-lg dark:bg-black">
                 <div class="mb-6 text-center text-black dark:text-white">
-                    <h2>Akomondasi</h2>
+                    <h2>Akomodasi</h2>
                 </div>
 
                 <div class="mb-6">
                     <input id="accommodations.1"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         type="text" autocomplete="accommodations[1]" value="{{ old('accommodations.1') }}"
-                        name="accommodations[1]" placeholder="Masukkan Akomondasi ke 1">
+                        name="accommodations[1]" placeholder="Masukkan Akomodasi ke 1">
                     <x-partials.dashboard.input-error :messages="$errors->get('accommodations.1')" />
                 </div>
 
@@ -340,7 +340,7 @@
                 <div class="">
                     <button type="button" id="addAccommodationRowButton"
                         class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
-                        Tambah Akomondasi </button>
+                        Tambah Akomodasi </button>
                 </div>
             </div>
         </div>
@@ -433,7 +433,7 @@
                         <input id="accommodations.${accommodationCount}"
                             class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             type="text" autocomplete="accommodations[${accommodationCount}]" value="{{ old('accommodations.${accommodationCount}') }}"
-                            name="accommodations[${accommodationCount}]" placeholder="Masukkan Akomondasi ke ${accommodationCount}">
+                            name="accommodations[${accommodationCount}]" placeholder="Masukkan Akomodasi ke ${accommodationCount}">
                         <x-partials.dashboard.input-error :messages="$errors->get('accommodations.${accommodationCount}')" />
                     </div>
             `;

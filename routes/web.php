@@ -9,10 +9,6 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ArticleController;
 
-Route::get('/galeri', function () {
-    return view('components.pages.frontend.gallery');
-});
-
 Route::get('/artikel', function () {
     return view('components.pages.frontend.article');
 });
@@ -36,6 +32,8 @@ Route::view('/about-us', 'components.pages.frontend.about-us-page')->name('about
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
 Route::get('/destinations/{slug}/show', [DestinationController::class, 'show'])->middleware('check.destination.active')->name('destinations.show');
+
+Route::get('/galleries', [FrontendController::class, 'galleries'])->name('galleries');
 
 Route::middleware([
     'auth',

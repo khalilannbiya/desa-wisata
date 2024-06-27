@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Gallery;
 use App\Models\Destination;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FrontendController extends Controller
 {
@@ -38,5 +40,12 @@ class FrontendController extends Controller
 
         $events = $events->paginate(8);
         return view('components.pages.frontend.event', compact('newEvents', 'events'));
+    }
+
+    public function galleries()
+    {
+        $galleries = Gallery::with('destination')->latest()->paginate(8);
+
+        return view('components.pages.frontend.gallery', compact('galleries'));
     }
 }

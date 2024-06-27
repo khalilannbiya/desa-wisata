@@ -261,7 +261,7 @@
                                         <p class="text-xs font-medium text-red-500">* Maksimal file 1MB</p>
                                         <input type="file" required multiple accept="image/*" name="galleries[]"
                                             id="galleries" class="mt-3">
-                                        <x-partials.dashboard.input-error :messages="$errors->get('galleries.*')" />
+                                        <x-partials.dashboard.input-error :messages="$errors->get('galleries.')" />
                                     </div>
                                     <div class="pb-4 text-center ">
 

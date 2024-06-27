@@ -219,19 +219,18 @@
                 </div>
                 <div class="bg-white shadow-lg dark:bg-form-input px-6 py-6 rounded-lg">
                     <div class="text-center mb-6 text-black dark:text-white">
-                        <h2>Akomondasi</h2>
+                        <h2>Akomodasi</h2>
                     </div>
                     <div class="mb-6">
                         <input id="accommodations"
                             class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            type="text" name="accommodations[1][accommodations]"
-                            placeholder="Masukkan Akomondasi">
+                            type="text" name="accommodations[1][accommodations]" placeholder="Masukkan Akomodasi">
                     </div>
                     <div id="tambahAccommodations" class="mt-6"></div>
                     <div class="flex gap-4 flex-wrap">
                         <button type="button" id="tombolTambahAccommodations"
                             class="rounded bg-deep-koamaru-600 dark:bg-white dark:text-black py-3 px-6 text-white shadow-md hover:bg-deep-koamaru-600-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">
-                            Tambah Akomondasi </button>
+                            Tambah Akomodasi </button>
                         <button
                             class="rounded bg-danger py-3 px-6 dark:bg-white dark:text-black text-white shadow-md hover:bg-deep-koamaru-600-dark transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary">Hapus</button>
                     </div>
@@ -344,7 +343,7 @@
                         <input id="accommodations"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         type="text" name="accommodations[${accommodationsCount}][accommodations]"
-                        placeholder="Masukkan Akomondasi">
+                        placeholder="Masukkan Akomodasi">
                     </div>`)
             })
 
