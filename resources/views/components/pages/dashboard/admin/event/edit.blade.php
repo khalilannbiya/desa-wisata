@@ -29,7 +29,7 @@
                 <p class="mb-2">
                     Foto Sebelumnya
                 </p>
-                <a href="{{ Storage::url($event->image_url) }}" target="_blank">
+                <a href="{{ Storage::url($event->image_url) }}" target="_blank" class="inline-block">
                     <img class="w-40" src="{{ Storage::url($event->image_url) }}" alt="Gambar Event">
                 </a>
             </div>

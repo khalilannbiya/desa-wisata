@@ -22,10 +22,7 @@
         <!-- Sidebar Menu -->
         <nav class="px-4 py-4 lg:mt-4 lg:px-6" x-data="{ selected: $persist('Dashboard') }">
 
-            <!-- Data Transaksi Group -->
             <div>
-                <h3 class="mb-4 ml-4 text-sm font-medium uppercase text-bodydark2">Data Transaksi</h3>
-
                 <ul class="mb-6 flex flex-col gap-1.5">
                     <!-- Menu Item Dashboard -->
                     <li>
