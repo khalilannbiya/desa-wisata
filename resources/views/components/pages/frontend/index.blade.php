@@ -75,14 +75,16 @@
             <h1 class="font-inter">Informasi Tentang Desa Wisata</h1>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-4 py-4">
-            @for ($i = 1; $i <= 3; $i++)
-                <div class="opacity-0 image-container">
-                    <x-partials.frontend.card-article />
-                </div>
-            @endfor
+            @forelse ($articles as $article)
+                 <div class="opacity-0 image-container">
+                   <x-partials.frontend.card-article :article="$article" />
+                 </div>
+            @empty
+               <p class="font-semibold text-center text-white text-xl">Belum ada artikel</p>
+            @endforelse
         </div>
         <div class="text-center mt-6">
-            <a href="/artikel"
+            <a href="{{ route('articles') }}"
                 class="text-black px-4 py-2 rounded-md border-2 border-gray-600 hover:shadow-lg transition-transform duration-300 transform">Lihat
                 Semua</a>
         </div>

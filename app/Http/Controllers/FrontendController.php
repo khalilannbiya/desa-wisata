@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Destination;
+use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -12,13 +14,16 @@ class FrontendController extends Controller
     {
         $destinations = Destination::with('galleries')->limit(3)->latest()->get();
         $events = Event::limit(3)->latest()->get();
-        return view('components.pages.frontend.index', compact('destinations', 'events'));
+
+        $articles = Article::with('user')->limit(3)->latest()->get();
+
+        return view('components.pages.frontend.index', compact('destinations', 'events', 'articles'));
     }
 
     public function destinations(Request $request)
     {
 
-        $destinations = Destination::with(['galleries']);
+        $destinations = Destination::with(['galleries'])->latest();
         if ($request->has('keyword')) {
             $destinations = $destinations->where('name', 'like', '%' . $request->keyword . '%');
         }
@@ -34,7 +39,14 @@ class FrontendController extends Controller
         return view('components.pages.frontend.event', compact('newEvents', 'events'));
     }
 
-    public function detailEvent()
+    public function articles(Request $request)
     {
+        $articles = Article::with('user')->latest();
+        if ($request->has('keyword')) {
+            $articles = $articles->where('title', 'like', '%' . $request->keyword . '%');
+        }
+
+        $articles = $articles->paginate(8);
+        return view('components.pages.frontend.article', compact('articles'));
     }
 }

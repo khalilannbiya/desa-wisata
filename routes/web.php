@@ -29,6 +29,9 @@ Route::get('/event/create', function () {
     return view('components.pages.dashboard.writer.add');
 });
 
+Route::get('/articles', [FrontendController::class, 'articles'])->name('articles');
+Route::get('/articles/{slug}/show', [ArticleController::class, 'show'])->name('articles.show');
+
 Route::get('/events', [FrontendController::class, 'events'])->name('events');
 Route::get('/events/{slug}/show', [EventController::class, 'show'])->name('events.show');
 Route::view('/about-us', 'components.pages.frontend.about-us-page')->name('about-us');
