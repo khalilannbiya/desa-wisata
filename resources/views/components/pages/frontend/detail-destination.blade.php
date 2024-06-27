@@ -62,7 +62,7 @@
                             <button
                                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                                 id="settings-tab" data-tabs-target="#settings" type="button" role="tab"
-                                aria-controls="settings" aria-selected="false">Akomondasi</button>
+                                aria-controls="settings" aria-selected="false">Akomodasi</button>
                         </li>
                         <li role="presentation">
                             <button

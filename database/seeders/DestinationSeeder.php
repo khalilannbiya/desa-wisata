@@ -37,14 +37,15 @@ class DestinationSeeder extends Seeder
                 'slug' => Str::slug($nameDestination . '-' . Str::ulid()),
             ]);
 
-            for ($i = 1; $i <= 3; $i++) {
-                Gallery::create([
-                    'destination_id' => $destination->id,
-                    'image_url' => $faker->image('public/storage/images')
-                ]);
-            }
+            $imagePath = $faker->image('public/storage/gallery');
+            $relativePath = str_replace('public/storage/', '', $imagePath);
+            Gallery::create([
+                'destination_id' => $destination->id,
+                'image_url' => $relativePath
+            ]);
 
-            $days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+
+            $days = ['senin', 'selasa'];
 
             foreach ($days as $day) {
                 OpeningHour::create([

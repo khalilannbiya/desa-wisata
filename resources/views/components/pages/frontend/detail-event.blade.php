@@ -15,8 +15,12 @@
 
                         <div>
                             <h3 class="text-lg font-semibold">Tanggal &amp; Waktu</h3>
+                            @php
+                                $start_date = \Carbon\Carbon::parse($event->start_date)->locale('id');
+                                $end_date = \Carbon\Carbon::parse($event->end_date)->locale('id');
+                            @endphp
                             <p class="text-muted-foreground">
-                                {{ \Carbon\Carbon::parse($event->start_date)->format('d-m-Y, H:i') . ' - ' . \Carbon\Carbon::parse($event->end_date)->format('d-m-Y, H:i') }}
+                                {{ $start_date->translatedFormat('l, H:i j F Y') . ' - ' . $end_date->translatedFormat('l, H:i j F Y') }}
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold">Lokasi</h3>
@@ -30,8 +34,8 @@
         <section class="w-full py-10 ">
             <div class="container mx-auto max-w-7xl px-4 md:px-6">
                 <div class="grid gap-10 ">
-                    <a href="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}" target="_blank" class="">
-                        <img src="{{ asset('assets/img/wisata-rakutak-1.jpeg') }}"
+                    <a href="{{ Storage::url($event->image_url) }}" target="_blank" class="">
+                        <img src="{{ Storage::url($event->image_url) }}"
                             class="w-full rounded-lg h-[500px] object-cover" alt="">
                     </a>
                     <div>

@@ -10,7 +10,7 @@
 
             <form class="max-w-md mx-auto my-10" action="{{ route('destinations') }}" method="GET">
                 <label for="default-search"
-                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Cari</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -23,7 +23,7 @@
                         class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-green-new focus:border-green-new dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Cari Tempat Wisata..." required />
                     <button type="submit"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        class="text-white absolute end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cari</button>
                 </div>
             </form>
 

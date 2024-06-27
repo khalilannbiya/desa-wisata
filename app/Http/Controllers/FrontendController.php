@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Gallery;
 use App\Models\Destination;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FrontendController extends Controller
 {
@@ -32,10 +34,16 @@ class FrontendController extends Controller
         return view('components.pages.frontend.destination', compact('destinations'));
     }
 
-    public function events()
+    public function events(Request $request)
     {
         $newEvents = Event::limit(5)->latest()->get();
-        $events = Event::latest()->get();
+
+        $events = Event::query();
+        if ($request->has('keyword')) {
+            $events = $events->where('name', 'like', '%' . $request->keyword . '%');
+        }
+
+        $events = $events->paginate(8);
         return view('components.pages.frontend.event', compact('newEvents', 'events'));
     }
 
@@ -48,5 +56,12 @@ class FrontendController extends Controller
 
         $articles = $articles->paginate(8);
         return view('components.pages.frontend.article', compact('articles'));
+    }
+  
+    public function galleries()
+    {
+        $galleries = Gallery::with('destination')->latest()->paginate(8);
+
+        return view('components.pages.frontend.gallery', compact('galleries'));
     }
 }
