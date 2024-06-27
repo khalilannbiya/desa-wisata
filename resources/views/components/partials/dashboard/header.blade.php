@@ -73,10 +73,6 @@
                             class="block text-sm font-medium text-black dark:text-white-dahsboard">{{ auth()->user()->name }}</span>
                     </span>
 
-                    <span class="w-12 h-12 rounded-full">
-                        <img src="{{ asset('assets/img/profile.webp') }}" alt="User" />
-                    </span>
-
                     <svg :class="dropdownOpen && 'rotate-180'" class="hidden fill-current sm:block" width="12"
                         height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"

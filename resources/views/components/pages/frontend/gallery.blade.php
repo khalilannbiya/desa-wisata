@@ -6,9 +6,11 @@
         <div class="grid md:grid-cols-4 grid-cols-1 max-w-7xl mx-auto  gap-4">
             @forelse ($galleries as $gallery)
                 <div data-aos="zoom-in" data-aos-duration="1000" class=" transition-transform duration-300 ">
-                    <img class=" aspect-square object-cover  max-w-full rounded-lg"
-                        src="{{ Storage::url($gallery->image_url) }}" title="{{ $gallery->destination->name }}"
-                        alt="">
+                    <a href="{{ Storage::url($gallery->image_url) }}" target="_blank">
+                        <img class=" aspect-square object-cover  max-w-full rounded-lg"
+                            src="{{ Storage::url($gallery->image_url) }}" title="{{ $gallery->destination->name }}"
+                            alt="Gambar wisata {{ $gallery->destination->name }}">
+                    </a>
                 </div>
             @empty
                 <p class="text-center font-inter text-gray-500 text-lg">Tidak ada galeri</p>

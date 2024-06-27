@@ -21,6 +21,15 @@
             <h1 class="mb-6 text-xl font-bold text-black-dashboard dark:text-white-dahsboard">Ubah Artikel</h1>
 
             <div class="px-6 py-6 mb-6 bg-white rounded-lg shadow-lg dark:bg-black">
+                <p class="mb-2">
+                    Foto Sebelumnya
+                </p>
+                <a href="{{ Storage::url($article->image_url) }}" target="_blank" class="inline-block">
+                    <img class="w-40" src="{{ Storage::url($article->image_url) }}" alt="Gambar Event">
+                </a>
+            </div>
+
+            <div class="px-6 py-6 mb-6 bg-white rounded-lg shadow-lg dark:bg-black">
                 <div class="flex items-center justify-between">
                     <div>
                         <label for="image" class="block mb-2 text-sm font-medium text-black dark:text-white">
@@ -30,10 +39,6 @@
                         <p class="text-xs font-medium text-red-500 mt-2">* Pastikan file bertipe jpeg, jpg, png</p>
                         <p class="text-xs font-medium text-red-500">* Maksimal file 1MB</p>
                         <x-partials.dashboard.input-error :messages="$errors->get('image')" />
-                    </div>
-                    <div class="overflow-hidden rounded-lg shadow-md max-w-xs w-32 ml-4">
-                        <img class="w-full h-auto rounded-lg object-cover" src="{{ Storage::url($article->image_url) }}"
-                            alt="Gambar Wisata">
                     </div>
                 </div>
                 <div id="imagePreviewContainer" class="flex flex-wrap gap-5 mt-3"></div>
@@ -68,7 +73,7 @@
                 @endif
                 <div class="mb-4.5">
                     <label for="title"
-                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
+                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text    -white-dahsboard">
                         Judul <span class="text-red-500">*</span>
                     </label>
                     <input type="text" required name="title" autocomplete="title" maxlength="35"
@@ -95,26 +100,44 @@
         </div>
     </form>
 
+    <script>
+        document.getElementById('image').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            imagePreviewContainer.innerHTML = ''; // Clear previous images
 
-</x-layouts.dashboard>
-<script>
-    CKEDITOR.replace('content', {
-        toolbar: [{
-                name: 'paragraph',
-                items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
-            },
-            {
-                name: 'styles',
-                items: ['Styles', 'Format']
-            },
-            {
-                name: 'basicstyles',
-                items: ['Bold', 'Italic', 'Underline', 'Strike']
-            },
-            {
-                name: 'tools',
-                items: ['Maximize']
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'w-32 h-32 object-cover rounded-lg';
+                    imagePreviewContainer.appendChild(img);
+                }
+                reader.readAsDataURL(file);
             }
-        ]
-    }); // by name bukan id CKeditor 4
-</script>
+        });
+    </script>
+
+    <script>
+        CKEDITOR.replace('content', {
+            toolbar: [{
+                    name: 'paragraph',
+                    items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
+                },
+                {
+                    name: 'styles',
+                    items: ['Styles', 'Format']
+                },
+                {
+                    name: 'basicstyles',
+                    items: ['Bold', 'Italic', 'Underline', 'Strike']
+                },
+                {
+                    name: 'tools',
+                    items: ['Maximize']
+                }
+            ]
+        }); // by name bukan id CKeditor 4
+    </script>
+</x-layouts.dashboard>

@@ -34,7 +34,7 @@
             @forelse ($destinations as $destination)
                 <x-partials.frontend.card-destination :$destination />
             @empty
-                <p class="font-semibold text-center text-gray-500">Belum ada tempat wisata</p>
+                <p class="font-semibold text-center text-gray-500">Tidak ada tempat wisata</p>
             @endforelse
         </div>
 

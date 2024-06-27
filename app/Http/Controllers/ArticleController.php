@@ -152,7 +152,6 @@ class ArticleController extends Controller
             if ($request->hasFile('image')) {
                 $photo = $request->file('image');
                 $path = $photo->storePublicly("gallery", "public");
-                Storage::delete($article->image);
             } else {
                 $path = $article->image_url;
             }

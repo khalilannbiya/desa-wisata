@@ -5,7 +5,7 @@
         </div>
 
         <div class="">
-            <form class="max-w-md mx-auto my-10" action="{{ route('articles') }}" method="GET">
+            <form class="max-w-md mx-auto my-10 px-10" action="{{ route('articles') }}" method="GET">
                 <label for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Cari</label>
                 <div class="relative">
@@ -30,12 +30,12 @@
                     <x-partials.frontend.card-article :article="$article" />
                 </div>
             @empty
-               <p class="font-semibold text-center text-gray-600 text-xl">Tidak ada Artikel</p>
+                <p class="font-semibold text-center text-gray-600 text-xl">Tidak ada Artikel</p>
             @endforelse
         </div>
     </div>
 
-    @if ($articles->lastPage()>1)
+    @if ($articles->lastPage() > 1)
         <div class="mt-10 max-w-7xl mx-auto px-5">
             {{ $articles->links() }}
         </div>

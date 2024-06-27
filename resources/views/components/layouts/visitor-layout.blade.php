@@ -71,7 +71,7 @@
                         </li>
                         <li>
                             <a href="{{ route('articles') }}"
-                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 {{ in_array(Route::current()->getName(), ['articles', 'articles.show']) ? 'text-green-new' : ''}} ">Artikel</a>
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 {{ in_array(Route::current()->getName(), ['articles', 'articles.show']) ? 'text-green-new' : '' }} ">Artikel</a>
                         </li>
                         <li>
                             <a href="{{ route('about-us') }}"
@@ -132,14 +132,16 @@
 
                     <nav class="mb-10 list-none text-md">
                         <li class="mt-3">
-                            <a href="/" class="text-gray-500 cursor-pointer hover:text-green-new">Beranda</a>
+                            <a href="{{ route('index') }}"
+                                class="text-gray-500 cursor-pointer hover:text-green-new {{ Route::current()->getName() == 'index' ? 'text-green-new' : '' }}">Beranda</a>
                         </li>
                         <li class="mt-3">
-                            <a href="/destinations"
-                                class="text-gray-500 cursor-pointer hover:text-green-new">Wisata</a>
+                            <a href="{{ route('destinations') }}"
+                                class="text-gray-500 cursor-pointer hover:text-green-new {{ in_array(Route::current()->getName(), ['destinations', 'destinations.show']) ? 'text-green-new' : '' }}">Wisata</a>
                         </li>
                         <li class="mt-3">
-                            <a href="/galeri" class="text-gray-500 cursor-pointer hover:text-green-new">Galeri</a>
+                            <a href="{{ route('galleries') }}"
+                                class="text-gray-500 cursor-pointer hover:text-green-new {{ Route::current()->getName() == 'galleries' ? 'text-green-new' : '' }}">Galeri</a>
                         </li>
                     </nav>
                 </div>
@@ -147,13 +149,17 @@
 
                     <nav class="mb-10 list-none text-md">
                         <li class="mt-3">
-                            <a href="/event" class=" cursor-pointer hover:text-green-new">Acara</a>
+                            <a href="{{ route('events') }}"
+                                class=" cursor-pointer hover:text-green-new {{ in_array(Route::current()->getName(), ['events', 'events.show']) ? 'text-green-new' : '' }}">Acara</a>
                         </li>
                         <li class="mt-3">
-                            <a href="/artikel" class=" cursor-pointer hover:text-green-new">Artikel</a>
+                            <a href="{{ route('articles') }}"
+                                class=" cursor-pointer hover:text-green-new {{ in_array(Route::current()->getName(), ['articles', 'articles.show']) ? 'text-green-new' : '' }}">Artikel</a>
                         </li>
                         <li class="mt-3">
-                            <a href="/aboutus" class=" cursor-pointer hover:text-green-new">Tentang Kami</a>
+                            <a href="{{ route('about-us') }}"
+                                class=" cursor-pointer hover:text-green-new {{ Route::current()->getName() == 'about-us' ? 'text-green-new' : '' }}">Tentang
+                                Kami</a>
                         </li>
                     </nav>
                 </div>
