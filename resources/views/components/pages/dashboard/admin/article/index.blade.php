@@ -57,7 +57,10 @@
                             searchable: false,
 
                         }
-                    ]
+                    ],
+                    order: [
+                        [0, 'desc']
+                    ], // Default sorting
                 });
             })
             // AJAX Datatable

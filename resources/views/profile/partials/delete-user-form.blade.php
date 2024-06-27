@@ -13,7 +13,7 @@
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Hapus Akun') }}</x-danger-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6 dark:bg-gray-800">
+        <form method="post" action="{{ route(auth()->user()->role . '.profile.destroy') }}" class="p-6 dark:bg-gray-800">
             @csrf
             @method('delete')
 
