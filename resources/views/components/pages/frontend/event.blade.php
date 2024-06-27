@@ -32,7 +32,7 @@
 
         </section>
 
-        <div class="">
+        <div class="mx-auto max-w-7xl">
             <div class="px-10 mb-10">
                 <h1 class="text-3xl text-center font-inter font-extrabold">
                     Semua Acara
