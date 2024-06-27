@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/artikel', function () {
     return view('components.pages.frontend.article');
@@ -51,9 +52,7 @@ Route::middleware([
     Route::middleware([
         'role:super_admin'
     ])->name('super_admin.')->prefix('super-admin')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('components.pages.dashboard.index');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'superAdmin'])->name('dashboard');
 
         Route::resource('events', EventController::class)->except([
             'show'
@@ -91,9 +90,7 @@ Route::middleware([
     Route::middleware([
         'role:admin'
     ])->name('admin.')->prefix('admin')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('components.pages.dashboard.index');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
 
         Route::resource('events', EventController::class)->except([
             'show'
@@ -132,9 +129,7 @@ Route::middleware([
     Route::middleware([
         'role:owner'
     ])->name('owner.')->prefix('owner')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('components.pages.dashboard.index');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'owner'])->name('dashboard');
 
         Route::post('/destinations/{destination}/galleries', [DestinationController::class, 'addGalleries'])->name('destinations.addGalleries');
         Route::post('/destinations/{destination}/facility', [DestinationController::class, 'storeFacility'])->name('destinations.storeFacility');
@@ -157,10 +152,7 @@ Route::middleware([
     Route::middleware([
         'role:writer'
     ])->name('writer.')->prefix('writer')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('components.pages.dashboard.index');
-        })->name('dashboard');
-
+        Route::get('/dashboard', [DashboardController::class, 'writer'])->name('dashboard');
 
         Route::resource('articles', ArticleController::class)->except([
             'show'
