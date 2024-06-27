@@ -80,7 +80,7 @@
                    <x-partials.frontend.card-article :article="$article" />
                  </div>
             @empty
-               <p class="font-semibold text-center text-white text-xl">Belum ada artikel</p>
+               <p class="font-semibold text-center text-gray-600 text-xl">Belum ada artikel</p>
             @endforelse
         </div>
         <div class="text-center mt-6">

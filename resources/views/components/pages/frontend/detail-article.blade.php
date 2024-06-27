@@ -1,5 +1,5 @@
 <x-layouts.visitor-layout>
-    <section class="pt-20 font-inter ">
+    <section class="pt-20 font-inter reset">
         <div class="max-w-screen-xl px-4 py-8 mx-auto relative z-10">
             <img class="w-full object-cover md:h-125 rounded-md" src="{{ Storage::url($article->image_url) }}"
                 alt="">
@@ -27,7 +27,31 @@
             </div>
         </div>
     </section>
+
+    <style>
+      /* custom CSS */
+  .reset h1 {
+    font-size: 2em;
+    font-weight: bolder;
+  }
+  .reset h2 {
+    font-size: 1.2em;
+    font-weight: bolder;
+    }
+  .reset ol{
+    list-style: auto;
+  }
+  .reset ul{
+    list-style: disc;
+}
+.reset blockquote {
+    padding: 10px 20px;
+    margin: 20px 0;
+    border-left: 5px solid #ccc;
+    background-color: #f9f9f9;
+    font-style: italic;
+    color: #555;
+    }
+</style>
 </x-layouts.visitor-layout>
-
-
 <script></script>
