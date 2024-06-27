@@ -53,7 +53,7 @@
                         @forelse ($events as $event)
                             <x-partials.frontend.card-event :event="$event" />
                         @empty
-                            <p class="font-semibold text-center text-white text-xl">Belum ada acara</p>
+                            <p class="font-semibold text-center text-white text-xl">Tidak ada acara</p>
                         @endforelse
                     </div>
                 </div>

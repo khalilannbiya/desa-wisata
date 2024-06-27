@@ -21,7 +21,7 @@
                 <div id="imagePreviewContainer" class="flex flex-wrap gap-5 mt-3"></div>
                 <input type="file" required multiple accept="image/*" name="galleries[]" id="galleries"
                     class="mt-3">
-                <x-partials.dashboard.input-error :messages="$errors->get('galleries.*')" />
+                <x-partials.dashboard.input-error :messages="$errors->get('galleries.')" />
             </div>
 
             <div class="bg-white dark:bg-form-input shadow-lg px-6 py-6 rounded-lg mb-6">

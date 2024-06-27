@@ -24,7 +24,7 @@
                             @forelse ($newEvents as $event)
                                 <x-partials.frontend.card-event :event="$event" />
                             @empty
-                                <p class="font-semibold text-center text-white text-xl">Belum ada acara</p>
+                                <p class="font-semibold text-center text-white text-xl">Tidak ada acara</p>
                             @endforelse
                         </div>
                     </div>
@@ -60,12 +60,12 @@
                 @forelse ($events as $event)
                     <x-partials.frontend.card-event :event="$event" />
                 @empty
-                    <p class="font-semibold text-center text-gray-500">Belum ada acara</p>
+                    <p class="font-semibold text-center text-gray-500">Tidak ada acara</p>
                 @endforelse
             </div>
         </div>
         @if ($events->lastPage() > 1)
-            <div class="mt-10 mx-auto max-w-7xl">
+            <div class="mt-10 px-5 mx-auto max-w-7xl">
                 {{ $events->links() }}
             </div>
         @endif
