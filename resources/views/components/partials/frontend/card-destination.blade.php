@@ -1,12 +1,10 @@
 <div
     class="relative h-[28rem] card flex w-full justify-between max-w-[26rem] flex-col rounded-xl bg-green-new bg-clip-border text-gray-700 shadow-lg">
     <div
-        class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-        <img class="object-cover object-center w-full h-45" src={{ Storage::url($destination->galleries[0]->image_url) }}
-            alt="gambar wisata" />
-        <div
-            class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60">
-        </div>
+        class="relative mx-4 mt-4 overflow-hidden  text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
+        <img class="object-cover object-center w-[26rem] h-45"
+            src={{ Storage::url($destination->galleries[0]->image_url) }} alt="gambar wisata" />
+
     </div>
     <div class="p-6 h-[11rem]">
         <div class="mb-1">
