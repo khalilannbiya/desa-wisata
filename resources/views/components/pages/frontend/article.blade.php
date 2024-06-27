@@ -3,7 +3,7 @@
         <div class="text-4xl font-extrabold text-center">
             <h1 class="font-inter">Artikel</h1>
         </div>
-        
+
         <div class="">
             <form class="max-w-md mx-auto my-10" action="{{ route('articles') }}" method="GET">
                 <label for="default-search"
@@ -30,7 +30,7 @@
                     <x-partials.frontend.card-article :article="$article" />
                 </div>
             @empty
-               <p class="font-semibold text-center text-white text-xl">Tidak ada Artikel</p>
+               <p class="font-semibold text-center text-gray-600 text-xl">Tidak ada Artikel</p>
             @endforelse
         </div>
     </div>

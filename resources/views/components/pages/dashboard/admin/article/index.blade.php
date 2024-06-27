@@ -38,9 +38,9 @@
                         url: '{!! url()->current() !!}'
                     },
                     columns: [{
-                            data: 'id',
-                            name: 'id',
-                            width: '5%'
+                            "data": 'id',
+                            "orderable": true,
+                            "searchable": false
                         },
                         {
                             data: 'title',
@@ -61,6 +61,13 @@
                     order: [
                         [0, 'desc']
                     ], // Default sorting
+                    drawCallback: function(settings) {
+                    var api = this.api();
+                    var start = api.page.info().start;
+                    api.column(0, {search: 'applied', order: 'applied'}).nodes().each(function(cell, i) {
+                    cell.innerHTML = start + i + 1;
+                });
+            }
                 });
             })
             // AJAX Datatable
