@@ -17,9 +17,9 @@
                     </span>
 
                 </div>
-                <h3 class="mb-4 elips font-semibold h-[25px] overflow-hidden group-hover:text-white  text-2xl">
+                <h3 class="mb-4 h-[35px] font-semibold overflow-hidden group-hover:text-white  text-2xl">
                     <a href="{{ route('articles.show', $article->slug) }}"
-                        class=" transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
+                        class=" elips transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
                 </h3>
                 <div class="elipsis overflow-hidden h-[40px] text-black group-hover:text-white text-sm mb-0">
                     {!! $article->content !!}
@@ -62,5 +62,5 @@
             }
 
             shortenText(".elipsis", 100, true);
-            shortenText(".elips", 25, true);
+            shortenText(".elips", 20, true);
         </script>
