@@ -26,7 +26,7 @@ class DestinationCreateRequest extends FormRequest
             'name_destination' => 'required|string|min:5|max:100',
             'description' => 'required|string',
             'location' => 'required|string',
-            'gmaps_url' => 'required|string',
+            'gmaps_url' => 'required|string|url:http,https',
             'price_range' => 'required|numeric|regex:/^[0-9]+$/',
             'status' => 'required|string|in:active,inactive',
             'opening_hours' => 'array',

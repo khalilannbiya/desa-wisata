@@ -26,7 +26,7 @@ class EventUpdateRequest extends FormRequest
             'name' => 'required|string|min:5|max:100',
             'description' => 'required|string',
             'location' => 'required|string',
-            'gmaps_url' => 'required|string',
+            'gmaps_url' => 'required|string|url:http,https',
             'image' => 'image|mimes:jpeg,png,jpg|max:1048|',
             'start_date' => 'required|date|after_or_equal:now',
             'end_date' => 'required|date|after_or_equal:now'
