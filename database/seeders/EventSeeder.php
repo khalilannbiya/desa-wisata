@@ -22,7 +22,7 @@ class EventSeeder extends Seeder
 
         $eventData = [
             [
-                'id' => 1,
+                'id' => 3,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Festival Kebudayaan 1',
@@ -34,7 +34,7 @@ class EventSeeder extends Seeder
                 'slug' => 'festival-kebudayaan-1-' . Str::ulid(),
             ],
             [
-                'id' => 2,
+                'id' => 4,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Pesta Rakyat 2',
@@ -46,7 +46,7 @@ class EventSeeder extends Seeder
                 'slug' => 'pesta-rakyat-2-' . Str::ulid(),
             ],
             [
-                'id' => 3,
+                'id' => 5,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Konser Musik Tradisional 3',
@@ -58,7 +58,7 @@ class EventSeeder extends Seeder
                 'slug' => 'konser-musik-tradisional-3-' . Str::ulid(),
             ],
             [
-                'id' => 4,
+                'id' => 6,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Pameran Seni Rupa 4',
@@ -70,7 +70,7 @@ class EventSeeder extends Seeder
                 'slug' => 'pameran-seni-rupa-4-' . Str::ulid(),
             ],
             [
-                'id' => 5,
+                'id' => 7,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Festival Film Indie 5',
@@ -82,7 +82,7 @@ class EventSeeder extends Seeder
                 'slug' => 'festival-film-indie-5-' . Str::ulid(),
             ],
             [
-                'id' => 6,
+                'id' => 8,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Festival Tari Tradisional 6',
@@ -94,7 +94,7 @@ class EventSeeder extends Seeder
                 'slug' => 'festival-tari-tradisional-6-' . Str::ulid(),
             ],
             [
-                'id' => 7,
+                'id' => 9,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Bazaar Kuliner Nusantara 7',
@@ -106,7 +106,7 @@ class EventSeeder extends Seeder
                 'slug' => 'bazaar-kuliner-nusantara-7-' . Str::ulid(),
             ],
             [
-                'id' => 8,
+                'id' => 10,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Festival Wayang 8',
@@ -118,7 +118,7 @@ class EventSeeder extends Seeder
                 'slug' => 'festival-wayang-8-' . Str::ulid(),
             ],
             [
-                'id' => 9,
+                'id' => 11,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Festival Batik 9',
@@ -130,7 +130,7 @@ class EventSeeder extends Seeder
                 'slug' => 'festival-batik-9-' . Str::ulid(),
             ],
             [
-                'id' => 10,
+                'id' => 12,
                 'admin_id' => 2,
                 'image_url' => $relativePath,
                 'name' => 'Festival Budaya Tionghoa 10',
