@@ -36,13 +36,13 @@ class DestinationController extends Controller
                     $deleteUrl = route("{$roleName}.destinations.destroy", $item->id);
 
                     return sprintf(
-                        '
+                    '
                         <div class="wrapper-action">
                             <a href="%s">Edit</a>
                             <div>
                                 <form action="%s" method="post">
                                     %s %s
-                                    <button type="submit">Hapus</button>
+                                    <button data-modal-target="deleteModal" data-modal-toggle="deleteModal" type="submit">Hapus</button>
                                 </form>
                             </div>
                         </div>',

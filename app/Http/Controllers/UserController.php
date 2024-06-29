@@ -30,7 +30,7 @@ class UserController extends Controller
                             <form action="' . $deleteUrl . '" method="POST">
                                 ' . method_field('DELETE') . '
                                 ' . csrf_field() . '
-                                <button type="submit">Hapus</button>
+                                <button data-modal-target="deleteModal" data-modal-toggle="deleteModal" type="submit">Hapus</button>
                             </form>
                         </div>';
 

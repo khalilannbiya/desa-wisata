@@ -30,6 +30,22 @@
         </table>
     </section>
 
+       <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" tabindex="-1" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="mb-4 text-lg font-semibold">Konfirmasi Hapus</h2>
+            <p class="mb-5">Apakah Anda yakin ingin menghapus Acara ini?</p>
+            <form id="deleteForm" method="post">
+                @method('delete')
+                @csrf
+                <div class="flex justify-end gap-3">
+                    <button type="button" class="px-4 py-2 text-white bg-gray-500 rounded" onclick="closeModal()">Batal</button>
+                    <button type="submit" class="px-4 py-2 text-white bg-red-600 rounded">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     @push('script')
         <script type="text/javascript">
             $(document).ready(function() {
@@ -42,7 +58,8 @@
                     columns: [{
                             "data": 'id',
                             "orderable": true,
-                            "searchable": false
+                            "searchable": false,
+                            "className" : 'text-center'
                         },
                         {
                             data: 'name',
@@ -74,7 +91,22 @@
                 });
             }
                 });
-            })
+            });
+
+            function openModal(formAction) {
+                $('#deleteForm').attr('action', formAction);
+                $('#deleteModal').removeClass('hidden');
+            }
+
+            function closeModal() {
+                $('#deleteModal').addClass('hidden');
+            }
+
+            $(document).on('click', '[data-modal-target]', function(e) {
+                e.preventDefault();
+                var formAction = $(this).closest('form').attr('action');
+                openModal(formAction);
+            });
             // AJAX Datatable
         </script>
     @endpush
