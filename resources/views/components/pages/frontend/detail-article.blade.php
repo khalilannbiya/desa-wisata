@@ -3,35 +3,35 @@
         <style>
             /* custom CSS */
             /* .reset h1 {
-                                                                                                                        font-size: 2em;
-                                                                                                                        font-weight: bolder;
-                                                                                                                    }
+                                                                                                                            font-size: 2em;
+                                                                                                                            font-weight: bolder;
+                                                                                                                        }
 
-                                                                                                                    .reset h2 {
-                                                                                                                        font-size: 1.2em;
-                                                                                                                        font-weight: bolder;
-                                                                                                                    }
+                                                                                                                        .reset h2 {
+                                                                                                                            font-size: 1.2em;
+                                                                                                                            font-weight: bolder;
+                                                                                                                        }
 
-                                                                                                                    .reset ol {
-                                                                                                                        list-style: auto;
-                                                                                                                    }
+                                                                                                                        .reset ol {
+                                                                                                                            list-style: auto;
+                                                                                                                        }
 
-                                                                                                                    .reset ul {
-                                                                                                                        list-style: disc;
-                                                                                                                    }
+                                                                                                                        .reset ul {
+                                                                                                                            list-style: disc;
+                                                                                                                        }
 
-                                                                                                                    .reset ul li {
-                                                                                                                        color: red;
-                                                                                                                    }
+                                                                                                                        .reset ul li {
+                                                                                                                            color: red;
+                                                                                                                        }
 
-                                                                                                                    .reset blockquote {
-                                                                                                                        padding: 10px 20px;
-                                                                                                                        margin: 20px 0;
-                                                                                                                        border-left: 5px solid #ccc;
-                                                                                                                        background-color: #f9f9f9;
-                                                                                                                        font-style: italic;
-                                                                                                                        color: #555;
-                                                                                                                    } */
+                                                                                                                        .reset blockquote {
+                                                                                                                            padding: 10px 20px;
+                                                                                                                            margin: 20px 0;
+                                                                                                                            border-left: 5px solid #ccc;
+                                                                                                                            background-color: #f9f9f9;
+                                                                                                                            font-style: italic;
+                                                                                                                            color: #555;
+                                                                                                                        } */
 
             /* custom-editor-styles.css */
 
@@ -120,7 +120,7 @@
                                     d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
                                 <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
-                            500x Dilihat
+                            {{ number_format($article->views) }}x Dilihat
                         </p>
                     </div>
                     <p class="text-gray-600">
