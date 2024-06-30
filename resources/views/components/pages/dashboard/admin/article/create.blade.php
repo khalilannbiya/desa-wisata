@@ -59,7 +59,7 @@
                 @endif
                 <div class="mb-4.5">
                     <label for="title"
-                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
+                        class="block mb-3 text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
                         Judul <span class="text-red-500">*</span>
                     </label>
                     <input type="text" required name="title" autocomplete="title" maxlength="35"
@@ -70,7 +70,7 @@
 
                 <div class="mb-4.5">
                     <label for="content"
-                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
+                        class="block mb-3 text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
                         Konten <span class="text-red-500">*</span>
                     </label>
                     <textarea rows="5" cols="30" id="content" required name="content" placeholder="Masukan Konten"
@@ -96,7 +96,7 @@
             },
             {
                 name: 'styles',
-                items: ['Styles', 'Format']
+                items: ['Format']
             },
             {
                 name: 'basicstyles',

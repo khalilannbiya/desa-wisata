@@ -35,8 +35,8 @@
                         <label for="image" class="block mb-2 text-sm font-medium text-black dark:text-white">
                             Ubah Foto <span class="text-red-500">*</span>
                         </label>
-                        <input type="file" accept="image/*" name="image" id="image" class="mt-3 block w-full">
-                        <p class="text-xs font-medium text-red-500 mt-2">* Pastikan file bertipe jpeg, jpg, png</p>
+                        <input type="file" accept="image/*" name="image" id="image" class="block w-full mt-3">
+                        <p class="mt-2 text-xs font-medium text-red-500">* Pastikan file bertipe jpeg, jpg, png</p>
                         <p class="text-xs font-medium text-red-500">* Maksimal file 1MB</p>
                         <x-partials.dashboard.input-error :messages="$errors->get('image')" />
                     </div>
@@ -73,7 +73,7 @@
                 @endif
                 <div class="mb-4.5">
                     <label for="title"
-                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text    -white-dahsboard">
+                        class="block mb-3 text-sm font-medium text-black-dashboard dark:text -white-dahsboard">
                         Judul <span class="text-red-500">*</span>
                     </label>
                     <input type="text" required name="title" autocomplete="title" maxlength="35"
@@ -84,7 +84,7 @@
 
                 <div class="mb-4.5">
                     <label for="content"
-                        class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
+                        class="block mb-3 text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
                         Konten <span class="text-red-500">*</span>
                     </label>
                     <textarea rows="5" cols="30" id="editor" required name="content" placeholder="Masukan Konten"
@@ -127,7 +127,7 @@
                 },
                 {
                     name: 'styles',
-                    items: ['Styles', 'Format']
+                    items: ['Format']
                 },
                 {
                     name: 'basicstyles',
