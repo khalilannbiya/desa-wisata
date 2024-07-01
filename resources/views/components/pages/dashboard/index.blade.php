@@ -72,75 +72,81 @@
 </x-layouts.dashboard>
 
 
-<script>
-    var ctx = document.getElementById('chartArticle').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: @json($dataArticle['articleLabels']),
-            datasets: [{
-                label: '5 Artikel Terpopuler',
-                data: @json($dataArticle['articleData']),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+@if (auth()->user()->role !== 'owner')
+    <script>
+        var ctx = document.getElementById('chartArticle').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @json($dataArticle['articleLabels']),
+                datasets: [{
+                    label: '5 Artikel Terpopuler',
+                    data: @json($dataArticle['articleData']),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
+@endif
 
-<script>
-    var ctx = document.getElementById('chartDestination').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: @json($dataDestination['destinationLabels']),
-            datasets: [{
-                label: '5 Artikel Terpopuler',
-                data: @json($dataDestination['destinationData']),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+@if (auth()->user()->role !== 'writer')
+    <script>
+        var ctx = document.getElementById('chartDestination').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @json($dataDestination['destinationLabels']),
+                datasets: [{
+                    label: '5 Wisata Terpopuler',
+                    data: @json($dataDestination['destinationData']),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
+@endif
 
 
-<script>
-    var ctx = document.getElementById('chartEvent').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: @json($dataEvent['eventLabels']),
-            datasets: [{
-                label: '5 Artikel Terpopuler',
-                data: @json($dataEvent['eventData']),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+@if (auth()->user()->role == 'admin' || auth()->user()->role == 'super_admin')
+    <script>
+        var ctx = document.getElementById('chartEvent').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @json($dataEvent['eventLabels']),
+                datasets: [{
+                    label: '5 Acara Terpopuler',
+                    data: @json($dataEvent['eventData']),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
+@endif

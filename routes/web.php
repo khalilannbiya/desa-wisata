@@ -148,6 +148,4 @@ Route::middleware([
     });
 });
 
-Route::get('/chart-bar', [ArticleController::class, 'testChart'])->name('chart');
-
 require __DIR__ . '/auth.php';
