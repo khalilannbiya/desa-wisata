@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\ArticleCreateRequest;
 use App\Http\Requests\ArticleUpdateRequest;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -47,7 +48,7 @@ class ArticleController extends Controller
 
                     // Membuat tombol edit dan hapus untuk setiap item
                     return sprintf(
-                    '
+                        '
                     <div class="wrapper-action">
                         <a href="%s">Edit</a>
                         <div>
@@ -58,10 +59,10 @@ class ArticleController extends Controller
                         </div>
                     </div>
                     ',
-                    $editUrl,
-                    $deleteUrl,
-                    method_field('delete'),
-                    csrf_field(),
+                        $editUrl,
+                        $deleteUrl,
+                        method_field('delete'),
+                        csrf_field(),
                     );
                 })
                 ->make();
@@ -185,5 +186,25 @@ class ArticleController extends Controller
         $article->delete();
         Alert::toast('Sukses Menghapus Artikel', 'success');
         return redirect()->route(auth()->user()->role . '.articles.index');
+    }
+
+    public function testChart()
+    {
+
+
+        // Mengambil 10 artikel dengan views terbanyak
+        $articles = Article::orderBy('views', 'desc')->take(5)->get();
+
+        $articlesLabels = $articles->pluck('title');
+        $articlesData = $articles->pluck('views');
+
+
+        return view('components.pages.dashboard.admin.article.chart-bar', [
+            'data' => [
+
+                'articlesLabels' => $articlesLabels,
+                'articlesData' => $articlesData
+            ]
+        ]);
     }
 }
