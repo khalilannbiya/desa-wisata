@@ -23,6 +23,7 @@
                     <th>Nama Acara</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Akhir</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -52,6 +53,7 @@
                         {
                             data: 'name',
                             name: 'name',
+                            width : "15%"
                         },
                         {
                             data: 'start_date',
@@ -62,6 +64,12 @@
                             name: 'end_date',
                         },
                         {
+                            data: 'status',
+                            name: 'status',
+                            orderable: false,
+                            searchable: false,
+                        },
+                        {
                             data: 'action',
                             name: 'action',
                             orderable: false,
@@ -69,7 +77,7 @@
                         }
                     ],
                     order: [
-                        [0, 'desc']
+                        [2, 'desc']
                     ], // Default sorting
                     drawCallback: function(settings) {
                         var api = this.api();
