@@ -22,21 +22,32 @@
         </div>
         <div class="">
             <div class="space-y-5">
-                <h1 class="text-2xl font-bold md:text-3xl">{{ $destination->name }}</h1>
-                <div class="flex gap-2">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                            style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                            <path
-                                d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z">
-                            </path>
+                <div class="space-y-2">
+                    <h1 class="text-2xl font-bold md:text-3xl">{{ $destination->name }}</h1>
+                    <span class="flex items-center text-sm text-black gap-1  ">
+                        <svg class="w-6 h-6 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-width="2"
+                                d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                            <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
+                        {{ number_format($destination->views) }}x Telah Dilihat
+                    </span>
+                    <div class="flex gap-2">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                                <path
+                                    d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z">
+                                </path>
+                            </svg>
+                        </div>
+                        <a href="{{ $destination->gmaps_url }}" target="_blank">
+                            <address class="text-sm text-gray-700 capitalize lg:text-base">
+                                {{ $destination->location }}
+                            </address>
+                        </a>
                     </div>
-                    <a href="{{ $destination->gmaps_url }}" target="_blank">
-                        <address class="text-sm text-gray-700 capitalize lg:text-base">
-                            {{ $destination->location }}
-                        </address>
-                    </a>
                 </div>
                 <p class="text-gray-500 md:text-lg">{{ $destination->description }}</p>
                 <h1 class="pb-4 font-bold md:text-2xl">
