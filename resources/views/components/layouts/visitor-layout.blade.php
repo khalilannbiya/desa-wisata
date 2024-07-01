@@ -19,14 +19,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
     @stack('style')
-    
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title ?? '' }} Desa Wisata Sukarame</title>
 </head>
 
 <body>
     <header class="fixed z-50 w-full font-inter" id="myElement">
-        <nav class="bg-white border-gray-200 py-2.5  ">
+        <nav class="bg-white border-gray-200 py-2.5">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto lg:px-8 ">
                 <div href="#" class="flex items-center">
                     <img src="{{ asset('assets/img/logo.png') }}" class="h-12 mr-3 md:h-20" alt="Desa Sukarame" />
@@ -48,8 +48,6 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-
-
 
                 <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1 "
                     id="mobile-menu-2">
@@ -80,8 +78,14 @@
                                 class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0 {{ Route::current()->getName() == 'about-us' ? 'text-green-new' : '' }}">Tentang
                                 Kami</a>
                         </li>
-                    </ul>
 
+                        @auth
+                            <li>
+                                <a href="{{ route(auth()->user()->role . '.dashboard') }}"
+                                    class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-new lg:p-0">Dashboard</a>
+                            </li>
+                        @endauth
+                    </ul>
 
                 </div>
 
@@ -93,9 +97,9 @@
         {{ $slot }}
     </section>
 
-    <footer class="w-full  mt-20 text-gray-700 bg-gray-100 body-font">
-        <div class="flex flex-col md:flex-row items-center  px-5 py-5  ">
-            <div class="lg:w-1/2  mx-auto text-center md:mx-0 ">
+    <footer class="w-full mt-20 text-gray-700 bg-gray-100 body-font">
+        <div class="flex flex-col items-center px-5 py-5 md:flex-row ">
+            <div class="mx-auto text-center lg:w-1/2 md:mx-0 ">
                 <a class="flex items-center justify-center font-medium text-gray-900 title-font ">
                     <img class="w-20" src="{{ asset('assets/img/logo.png') }}" alt="">
                 </a>
@@ -147,7 +151,7 @@
                         </li>
                     </nav>
                 </div>
-                <div class="w-full px-4  md:w-1/2">
+                <div class="w-full px-4 md:w-1/2">
 
                     <nav class="mb-10 list-none text-md">
                         <li class="mt-3">
@@ -171,14 +175,12 @@
         </div>
         <div class="bg-green-new">
             <div class="container px-5 py-4 mx-auto">
-                <p class="text-sm font-bold text-center text-white capitalize">Copyright {{ date('Y') }} Desa
+                <p class="text-sm font-bold text-center text-white capitalize font-inter">Copyright
+                    {{ date('Y') }} Desa
                     Sukarame </p>
             </div>
         </div>
     </footer>
-
-
-
 
     <script>
         const myElement = document.getElementById('myElement');

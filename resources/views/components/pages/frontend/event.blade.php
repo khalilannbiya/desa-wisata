@@ -1,11 +1,12 @@
 <x-layouts.visitor-layout>
+    <x-slot:title>Acara | </x-slot:title>
 
     <div class="pt-30 ">
-        <section class="bg-green-new mb-6">
-            <div class="grid py-20 md:grid-cols-3 max-w-7xl mx-auto">
+        <section class="mb-6 bg-green-new">
+            <div class="grid py-20 mx-auto md:grid-cols-3 max-w-7xl">
                 <div class="pl-10 mb-8 space-y-10 text-white text-balance ">
                     <h1 class="text-4xl font-extrabold font-inter">Info Acara Terbaru</h1>
-                    <p class="w-3/4 ">
+                    <p class="w-3/4 font-inter">
                         Informasi terbaru dan terlengkap tentang berbagai acara menarik di tempat wisata Sukarame.
                         Temukan
                         berbagai acara seru yang sesuai dengan minat Anda dan dapatkan informasi lengkap tentang setiap
@@ -18,13 +19,13 @@
                     </p>
 
                 </div>
-                <div class="overflow-x-auto no-scrollbar col-span-2 text-center">
+                <div class="col-span-2 overflow-x-auto text-center no-scrollbar">
                     <div class="">
-                        <div class="inline-flex py-4 gap-10 justify-center items-center">
+                        <div class="inline-flex items-center justify-center gap-10 py-4">
                             @forelse ($newEvents as $event)
                                 <x-partials.frontend.card-event :event="$event" />
                             @empty
-                                <p class="font-semibold text-center text-white text-xl">Tidak ada acara</p>
+                                <p class="text-xl font-semibold text-center text-white">Tidak ada acara</p>
                             @endforelse
                         </div>
                     </div>
@@ -34,13 +35,13 @@
 
         <div class="mx-auto max-w-7xl">
             <div class="px-10 mb-10">
-                <h1 class="text-3xl text-center font-inter font-extrabold">
+                <h1 class="text-3xl font-extrabold text-center font-inter">
                     Semua Acara
                 </h1>
             </div>
-            <form class="max-w-md mx-auto my-10 px-10" action="{{ route('events') }}" method="GET">
+            <form class="max-w-md px-10 mx-auto my-10" action="{{ route('events') }}" method="GET">
                 <label for="default-search"
-                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white font-inter">Search</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -53,10 +54,10 @@
                         class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-green-new focus:border-green-new dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Cari Acara..." required />
                     <button type="submit"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cari</button>
+                        class="text-white absolute font-inter end-2.5 bottom-2.5 bg-green-new hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-green-new font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cari</button>
                 </div>
             </form>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:px-10 gap-3 justify-items-center  ">
+            <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:px-10 justify-items-center ">
                 @forelse ($events as $event)
                     <x-partials.frontend.card-event :event="$event" />
                 @empty
@@ -65,7 +66,7 @@
             </div>
         </div>
         @if ($events->lastPage() > 1)
-            <div class="mt-10 px-5 mx-auto max-w-7xl">
+            <div class="px-5 mx-auto mt-10 max-w-7xl">
                 {{ $events->links() }}
             </div>
         @endif

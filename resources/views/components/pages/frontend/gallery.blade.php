@@ -1,19 +1,21 @@
 <x-layouts.visitor-layout>
+    <x-slot:title>Foto | </x-slot:title>
+
     <div class="pt-30 px-7">
         <div class="">
-            <h1 class="md:text-4xl text-center mb-10 text-3xl font-inter font-extrabold">Galeri</h1>
+            <h1 class="mb-10 text-3xl font-extrabold text-center md:text-4xl font-inter">Galeri</h1>
         </div>
-        <div class="grid md:grid-cols-4 grid-cols-1 max-w-7xl mx-auto  gap-4">
+        <div class="grid grid-cols-1 gap-4 mx-auto md:grid-cols-4 max-w-7xl">
             @forelse ($galleries as $gallery)
-                <div data-aos="zoom-in" data-aos-duration="1000" class=" transition-transform duration-300 ">
+                <div data-aos="zoom-in" data-aos-duration="1000" class="transition-transform duration-300 ">
                     <a href="{{ Storage::url($gallery->image_url) }}" target="_blank">
-                        <img class=" aspect-square object-cover  max-w-full rounded-lg"
+                        <img class="object-cover max-w-full rounded-lg  aspect-square"
                             src="{{ Storage::url($gallery->image_url) }}" title="{{ $gallery->destination->name }}"
                             alt="Gambar wisata {{ $gallery->destination->name }}">
                     </a>
                 </div>
             @empty
-                <p class="text-center font-inter text-gray-500 text-lg">Tidak ada galeri</p>
+                <p class="text-lg text-center text-gray-500 font-inter">Tidak ada galeri</p>
             @endforelse
         </div>
         @if ($galleries->lastPage() > 1)

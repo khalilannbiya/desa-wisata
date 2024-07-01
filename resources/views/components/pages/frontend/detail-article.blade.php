@@ -1,42 +1,8 @@
 <x-layouts.visitor-layout>
+    <x-slot:title>Artikel Selengkapnya | </x-slot:title>
+
     @push('style')
         <style>
-            /* custom CSS */
-            /* .reset h1 {
-                                                                                                                            font-size: 2em;
-                                                                                                                            font-weight: bolder;
-                                                                                                                        }
-
-                                                                                                                        .reset h2 {
-                                                                                                                            font-size: 1.2em;
-                                                                                                                            font-weight: bolder;
-                                                                                                                        }
-
-                                                                                                                        .reset ol {
-                                                                                                                            list-style: auto;
-                                                                                                                        }
-
-                                                                                                                        .reset ul {
-                                                                                                                            list-style: disc;
-                                                                                                                        }
-
-                                                                                                                        .reset ul li {
-                                                                                                                            color: red;
-                                                                                                                        }
-
-                                                                                                                        .reset blockquote {
-                                                                                                                            padding: 10px 20px;
-                                                                                                                            margin: 20px 0;
-                                                                                                                            border-left: 5px solid #ccc;
-                                                                                                                            background-color: #f9f9f9;
-                                                                                                                            font-style: italic;
-                                                                                                                            color: #555;
-                                                                                                                        } */
-
-            /* custom-editor-styles.css */
-
-            /* custom-editor-styles.css */
-
             .reset h1 {
                 font-size: 2em;
                 padding-bottom: 10px;

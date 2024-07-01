@@ -10,22 +10,6 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/artikel', function () {
-    return view('components.pages.frontend.article');
-});
-Route::get('/detail-artikel', function () {
-    return view('components.pages.frontend.detail-article');
-});
-
-Route::get('/event-detail', function () {
-    return view('components.pages.frontend.detail-event');
-});
-
-
-Route::get('/event/create', function () {
-    return view('components.pages.dashboard.writer.add');
-});
-
 Route::get('/articles', [FrontendController::class, 'articles'])->name('articles');
 Route::get('/articles/{slug}/show', [ArticleController::class, 'show'])->name('articles.show');
 
