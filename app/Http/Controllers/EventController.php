@@ -65,7 +65,7 @@ class EventController extends Controller
                     $deleteUrl = route("{$roleName}.events.destroy", $item->id);
 
                     return sprintf(
-                    '
+                        '
                         <div class="wrapper-action">
                             <a href="%s">Edit</a>
                             <div>
@@ -150,7 +150,11 @@ class EventController extends Controller
             $status = '<span class="text-yellow-500 font-bold dark:text-yellow-300">Mendatang</span>';
         }
 
+        // Increment the views count
+        $event->increment('views');
+
         return view('components.pages.frontend.detail-event', compact('event', 'status'));
+
     }
 
     /**

@@ -36,7 +36,7 @@ class DestinationController extends Controller
                     $deleteUrl = route("{$roleName}.destinations.destroy", $item->id);
 
                     return sprintf(
-                    '
+                        '
                         <div class="wrapper-action">
                             <a href="%s">Edit</a>
                             <div>
@@ -260,6 +260,8 @@ class DestinationController extends Controller
         $destination = Destination::with(['contactDetail', 'accommodations', 'facilities', 'openingHours', 'galleries'])->where('slug', $slug)->firstOrFail();
         $openingHours = $this->formatOpeningHours($destination->openingHours->toArray());
 
+        // Increment the views count
+        $destination->increment('views');
         return view('components.pages.frontend.detail-destination', compact('destination', 'openingHours'));
     }
 

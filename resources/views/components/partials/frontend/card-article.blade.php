@@ -1,7 +1,7 @@
         {{-- card  --}}
         <div
-            class="group h-[480px] w-[300px]  flex flex-col justify-between shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
-            <div class="p-6 w-[300px] overflow-hidden">
+            class="group h-[480px] max-w-[26rem]  flex flex-col justify-between shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
+            <div class="p-6 w-full overflow-hidden ">
                 <div
                     class="pb-3 mb-4 border-b group-hover:text-white border-stone-200 text-xs font-medium flex space-y-2 flex-col justify-between text-black">
                     <span class="flex items-center gap-1">
@@ -12,21 +12,28 @@
                         </svg>
                         {{ \Carbon\Carbon::parse($article->created_at)->locale('id')->translatedFormat('H:i. l, j F Y') }}
                     </span>
-                    <span class="flex items-center gap-1">
-                        Dibuat Oleh {{ $article->user->name }}
+                    <span class="flex items-center gap-1 ">
+                        <svg class="w-6 h-6 text-gray-800 group-hover:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-width="2"
+                                d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                            <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        {{ number_format($article->views) }}x Telah Dilihat
                     </span>
-
                 </div>
                 <h3 class="mb-4 h-[35px] font-semibold overflow-hidden group-hover:text-white  text-2xl">
                     <a href="{{ route('articles.show', $article->slug) }}"
                         class=" elips transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
                 </h3>
-                <div class="elipsis overflow-hidden h-[40px] text-black group-hover:text-white text-sm mb-0">
+                <div class="elipsis overflow-hidden h-[40px]  text-black group-hover:text-white text-sm ">
                     {!! $article->content !!}
                 </div>
-            </div>
-            <div class="mt-auto">
-                <img src="{{ Storage::url($article->image_url) }}" alt="" class="w-full h-48 object-cover">
+                <div class="mx-auto mt-10 ">
+                    <img src="{{ Storage::url($article->image_url) }}" alt=""
+                        class=" h-48 object-cover object-center w-[26rem]">
+                </div>
             </div>
             <div class="text-center">
                 <a href="{{ route('articles.show', $article->slug) }}"
