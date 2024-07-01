@@ -10,31 +10,125 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
-    public function writer() {
+    public function writer()
+    {
         $totalArticle = Article::count();
-        return view('components.pages.dashboard.index',compact('totalArticle'));
+
+        // Mengambil 5 artikel dengan views terbanyak
+        $articles = Article::orderBy('views', 'desc')->take(5)->get();
+
+        $articleLabels = $articles->pluck('title');
+        $articleData = $articles->pluck('views');
+
+        $dataArticle = [
+            'articleLabels' => $articleLabels,
+            'articleData' => $articleData
+        ];
+
+        return view('components.pages.dashboard.index', compact('totalArticle', 'dataArticle'));
     }
 
-    public function owner() {
+    public function owner()
+    {
         $totalDestination = Destination::count();
-        return view('components.pages.dashboard.index',compact('totalDestination'));
+
+        // Mengambil 5 wisata dengan views terbanyak
+        $destinations = Destination::orderBy('views', 'desc')->take(5)->get();
+
+        $destinationLabels = $destinations->pluck('name');
+        $destinationData = $destinations->pluck('views');
+
+        $dataDestination = [
+            'destinationLabels' => $destinationLabels,
+            'destinationData' => $destinationData
+        ];
+
+        return view('components.pages.dashboard.index', compact('totalDestination', 'dataDestination'));
     }
 
-    public function admin() {
+    public function admin()
+    {
         $totalEvent = Event::count();
         $totalArticle = Article::count();
         $totalDestination = Destination::count();
-        $totalUser = User::where('role','!=', 'super_admin')->count();
-        return view('components.pages.dashboard.index',compact('totalDestination', 'totalEvent', 'totalArticle', 'totalUser'));
+        $totalUser = User::where('role', '!=', 'super_admin')->count();
+
+        // Mengambil 5 acara dengan views terbanyak
+        $event = Event::orderBy('views', 'desc')->take(5)->get();
+
+        $eventLabels = $event->pluck('name');
+        $eventData = $event->pluck('views');
+
+        $dataEvent = [
+            'eventLabels' => $eventLabels,
+            'eventData' => $eventData
+        ];
+
+        // Mengambil 5 wisata dengan views terbanyak
+        $destinations = Destination::orderBy('views', 'desc')->take(5)->get();
+
+        $destinationLabels = $destinations->pluck('name');
+        $destinationData = $destinations->pluck('views');
+
+        $dataDestination = [
+            'destinationLabels' => $destinationLabels,
+            'destinationData' => $destinationData
+        ];
+
+        // Mengambil 5 artikel dengan views terbanyak
+        $articles = Article::orderBy('views', 'desc')->take(5)->get();
+
+        $articleLabels = $articles->pluck('title');
+        $articleData = $articles->pluck('views');
+
+        $dataArticle = [
+            'articleLabels' => $articleLabels,
+            'articleData' => $articleData
+        ];
+
+        return view('components.pages.dashboard.index', compact('totalDestination', 'totalEvent', 'totalArticle', 'totalUser', 'dataArticle', 'dataDestination', 'dataEvent'));
     }
 
-    public function superAdmin() {
+    public function superAdmin()
+    {
         $totalEvent = Event::count();
         $totalArticle = Article::count();
         $totalDestination = Destination::count();
         $totalUser = User::count();
-        return view('components.pages.dashboard.index',compact('totalDestination', 'totalEvent', 'totalArticle', 'totalUser'));
-  
+
+        // Mengambil 5 acara dengan views terbanyak
+        $event = Event::orderBy('views', 'desc')->take(5)->get();
+
+        $eventLabels = $event->pluck('name');
+        $eventData = $event->pluck('views');
+
+        $dataEvent = [
+            'eventLabels' => $eventLabels,
+            'eventData' => $eventData
+        ];
+
+        // Mengambil 5 wisata dengan views terbanyak
+        $destinations = Destination::orderBy('views', 'desc')->take(5)->get();
+
+        $destinationLabels = $destinations->pluck('name');
+        $destinationData = $destinations->pluck('views');
+
+        $dataDestination = [
+            'destinationLabels' => $destinationLabels,
+            'destinationData' => $destinationData
+        ];
+
+        // Mengambil 5 artikel dengan views terbanyak
+        $articles = Article::orderBy('views', 'desc')->take(5)->get();
+
+        $articleLabels = $articles->pluck('title');
+        $articleData = $articles->pluck('views');
+
+        $dataArticle = [
+            'articleLabels' => $articleLabels,
+            'articleData' => $articleData
+        ];
+
+        return view('components.pages.dashboard.index', compact('totalDestination', 'totalEvent', 'totalArticle', 'totalUser', 'dataArticle', 'dataDestination', 'dataEvent'));
     }
-    
 }

@@ -47,7 +47,7 @@ class ArticleController extends Controller
 
                     // Membuat tombol edit dan hapus untuk setiap item
                     return sprintf(
-                    '
+                        '
                     <div class="wrapper-action">
                         <a href="%s">Edit</a>
                         <div>
@@ -58,10 +58,10 @@ class ArticleController extends Controller
                         </div>
                     </div>
                     ',
-                    $editUrl,
-                    $deleteUrl,
-                    method_field('delete'),
-                    csrf_field(),
+                        $editUrl,
+                        $deleteUrl,
+                        method_field('delete'),
+                        csrf_field(),
                     );
                 })
                 ->make();
