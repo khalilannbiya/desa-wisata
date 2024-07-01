@@ -17,6 +17,7 @@ class Event extends Model
         'description',
         'location',
         'gmaps_url',
+        'views',
         'start_date',
         'end_date',
         'slug',

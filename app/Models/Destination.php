@@ -22,6 +22,7 @@ class Destination extends Model
         'gmaps_url',
         'price_range',
         'status',
+        'views',
         'slug',
     ];
 
