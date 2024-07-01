@@ -30,21 +30,9 @@
         </table>
     </section>
 
-       <!-- Delete Confirmation Modal -->
-    <div id="deleteModal" tabindex="-1" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-lg shadow p-6">
-            <h2 class="mb-4 text-lg font-semibold">Konfirmasi Hapus</h2>
-            <p class="mb-5">Apakah Anda yakin ingin menghapus Acara ini?</p>
-            <form id="deleteForm" method="post">
-                @method('delete')
-                @csrf
-                <div class="flex justify-end gap-3">
-                    <button type="button" class="px-4 py-2 text-white bg-gray-500 rounded" onclick="closeModal()">Batal</button>
-                    <button type="submit" class="px-4 py-2 text-white bg-red-600 rounded">Hapus</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Delete Confirmation Modal -->
+    <x-partials.dashboard.modal-delete title="acara" />
+
 
     @push('script')
         <script type="text/javascript">
@@ -59,7 +47,7 @@
                             "data": 'id',
                             "orderable": true,
                             "searchable": false,
-                            "className" : 'text-center'
+                            "className": 'text-center'
                         },
                         {
                             data: 'name',
@@ -84,12 +72,15 @@
                         [0, 'desc']
                     ], // Default sorting
                     drawCallback: function(settings) {
-                    var api = this.api();
-                    var start = api.page.info().start;
-                    api.column(0, {search: 'applied', order: 'applied'}).nodes().each(function(cell, i) {
-                    cell.innerHTML = start + i + 1;
-                });
-            }
+                        var api = this.api();
+                        var start = api.page.info().start;
+                        api.column(0, {
+                            search: 'applied',
+                            order: 'applied'
+                        }).nodes().each(function(cell, i) {
+                            cell.innerHTML = start + i + 1;
+                        });
+                    }
                 });
             });
 

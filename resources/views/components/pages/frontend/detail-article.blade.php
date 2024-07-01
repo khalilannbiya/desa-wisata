@@ -75,7 +75,7 @@
             class="relative z-20 h-auto max-w-screen-md px-10 mx-auto bg-white rounded-md xl:max-w-screen-lg md:py-10 md:-mt-25 lg:drop-shadow-xl">
             <div class="max-w-screen-xl mx-auto">
                 <h1 class="text-4xl font-bold leading-normal md:text-4xl text-pretty">{{ $article->title }}</h1>
-                <div class="flex flex-col gap-1 my-4">
+                <div class="flex flex-col gap-1 my-4 ">
                     <div class="flex flex-col md:flex-row md:gap-4">
                         <p>Dibuat Oleh <span class="font-semibold"> {{ $article->user->name }} </span></p>
                         <p class="inline-flex items-center gap-1 text-sm"><svg
@@ -86,7 +86,7 @@
                                     d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
                                 <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                             </svg>
-                            {{ number_format($article->views) }}x Dilihat
+                            {{ number_format($article->views) }}x Telah Dilihat
                         </p>
                     </div>
                     <p class="text-gray-600">
