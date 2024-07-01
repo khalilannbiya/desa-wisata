@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Event;
 use Illuminate\Support\Str;
@@ -20,12 +21,44 @@ class EventController extends Controller
     public function index()
     {
         if (request()->ajax()) {
+            $orderColumnIndex = request()->get('order')[0]['column'];
+            $orderColumn = request()->get('columns')[$orderColumnIndex]['data'];
+            $orderDirection = request()->get('order')[0]['dir'];
+
             $events = Event::query();
             if (auth()->user()->role === 'admin') {
                 $events->where('admin_id', auth()->user()->id);
             }
-            $events->get();
+
+            $events->orderBy($orderColumn, $orderDirection);
+
             return DataTables::of($events)
+                ->addColumn('start_date', function ($item) {
+                    return Carbon::parse($item->start_date)->locale('id')->translatedFormat('l, d-m-Y. H:i');
+                })
+                ->addColumn('end_date', function ($item) {
+                    return Carbon::parse($item->end_date)->locale('id')->translatedFormat('l, d-m-Y. H:i');
+                })
+                ->addColumn('status', function ($item) {
+                    $now = Carbon::now();
+                    if ($item->end_date < $now) {
+                        return sprintf('<span class="text-red-500 font-bold dark:text-red-500">Selesai</span>');
+                    } elseif ($item->start_date < $now) {
+                        return sprintf('<span class="text-green-500 font-bold dark:text-green-300">Berlangsung</span>');
+                    } else {
+                        return sprintf('<span class="text-yellow-500 font-bold dark:text-yellow-300">Mendatang</span>');
+                    }
+                })
+                ->addColumn('status', function ($item) {
+                    $now = Carbon::now();
+                    if ($item->end_date < $now) {
+                        return sprintf('<span class="text-red-500 font-bold dark:text-red-500">Selesai</span>');
+                    } elseif ($item->start_date < $now) {
+                        return sprintf('<span class="text-green-500 font-bold dark:text-green-300">Berlangsung</span>');
+                    } else {
+                        return sprintf('<span class="text-yellow-500 font-bold dark:text-yellow-300">Mendatang</span>');
+                    }
+                })
                 ->addColumn('action', function ($item) {
                     $roleName = auth()->user()->role;
                     $editUrl = route("{$roleName}.events.edit", $item->id);
@@ -48,6 +81,7 @@ class EventController extends Controller
                         csrf_field()
                     );
                 })
+                ->rawColumns(['status', 'action']) // Menambahkan status dan action sebagai kolom yang berisi HTML
                 ->make();
         }
 
@@ -106,8 +140,17 @@ class EventController extends Controller
     public function show(string $slug)
     {
         $event = Event::where('slug', $slug)->firstOrFail();
+        $now = Carbon::now();
+        $status = '';
+        if ($event->end_date < $now) {
+            $status = '<span class="text-red-500 font-bold dark:text-red-500">Selesai</span>';
+        } elseif ($event->start_date < $now) {
+            $status = '<span class="text-green-500 font-bold dark:text-green-300">Berlangsung</span>';
+        } else {
+            $status = '<span class="text-yellow-500 font-bold dark:text-yellow-300">Mendatang</span>';
+        }
 
-        return view('components.pages.frontend.detail-event', compact('event'));
+        return view('components.pages.frontend.detail-event', compact('event', 'status'));
     }
 
     /**
