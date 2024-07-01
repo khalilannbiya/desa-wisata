@@ -1,11 +1,13 @@
 <x-layouts.visitor-layout>
-    <div class="pt-30 font-inter  ">
+    <x-slot:title>Artikel | </x-slot:title>
+
+    <div class="pt-30 font-inter ">
         <div class="text-4xl font-extrabold text-center">
             <h1 class="font-inter">Artikel</h1>
         </div>
 
         <div class="">
-            <form class="max-w-md mx-auto my-10 px-10" action="{{ route('articles') }}" method="GET">
+            <form class="max-w-md px-10 mx-auto my-10" action="{{ route('articles') }}" method="GET">
                 <label for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Cari</label>
                 <div class="relative">
@@ -24,19 +26,19 @@
                 </div>
             </form>
         </div>
-        <div class="grid xl:grid-cols-4 lg:grid-cols-3 mx-auto max-w-7xl  justify-items-center gap-4 mt-10 px-3">
+        <div class="grid gap-4 px-3 mx-auto mt-10 xl:grid-cols-4 lg:grid-cols-3 max-w-7xl justify-items-center">
             @forelse ($articles as $article)
                 <div class="">
                     <x-partials.frontend.card-article :article="$article" />
                 </div>
             @empty
-                <p class="font-semibold text-center text-gray-600 text-xl">Tidak ada Artikel</p>
+                <p class="text-xl font-semibold text-center text-gray-600">Tidak ada Artikel</p>
             @endforelse
         </div>
     </div>
 
     @if ($articles->lastPage() > 1)
-        <div class="mt-10 max-w-7xl mx-auto px-5">
+        <div class="px-5 mx-auto mt-10 max-w-7xl">
             {{ $articles->links() }}
         </div>
     @endif

@@ -1,4 +1,6 @@
 <x-layouts.visitor-layout>
+    <x-slot:title>Wisata Selengkapnya | </x-slot:title>
+
     <div class="grid gap-5 px-4 mx-auto max-w-7xl md:grid-cols-2 md:px-6 pt-35 font-inter">
         <div class="">
             <div class="grid gap-4">

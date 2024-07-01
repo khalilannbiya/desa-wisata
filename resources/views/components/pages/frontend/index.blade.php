@@ -4,7 +4,7 @@
         <x-partials.frontend.hero />
     </header>
 
-    <section class="">
+    <section class="font-inter">
         <div class="mb-8 text-4xl font-extrabold text-center">
             <h1 class="font-inter">Tempat Wisata</h1>
         </div>
@@ -29,10 +29,10 @@
     </section>
 
     <section class="bg-green-new">
-        <div class="grid py-20 md:grid-cols-2 max-w-7xl mx-auto">
+        <div class="grid py-20 mx-auto md:grid-cols-2 max-w-7xl">
             <div class="pl-10 mb-8 space-y-10 text-white text-balance ">
                 <h1 class="text-4xl font-extrabold font-inter">Info Acara</h1>
-                <p class="w-3/4 ">
+                <p class="w-3/4 font-inter">
                     Informasi terbaru dan terlengkap tentang berbagai acara menarik di tempat wisata Sukarame. Temukan
                     berbagai acara seru yang sesuai dengan minat Anda dan dapatkan informasi lengkap tentang setiap
                     acara.
@@ -41,19 +41,19 @@
                     Mari jadikan momen liburan Anda di Sukarame semakin berkesan dengan mengikuti berbagai acara seru
                     yang tersedia.
                 </p>
-                <div class="mt-6 ">
+                <div class="mt-6">
                     <a href="{{ route('events') }}"
-                        class="px-4 py-2 transition-transform duration-300 transform border-2 border-white rounded-md hover:shadow-lg">Lihat
+                        class="px-4 py-2 transition-transform duration-300 transform border-2 border-white rounded-md font-inter hover:shadow-lg">Lihat
                         Semua</a>
                 </div>
             </div>
-            <div class="overflow-x-auto no-scrollbar text-center">
+            <div class="overflow-x-auto text-center no-scrollbar">
                 <div class="">
                     <div class="inline-flex items-center justify-center gap-10 py-4">
                         @forelse ($events as $event)
                             <x-partials.frontend.card-event :event="$event" />
                         @empty
-                            <p class="font-semibold text-center text-white text-xl">Tidak ada acara</p>
+                            <p class="text-xl font-semibold text-center text-white">Tidak ada acara</p>
                         @endforelse
                     </div>
                 </div>
@@ -76,16 +76,16 @@
         </div>
         <div class="flex flex-wrap items-center justify-center gap-4 py-4">
             @forelse ($articles as $article)
-                 <div class="opacity-0 image-container">
-                   <x-partials.frontend.card-article :article="$article" />
-                 </div>
+                <div class="opacity-0 image-container">
+                    <x-partials.frontend.card-article :article="$article" />
+                </div>
             @empty
-               <p class="font-semibold text-center text-gray-600 text-xl">Belum ada artikel</p>
+                <p class="text-xl font-semibold text-center text-gray-600">Belum ada artikel</p>
             @endforelse
         </div>
-        <div class="text-center mt-6">
+        <div class="mt-6 text-center">
             <a href="{{ route('articles') }}"
-                class="text-black px-4 py-2 rounded-md border-2 border-gray-600 hover:shadow-lg transition-transform duration-300 transform">Lihat
+                class="px-4 py-2 text-black transition-transform duration-300 transform border-2 border-gray-600 rounded-md hover:shadow-lg">Lihat
                 Semua</a>
         </div>
     </section>

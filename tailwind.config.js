@@ -65,8 +65,7 @@ export default {
                 warning: "#FFA70B",
             },
             fontFamily: {
-
-                inter:['Inter',...defaultTheme.fontFamily.sans]
+                inter: ["Inter"],
             },
             screens: {
                 "2xsm": "375px",
