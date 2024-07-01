@@ -32,7 +32,7 @@ class EventController extends Controller
                     $deleteUrl = route("{$roleName}.events.destroy", $item->id);
 
                     return sprintf(
-                    '
+                        '
                         <div class="wrapper-action">
                             <a href="%s">Edit</a>
                             <div>
@@ -106,6 +106,9 @@ class EventController extends Controller
     public function show(string $slug)
     {
         $event = Event::where('slug', $slug)->firstOrFail();
+
+        // Increment the views count
+        $event->increment('views');
 
         return view('components.pages.frontend.detail-event', compact('event'));
     }
