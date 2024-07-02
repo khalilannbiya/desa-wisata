@@ -43,12 +43,14 @@
 
 
     @if (auth()->user()->role == 'super_admin' || auth()->user()->role == 'admin')
-        <div style="width: 80%; margin: auto;">
-            <canvas id="chartArticle"></canvas>
-        </div>
+        <div class="grid md:grid-cols-2">
+            <div style="width: 80%; margin: auto;">
+                <canvas id="chartArticle"></canvas>
+            </div>
 
-        <div style="width: 80%; margin: auto;">
-            <canvas id="chartDestination"></canvas>
+            <div style="width: 80%; margin: auto;">
+                <canvas id="chartDestination"></canvas>
+            </div>
         </div>
 
         <div style="width: 80%; margin: auto;">
