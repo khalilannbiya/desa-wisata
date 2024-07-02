@@ -1,66 +1,169 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Desa Wisat Sukarame
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sukarame Tourist Village is a destination rich in natural beauty and local culture. To support effective management and promotion, an integrated information system has been developed. This system is designed to meet various needs for managing the tourist village, with key features such as user management, ensuring that only authorized personnel can access and manage sensitive data, destination management, allowing village managers to manage information about the various tourist destinations in Sukarame. Each destination can have a complete description, operating hours, ticket prices, available facilities, and directions. Managers can also add images to provide an attractive visual representation for prospective visitors. This information can be updated periodically to ensure accuracy and relevance, gallery management, allowing managers to upload and organize a collection of photos from various activities and the beauty of the tourist village, article management, enabling admins to create and publish articles on various topics related to the tourist village, event management, allowing the management of events, including descriptions, time, and location. With this system, Sukarame Tourist Village can improve management efficiency, visitor experience, and effective promotion of the village. This application was created using Laravel v11 and requires a minimum of PHP v8.2. Therefore, if you encounter any errors or bugs during the installation or usage process, it is possible that they are caused by an unsupported PHP version.
 
-## About Laravel
+## Tech Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   **Client :** Tailwind, Blade Template
+-   **Server :** PHP with Laravel
+-   **DBMS   :** MySQL
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Additional supporting details
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- CK Editor, Sweet Alert, Yajra Datatables, Template Tailadmin, Template Tailwind Awesome, Flowbite, AOS (Animate on Scroll), GSAP, Boxicons, Chart Js, Laravel Breeze
 
-## Learning Laravel
+## Run Locally
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Clone the project
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+  git clone https://github.com/khalilannbiya/desa-wisata.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Or Download ZIP
 
-## Laravel Sponsors
+[Link](https://github.com/khalilannbiya/desa-wisata/archive/refs/heads/main.zip)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Go to the project directory
 
-### Premium Partners
+```bash
+  cd desa-wisata
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Run the command
 
-## Contributing
+```bash
+  composer update
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Or
 
-## Code of Conduct
+```bash
+  composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Copy the .env file from .env.example.
 
-## Security Vulnerabilities
+```bash
+  cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Please don't forget to create the 'db_desawisata' database in phpMyAdmin. The database name is up to you, but in this project, We are using that name.
 
-## License
+Configuration in .env is for database setup
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=db_desawisata
+  DB_USERNAME=root
+  DB_PASSWORD=
+```
+
+If you are using Apache or Nginx as your web server, change "APP_URL" in the .env to the following, choose one according to your web server:
+
+```bash
+  // Apache
+  APP_URL=http://desa-wisata.test
+
+  // Nginx
+  APP_URL=http://desa-wisata.test:8080
+```
+
+If you want to set the default timezone of your Laravel application to Asia or specifically Indonesia, make sure to change APP_TIMEZONE in .env to the following:
+
+```bash
+  APP_TIMEZONE=Asia/Jakarta
+```
+
+If you want to set the default language of your Laravel application to Indonesian, make sure to change APP_LOCALE in .env to the following:
+
+```bash
+  APP_LOCALE=id
+```
+
+Generate key
+
+```bash
+  php artisan key:generate
+```
+
+Create symlink
+
+```bash
+  php artisan storage:link
+```
+
+Migrate database
+
+```bash
+  php artisan migrate
+```
+
+Run User Seeder
+
+```bash
+  php artisan db:seed --class=UserSeeder
+```
+
+Install node_modules
+
+```bash
+  npm i
+```
+
+Run npm run dev
+
+```bash
+  npm run dev
+```
+
+Run the application, make sure the web server is running
+
+```bash
+  // If you are using Apache, enter the following URL in your web browser:
+  http://desa-wisata.test
+
+  // If you are using Nginx, enter the following URL in your web browser:
+  http://desa-wisata.test:8080
+```
+
+Another way to run the application is to use the command php artisan serve. Take the URL from the command output and enter it in your web browser
+
+## Documentation
+
+-   [Tailwind](https://tailwindcss.com/docs/installation)
+-   [Blade Template](https://laravel.com/docs/11.x/blade)
+-   [Laravel](https://laravel.com/docs/11.x)
+-   [CK Editor 4](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_installation.html)
+-   [Sweet Alert](https://realrashid.github.io/sweet-alert/)
+-   [Yajra Datatables](https://yajrabox.com/docs/laravel-datatables/master/installation)
+-   [Template Tailadmin](https://tailadmin.com/)
+-   [Tailwind Awesome](https://www.tailwindawesome.com/)
+-   [Flowbite](https://flowbite.com/)
+-   [AOS](https://michalsnik.github.io/aos/)
+-   [GSAP](https://gsap.com/)
+-   [Boxicons](https://boxicons.com/)
+-   [Chart Js](https://www.chartjs.org/)
+-   [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze)
+
+## Features
+
+-   User Management
+-   Login
+-   Destination Management
+-   Event Management
+-   Article Management
+-   Light/dark mode toggle at CMS
+
+## Authors
+
+- [@khalilannbiya](https://www.github.com/khalilannbiya)
+- [@slamets24](https://github.com/slamets24)
+- [@ramdhannassyirah](https://github.com/ramdhannassyirah)
+- [@annisa-ozka](https://github.com/annisa-ozka)
+
+## Feedback
+
+If you have any feedback, please reach out to us at syeichkhalil@gmail.com
