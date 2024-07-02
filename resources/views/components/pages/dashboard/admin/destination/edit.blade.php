@@ -653,50 +653,46 @@
                                     value="{{ $destination->contactDetail->phone }}" type="number"
                                     name="contact_details[phone]" placeholder="Masukkan Telepon">
                                 <x-partials.dashboard.input-error :messages="$errors->get('contact_details.phone')" />
-                                <button id="delete-phone" type="button"
-                                    class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
                             </div>
-                        </div>
 
-                        <div class="mb-6">
-                            <label for="contact_details.email"
-                                class="block mb-3 text-sm font-medium text-black dark:text-white">
-                                Email
-                            </label>
+                            <div class="mb-6 mt-6">
+                                <label for="contact_details.email"
+                                    class="block mb-3 text-sm font-medium text-black dark:text-white">
+                                    Email
+                                </label>
 
-                            <div class="flex gap-4">
-                                <input id="contact_details.email" maxlength="50"
-                                    class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                    value="{{ $destination->contactDetail->email }}" type="email"
-                                    name="contact_details[email]" placeholder="Masukkan Email">
-                                <x-partials.dashboard.input-error :messages="$errors->get('contact_details.email')" />
-                                <button id="delete-email" type="button"
-                                    class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
+                                <div class="flex gap-4">
+                                    <input id="contact_details.email" maxlength="50"
+                                        class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
+                                        value="{{ $destination->contactDetail->email }}" type="email"
+                                        name="contact_details[email]" placeholder="Masukkan Email">
+                                    <x-partials.dashboard.input-error :messages="$errors->get('contact_details.email')" />
+
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-6">
-                            <label for="contact_details.social_media"
-                                class="block mb-1 text-sm font-medium text-black dark:text-white">
-                                Sosial Media
-                            </label>
-                            <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukan URL media sosial</p>
-                            <div class="flex gap-4">
-                                <input id="contact_details.social_media" maxlength="100"
-                                    class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
-                                    value="{{ $destination->contactDetail->social_media }}" type="text"
-                                    name="contact_details[social_media]"
-                                    placeholder="Contoh: https://www.instagram.com/instagram">
-                                <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
-                                <button id="delete-social-media" type="button"
-                                    class="px-6 py-3 text-white transition-colors duration-300 ease-in-out rounded shadow-md bg-danger hover:bg-danger-dark focus:outline-none focus:ring-2 focus:ring-danger">Hapus</button>
+                            <div class="mb-6">
+                                <label for="contact_details.social_media"
+                                    class="block mb-1 text-sm font-medium text-black dark:text-white">
+                                    Sosial Media
+                                </label>
+                                <p class="mb-3 text-xs font-medium text-red-500">* Silahkan masukan URL media sosial
+                                </p>
+                                <div class="flex gap-4">
+                                    <input id="contact_details.social_media" maxlength="100"
+                                        class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal dark:bg-black text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:text-white dark:focus:border-primary"
+                                        value="{{ $destination->contactDetail->social_media }}" type="text"
+                                        name="contact_details[social_media]"
+                                        placeholder="Contoh: https://www.instagram.com/instagram">
+                                    <x-partials.dashboard.input-error :messages="$errors->get('contact_details.social_media')" />
+
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="">
-                            <button type="submit"
-                                class="w-full p-3 font-medium text-white rounded bg-deep-koamaru-600 hover:bg-opacity-90">Update</button>
-                        </div>
+                            <div class="">
+                                <button type="submit"
+                                    class="w-full p-3 font-medium text-white rounded bg-deep-koamaru-600 hover:bg-opacity-90">Update</button>
+                            </div>
                     </form>
                     {{-- END FORM KONTAK/CONTACT --}}
 
