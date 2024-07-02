@@ -43,18 +43,20 @@
 
 
     @if (auth()->user()->role == 'super_admin' || auth()->user()->role == 'admin')
-        <div class="grid md:grid-cols-2">
-            <div style="width: 80%; margin: auto;">
-                <canvas id="chartArticle"></canvas>
+        <div class=""">
+            <div class="grid md:grid-cols-2 ">
+                <div style="width: 100%; margin: auto;">
+                    <canvas id="chartArticle"></canvas>
+                </div>
+
+                <div style="width: 100%; margin: auto;">
+                    <canvas id="chartDestination"></canvas>
+                </div>
             </div>
 
-            <div style="width: 80%; margin: auto;">
-                <canvas id="chartDestination"></canvas>
+            <div style="width: 100%; margin: auto;">
+                <canvas id="chartEvent"></canvas>
             </div>
-        </div>
-
-        <div style="width: 80%; margin: auto;">
-            <canvas id="chartEvent"></canvas>
         </div>
     @endif
 
@@ -77,10 +79,17 @@
 @if (auth()->user()->role !== 'owner')
     <script>
         var ctx = document.getElementById('chartArticle').getContext('2d');
+        var articleLabels = @json($dataArticle['articleLabels']);
+
+        // Memotong label jika terlalu panjang
+        var shortLabels = articleLabels.map(function(label) {
+            return label.length > 10 ? label.substr(0, 6) + '...' : label;
+        });
+
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: @json($dataArticle['articleLabels']),
+                labels: shortLabels,
                 datasets: [{
                     label: '5 Artikel Terpopuler',
                     data: @json($dataArticle['articleData']),
@@ -94,6 +103,17 @@
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                // Menampilkan label asli pada tooltip
+                                var index = tooltipItems[0].dataIndex;
+                                return articleLabels[index];
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -103,10 +123,17 @@
 @if (auth()->user()->role !== 'writer')
     <script>
         var ctx = document.getElementById('chartDestination').getContext('2d');
+        var destinationLabels = @json($dataDestination['destinationLabels']);
+
+        // Memotong label jika terlalu panjang
+        var shortLabels = destinationLabels.map(function(label) {
+            return label.length > 10 ? label.substr(0, 6) + '...' : label;
+        });
+
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: @json($dataDestination['destinationLabels']),
+                labels: shortLabels,
                 datasets: [{
                     label: '5 Wisata Terpopuler',
                     data: @json($dataDestination['destinationData']),
@@ -120,6 +147,17 @@
                     y: {
                         beginAtZero: true
                     }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                // Menampilkan label asli pada tooltip
+                                var index = tooltipItems[0].dataIndex;
+                                return destinationLabels[index];
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -130,10 +168,17 @@
 @if (auth()->user()->role == 'admin' || auth()->user()->role == 'super_admin')
     <script>
         var ctx = document.getElementById('chartEvent').getContext('2d');
+        var eventLabels = @json($dataEvent['eventLabels']);
+
+        // Memotong label jika terlalu panjang
+        var shortLabels = eventLabels.map(function(label) {
+            return label.length > 10 ? label.substr(0, 6) + '...' : label;
+        });
+
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: @json($dataEvent['eventLabels']),
+                labels: shortLabels,
                 datasets: [{
                     label: '5 Acara Terpopuler',
                     data: @json($dataEvent['eventData']),
@@ -146,6 +191,17 @@
                 scales: {
                     y: {
                         beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                // Menampilkan label asli pada tooltip
+                                var index = tooltipItems[0].dataIndex;
+                                return eventLabels[index];
+                            }
+                        }
                     }
                 }
             }
