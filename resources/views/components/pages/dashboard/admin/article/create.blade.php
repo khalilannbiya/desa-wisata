@@ -109,3 +109,21 @@
         ]
     }); // by name bukan id CKeditor 4
 </script>
+<script>
+    document.getElementById('image').addEventListener('change', function(event) {
+        const files = event.target.files;
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        imagePreviewContainer.innerHTML = ''; // Clear previous images
+
+        for (const file of files) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.className = 'w-32 h-32 object-cover rounded-lg';
+                imagePreviewContainer.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

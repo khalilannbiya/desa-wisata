@@ -1,6 +1,6 @@
         {{-- card  --}}
         <div
-            class="group h-[480px] max-w-[26rem]  flex flex-col justify-between shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
+            class="group h-[480px] overflow-hidden  max-w-[26rem]  flex flex-col justify-between shadow-lg border-2 rounded-md hover:bg-green-new font-inter transition-all duration-500 ">
             <div class="p-6 w-full overflow-hidden ">
                 <div
                     class="pb-3 mb-4 border-b group-hover:text-white border-stone-200 text-xs font-medium flex space-y-2 flex-col justify-between text-black">
@@ -25,9 +25,9 @@
                 </div>
                 <h3 class="mb-4 h-[35px] font-semibold overflow-hidden group-hover:text-white  text-2xl">
                     <a href="{{ route('articles.show', $article->slug) }}"
-                        class=" elips transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
+                        class="elips transition-all group-hover:text-white text-black ">{{ $article->title }}</a>
                 </h3>
-                <div class="elipsis overflow-hidden h-[40px]  text-black group-hover:text-white text-sm ">
+                <div class="elipsis overflow-hidden h-[40px] w-[200px]  text-black group-hover:text-white text-sm ">
                     {!! $article->content !!}
                 </div>
                 <div class="mx-auto mt-10 ">
