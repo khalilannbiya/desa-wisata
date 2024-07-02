@@ -150,6 +150,7 @@ class ArticleController extends Controller
             DB::beginTransaction();
 
             $article = Article::findOrFail($id);
+            $oldTitle = $article->title;
 
             // Periksa apakah ada gambar baru yang diunggah
             if ($request->hasFile('image')) {
@@ -164,7 +165,7 @@ class ArticleController extends Controller
                 'title' => $request->title,
                 'content' => $request->content,
                 'image_url' => $path,
-                'slug' => Str::slug($request->title . '-' . Str::ulid())
+                'slug' => $request->title != $oldTitle ? Str::slug($request->title . '-' . Str::ulid()) : $article->slug
             ]);
 
             DB::commit();

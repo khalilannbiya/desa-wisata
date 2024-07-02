@@ -154,7 +154,6 @@ class EventController extends Controller
         $event->increment('views');
 
         return view('components.pages.frontend.detail-event', compact('event', 'status'));
-
     }
 
     /**
@@ -181,6 +180,7 @@ class EventController extends Controller
             DB::beginTransaction();
 
             $event = Event::findOrFail($id);
+            $oldName = $event->name;
 
             // Periksa apakah ada gambar baru yang diunggah
             if ($request->hasFile('image')) {
@@ -199,7 +199,7 @@ class EventController extends Controller
                 'gmaps_url' => $request->gmaps_url,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
-                'slug' => Str::slug($request->name . '-' . Str::ulid())
+                'slug' => $request->name != $oldName ? Str::slug($request->name . '-' . Str::ulid()) : $event->slug
             ]);
 
             DB::commit();
