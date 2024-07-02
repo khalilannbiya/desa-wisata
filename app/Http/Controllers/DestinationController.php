@@ -315,6 +315,8 @@ class DestinationController extends Controller
             DB::beginTransaction();
 
             $destination = Destination::findOrFail($destination);
+            $oldName = $destination->name;
+
             $destination->update([
                 'owner_id' => auth()->user()->role != "owner" ? $request->owner : auth()->user()->id,
                 'name' => $request->name_destination,
@@ -323,7 +325,7 @@ class DestinationController extends Controller
                 'gmaps_url' => $request->gmaps_url,
                 'price_range' => $request->price_range,
                 'status' => $request->status,
-                'slug' => Str::slug($request->name_destination . '-' . Str::ulid())
+                'slug' => $request->name_destination != $oldName ? Str::slug($request->name_destination . '-' . Str::ulid()) : $destination->slug
             ]);
 
             DB::commit();
@@ -332,7 +334,7 @@ class DestinationController extends Controller
             return redirect()->route(auth()->user()->role . '.destinations.edit', $destination);
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->withErrors(['error' => 'Gagal Mengubah Kontak: ' . $e->getMessage()]);
+            return back()->withErrors(['error' => 'Gagal Mengubah Destinasi: ' . $e->getMessage()]);
         }
     }
 
