@@ -1,3 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.list-check li::before {
+    content: '\2713'; /* Unicode untuk tanda centang */
+    color: #10B981; /* Warna hijau dari Tailwind (green-500) */
+    font-weight: bold; /* Berat font untuk tanda centang */
+    margin-right: 0.5rem; /* Margin kanan */
+}
+
+/* ::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+
+
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+
+} */
+
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+@layer base {
+    .body {
+      @apply relative text-base font-normal z-1 bg-whiten font-inter text-body;
+    }
+  }
+
+  .dataTables_wrapper{
+    @apply bg-white dark:bg-boxdark p-2 text-black-dashboard w-full overflow-x-scroll dark:text-white-dahsboard
+  }
+
+  .dataTables_wrapper .dataTables_length label, #crudTable_filter > label{
+    @apply text-black-dashboard dark:text-white-dahsboard font-medium
+  }
+
+  #crudTable_filter > label > input{
+    @apply text-black-dashboard dark:text-white-dahsboard
+  }
+  .dataTables_wrapper .dataTables_filter input{
+    @apply bg-transparent rounded
+  }
+
+  #crudTable > tbody > tr{
+    @apply bg-white-dahsboard dark:bg-boxdark
+  }
+
+  .wrapper-action {
+    @apply flex flex-wrap justify-center gap-2
+  }
+
+  .wrapper-action a, .wrapper-action form button{
+    @apply px-3 py-1 font-bold text-white shadow-lg rounded
+  }
+
+  #crudTable > tbody > tr > td:nth-child(4){
+    @apply capitalize font-semibold
+  }
+
+  .wrapper-action a:nth-child(1){
+    @apply bg-green-500 hover:bg-green-900
+  }
+
+  .wrapper-action a:nth-child(2){
+    @apply bg-yellow-500 hover:bg-yellow-900
+  }
+
+  .wrapper-action a:nth-child(3){
+    @apply bg-purple-500 hover:bg-purple-900
+  }
+
+  .wrapper-action form button{
+    @apply bg-red-500 hover:bg-red-900
+  }
+
+  #crudTable_info {
+    @apply text-black-dashboard dark:text-white-dahsboard
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+      @apply text-black-dashboard dark:text-white-dahsboard !important
+  }
