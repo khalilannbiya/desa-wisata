@@ -106,21 +106,25 @@
                 <p class="mt-2 text-sm text-gray-500">Repeh Rapih Kerta Raharja</p>
                 <div class="mt-4">
                     <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                        <a class="text-gray-500 cursor-pointer hover:text-green-new">
+                        <a href="https://web.facebook.com/rakutakside"
+                            class="text-gray-500 cursor-pointer hover:text-green-new">
                             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 class="w-5 h-5" viewBox="0 0 24 24">
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                             </svg>
                         </a>
-                        <a class="ml-3 text-gray-500 cursor-pointer hover:text-green-new">
-                            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                class="w-5 h-5" viewBox="0 0 24 24">
-                                <path
-                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
-                                </path>
+                        <a href="https://www.instagram.com/desasukarame2022?igsh=MW55enJkcndiNzNxaw=="
+                            class="ml-3 text-gray-500 cursor-pointer hover:text-green-new">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z"
+                                    clip-rule="evenodd" />
                             </svg>
+
                         </a>
-                        <a class="ml-3 text-gray-500 cursor-pointer hover:text-green-new">
+                        <a href="https://web.facebook.com/rakutakside"
+                            class="ml-3 text-gray-500 cursor-pointer hover:text-green-new">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5">
