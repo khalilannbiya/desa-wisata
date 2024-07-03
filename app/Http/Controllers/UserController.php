@@ -21,6 +21,15 @@ class UserController extends Controller
         if (request()->ajax()) {
             $users = User::where('role', '!=', 'super_admin')->get();
             return DataTables::of($users)
+                ->addColumn('role', function ($item) {
+                    if ($item->role == 'owner') {
+                        return 'Penanggung Jawab Wisata';
+                    } else if ($item->role == 'writer') {
+                        return 'Penulis Konten';
+                    } else {
+                        return 'Admin';
+                    }
+                })
                 ->addColumn('action', function ($item) {
                     $roleName = auth()->user()->role;
                     $editUrl = route("{$roleName}.users.edit", $item->id);
