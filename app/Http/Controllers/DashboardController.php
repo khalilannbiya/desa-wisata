@@ -12,10 +12,10 @@ class DashboardController extends Controller
 {
     public function writer()
     {
-        $totalArticle = Article::count();
+        $totalArticle = Article::where('author_id', auth()->user()->id)->count();
 
         // Mengambil 5 artikel dengan views terbanyak
-        $articles = Article::orderBy('views', 'desc')->take(5)->get();
+        $articles = Article::where('author_id', auth()->user()->id)->orderBy('views', 'desc')->take(5)->get();
 
         $articleLabels = $articles->pluck('title');
         $articleData = $articles->pluck('views');
@@ -30,10 +30,10 @@ class DashboardController extends Controller
 
     public function owner()
     {
-        $totalDestination = Destination::count();
+        $totalDestination = Destination::where('owner_id', auth()->user()->id)->count();
 
         // Mengambil 5 wisata dengan views terbanyak
-        $destinations = Destination::orderBy('views', 'desc')->take(5)->get();
+        $destinations = Destination::where('owner_id', auth()->user()->id)->orderBy('views', 'desc')->take(5)->get();
 
         $destinationLabels = $destinations->pluck('name');
         $destinationData = $destinations->pluck('views');
