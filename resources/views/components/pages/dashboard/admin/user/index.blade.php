@@ -52,7 +52,7 @@
                         {
                             data: 'role',
                             name: 'role',
-                            width: "10%"
+                            width: "25%"
                         },
                         {
                             data: 'email',
