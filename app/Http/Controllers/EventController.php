@@ -48,17 +48,7 @@ class EventController extends Controller
                     } else {
                         return sprintf('<span class="text-yellow-500 font-bold dark:text-yellow-300">Mendatang</span>');
                     }
-                })
-                ->addColumn('status', function ($item) {
-                    $now = Carbon::now();
-                    if ($item->end_date < $now) {
-                        return sprintf('<span class="text-red-500 font-bold dark:text-red-500">Selesai</span>');
-                    } elseif ($item->start_date < $now) {
-                        return sprintf('<span class="text-green-500 font-bold dark:text-green-300">Berlangsung</span>');
-                    } else {
-                        return sprintf('<span class="text-yellow-500 font-bold dark:text-yellow-300">Mendatang</span>');
-                    }
-                })
+            })
                 ->addColumn('action', function ($item) {
                     $roleName = auth()->user()->role;
                     $editUrl = route("{$roleName}.events.edit", $item->id);
