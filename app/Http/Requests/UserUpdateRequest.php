@@ -31,10 +31,6 @@ class UserUpdateRequest extends FormRequest
             'role' => ['required', 'string', 'in:super_admin,admin,owner,writer'],
         ];
 
-        if (auth()->user()->role === 'super_admin') {
-            $rules['password'] = ['required', 'confirmed', Password::min(8)->letters()->mixedCase()->numbers()->symbols()];
-        }
-
         return $rules;
     }
 }

@@ -75,9 +75,9 @@
                     <div class="mb-4.5">
                         <label for="password"
                             class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
-                            Ubah Password <span class="text-red-500">*</span>
+                            Ubah Password
                         </label>
-                        <input type="password" required name="password" placeholder="Masukan Password"
+                        <input type="password" name="password" placeholder="Masukan Password"
                             autocomplete="new-password"
                             class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black-dashboard outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white-dahsboard dark:focus:border-primary" />
                         <x-partials.dashboard.input-error :messages="$errors->get('password')" />
@@ -86,9 +86,9 @@
                     <div class="mb-4.5">
                         <label for="password_confirmation"
                             class="mb-3 block text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
-                            Password <span class="text-red-500">*</span>
+                            Password
                         </label>
-                        <input type="password" required name="password_confirmation" autocomplete="new-password"
+                        <input type="password" name="password_confirmation" autocomplete="new-password"
                             placeholder="Konfirmasi Password"
                             class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black-dashboard outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white-dahsboard dark:focus:border-primary" />
                     </div>
