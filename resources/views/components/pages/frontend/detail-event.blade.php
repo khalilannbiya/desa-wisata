@@ -58,6 +58,15 @@
                         <p class="mb-6 text-muted-foreground">{{ $event->description }}</p>
                     </div>
                 </div>
+                <div class="flex items-center gap-3 mt-6 text-green-new">
+                    <svg class="w-6 h-6 text-green-new dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 12h14M5 12l4-4m-4 4 4 4" />
+                    </svg>
+                    <a href="{{ url()->previous() }}">Kembali </a>
+                </div>
             </div>
         </section>
     </div>
