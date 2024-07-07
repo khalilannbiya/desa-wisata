@@ -33,26 +33,35 @@
                         </svg>
                         {{ number_format($destination->views) }}x Telah Dilihat
                     </span>
-                    <div class="flex gap-2">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                                <path
-                                    d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z">
-                                </path>
-                            </svg>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi :</label>
+                        <div class="flex gap-2">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                                    <path
+                                        d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zm0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <a href="{{ $destination->gmaps_url }}" target="_blank">
+                                <address class="text-sm text-gray-700 capitalize lg:text-base">
+                                    {{ $destination->location }}
+                                </address>
+                            </a>
                         </div>
-                        <a href="{{ $destination->gmaps_url }}" target="_blank">
-                            <address class="text-sm text-gray-700 capitalize lg:text-base">
-                                {{ $destination->location }}
-                            </address>
-                        </a>
                     </div>
                 </div>
-                <p class="text-gray-500 md:text-lg">{{ $destination->description }}</p>
-                <h1 class="pb-4 font-bold md:text-2xl">
-                    {{ $destination->price_range == 0 ? 'Masuk Gratis' : 'Mulai dari Rp. ' . number_format($destination->price_range) }}
-                </h1>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi :</label>
+                    <p class="text-gray-500 md:text-lg">{{ $destination->description }}</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Kisaran Harga :</label>
+                    <h1 class="pb-4 font-bold md:text-2xl">
+                        {{ $destination->price_range == 0 ? 'Masuk Gratis' : 'Mulai dari Rp. ' . number_format($destination->price_range) }}
+                    </h1>
+                </div>
             </div>
             <div class="">
 
@@ -152,6 +161,15 @@
                 </div>
 
             </div>
+        </div>
+        <div class="flex items-center gap-3 mt-6 text-green-new">
+
+            <svg class="w-6 h-6 text-green-new dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 12h14M5 12l4-4m-4 4 4 4" />
+            </svg>
+            <a href="{{ url()->previous() }}">Kembali </a>
         </div>
     </div>
     </x-layouts.visitor>
