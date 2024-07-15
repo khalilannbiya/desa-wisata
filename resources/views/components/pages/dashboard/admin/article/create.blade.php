@@ -23,8 +23,8 @@
                 <label for="image" class="block mb-2 text-sm font-medium text-black dark:text-white">
                     Masukan Foto <span class="text-red-500">*</span>
                 </label>
-                <p class="text-xs font-medium text-red-500">* Pastikan file bertipe jpeg, jpg, png</p>
-                <p class="text-xs font-medium text-red-500">* Maksimal file 1MB</p>
+                <p class="text-xs font-medium text-gray-400">* Pastikan file bertipe jpeg, jpg, png</p>
+                <p class="text-xs font-medium text-gray-400">* Maksimal file 1MB</p>
                 <div id="imagePreviewContainer" class="flex flex-wrap gap-5 mt-3"></div>
                 <input type="file" accept="image/*" name="image" id="image" class="mt-3">
                 <x-partials.dashboard.input-error :messages="$errors->get('image')" />
