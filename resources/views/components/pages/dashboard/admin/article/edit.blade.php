@@ -36,8 +36,8 @@
                             Ubah Foto <span class="text-red-500">*</span>
                         </label>
                         <input type="file" accept="image/*" name="image" id="image" class="block w-full mt-3">
-                        <p class="mt-2 text-xs font-medium text-red-500">* Pastikan file bertipe jpeg, jpg, png</p>
-                        <p class="text-xs font-medium text-red-500">* Maksimal file 1MB</p>
+                        <p class="mt-2 text-xs font-medium text-gray-400">* Pastikan file bertipe jpeg, jpg, png</p>
+                        <p class="text-xs font-medium text-gray-400">* Maksimal file 1MB</p>
                         <x-partials.dashboard.input-error :messages="$errors->get('image')" />
                     </div>
                 </div>
