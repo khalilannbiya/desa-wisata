@@ -23,7 +23,7 @@ class ArticleCreateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'title' => 'required|string|max:35',
+            'title' => 'required|string|max:75',
             'content' => 'required|string',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:1048'
         ];

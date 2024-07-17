@@ -68,7 +68,7 @@
                         Acara<span class="text-red-500">*</span>
                     </label>
                     <input required id="name" name="name" autofocus autocomplete="name"
-                        value="{{ old('name') }}" maxlength="100" type="text" placeholder="Nama Acara"
+                        value="{{ old('name') }}" maxlength="50" type="text" placeholder="Nama Acara"
                         class="w-full rounded border-[1.5px] border-black bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
                     <x-partials.dashboard.input-error :messages="$errors->get('name')" />
                 </div>
