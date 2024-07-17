@@ -45,7 +45,7 @@
                                 </svg>
                             </div>
                             <a href="{{ $destination->gmaps_url }}" target="_blank">
-                                <address class="text-sm text-gray-700 capitalize lg:text-base">
+                                <address class="text-sm text-deep-koamaru-500 capitalize lg:text-base">
                                     {{ $destination->location }}
                                 </address>
                             </a>
