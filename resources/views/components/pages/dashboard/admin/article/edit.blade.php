@@ -121,6 +121,7 @@
 
     <script>
         CKEDITOR.replace('content', {
+            versionCheck: false,
             toolbar: [{
                     name: 'paragraph',
                     items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
