@@ -11,7 +11,7 @@
                 <div class="overflow-x-auto">
                     <div class="inline-flex gap-3 h-15">
                         @foreach ($destination->galleries as $gallery)
-                            <img class="h-auto max-w-full object-cover object-center rounded-lg aspect-[4/3] imgClick"
+                            <img class="h-auto max-w-full cursor-pointer object-cover object-center rounded-lg aspect-[4/3] imgClick"
                                 src="{{ Storage::url($gallery->image_url) }}" alt="">
                         @endforeach
                     </div>
@@ -45,7 +45,7 @@
                                 </svg>
                             </div>
                             <a href="{{ $destination->gmaps_url }}" target="_blank">
-                                <address class="text-sm text-gray-700 capitalize lg:text-base">
+                                <address class="text-sm text-deep-koamaru-500 capitalize lg:text-base">
                                     {{ $destination->location }}
                                 </address>
                             </a>

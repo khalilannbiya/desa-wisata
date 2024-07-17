@@ -23,7 +23,7 @@ class ArticleUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'title' => 'required|string|max:35',
+            'title' => 'required|string|max:75',
             'content' => 'required|string',
             'image' => 'image|mimes:jpg,jpeg,png|max:1048'
         ];

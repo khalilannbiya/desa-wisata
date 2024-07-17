@@ -23,7 +23,7 @@ class DestinationUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name_destination' => 'required|string|min:5|max:100',
+            'name_destination' => 'required|string|min:5|max:50',
             'description' => 'required|string',
             'location' => 'required|string',
             'gmaps_url' => 'required|string|url:http,https',

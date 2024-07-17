@@ -62,7 +62,7 @@
                         class="block mb-3 text-sm font-medium text-black-dashboard dark:text-white-dahsboard">
                         Judul <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" required name="title" autocomplete="title" maxlength="35"
+                    <input type="text" required name="title" autocomplete="title" maxlength="75"
                         placeholder="Masukan Judul" value="{{ old('title') }}"
                         class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black-dashboard outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white-dahsboard dark:focus:border-primary">
                     <x-partials.dashboard.input-error :messages="$errors->get('title')" />
@@ -90,6 +90,7 @@
 </x-layouts.dashboard>
 <script>
     CKEDITOR.replace('content', {
+        versionCheck: false,
         toolbar: [{
                 name: 'paragraph',
                 items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']
