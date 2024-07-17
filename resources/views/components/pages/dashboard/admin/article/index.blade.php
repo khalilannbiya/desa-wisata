@@ -50,10 +50,12 @@
                         {
                             data: 'title',
                             name: 'title',
+                            width: "35%"
                         },
                         {
                             data: 'writer',
                             name: 'writer',
+                            "className": 'text-center'
                         },
                         {
                             data: 'action',

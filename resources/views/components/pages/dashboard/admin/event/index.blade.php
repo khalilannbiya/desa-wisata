@@ -53,7 +53,7 @@
                         {
                             data: 'name',
                             name: 'name',
-                            width : "15%"
+                            width: "15%"
                         },
                         {
                             data: 'start_date',
@@ -77,7 +77,7 @@
                         }
                     ],
                     order: [
-                        [2, 'desc']
+                        [0, 'desc']
                     ], // Default sorting
                     drawCallback: function(settings) {
                         var api = this.api();
