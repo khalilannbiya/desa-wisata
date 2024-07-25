@@ -66,24 +66,6 @@
                                 </svg> Pengguna
                             </a>
                         </li>
-
-                        <li>
-                            @php
-                                $roleName = auth()->user()->role;
-                                $routeName = $roleName . '.events.index';
-                            @endphp
-
-                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ in_array(Route::current()->getName(), [$roleName . '.events.index', $roleName . '.events.create', $roleName . '.events.edit']) ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
-                                href="{{ route($routeName) }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                    viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
-                                    <path d="M11 12h6v6h-6z"></path>
-                                    <path
-                                        d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm.001 16H5V8h14l.001 12z">
-                                    </path>
-                                </svg> Acara
-                            </a>
-                        </li>
                     @endif
 
                     @if (auth()->user()->role != 'writer')
@@ -101,6 +83,26 @@
                                         d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-4 2v11H8V8h8zm-1-4v2H9V4h6zM4 8h2v11H4V8zm14 11V8h2l.001 11H18z">
                                     </path>
                                 </svg> Wisata
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (auth()->user()->role == 'admin' || auth()->user()->role == 'super_admin')
+                        <li>
+                            @php
+                                $roleName = auth()->user()->role;
+                                $routeName = $roleName . '.events.index';
+                            @endphp
+
+                            <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark-dashboard dark:hover:bg-meta-4 {{ in_array(Route::current()->getName(), [$roleName . '.events.index', $roleName . '.events.create', $roleName . '.events.edit']) ? 'bg-graydark-dashboard dark:bg-meta-4' : '' }}"
+                                href="{{ route($routeName) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
+                                    <path d="M11 12h6v6h-6z"></path>
+                                    <path
+                                        d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm.001 16H5V8h14l.001 12z">
+                                    </path>
+                                </svg> Acara
                             </a>
                         </li>
                     @endif
