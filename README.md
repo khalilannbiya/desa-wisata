@@ -157,6 +157,14 @@ Another way to run the application is to use the command php artisan serve. Take
 -   Article Management
 -   Light/dark mode toggle at CMS
 
+## Screenshots
+![Beranda-Desa-Wisata-Sukarame](https://github.com/user-attachments/assets/53911628-a8ef-4bc6-9728-e72053225eab)
+![Tempat-Wisata-Desa-Wisata-Sukarame](https://github.com/user-attachments/assets/2298fa3f-49a8-4fa0-9aec-d52e835326c6)
+![Desa-Wisata-Sukarame](https://github.com/user-attachments/assets/a00c7c3d-8e05-49ce-ac48-768aad162c06)
+![Data-Wisata-Desa-Wisata-Sukarame](https://github.com/user-attachments/assets/46e49171-f408-4171-b76c-7bdfb0ff2374)
+![Desa-Wisata-Sukarame (1)](https://github.com/user-attachments/assets/eb4d8121-3075-47d8-bfe6-cbad19e282c0)
+
+
 ## Authors
 
 - [@khalilannbiya](https://www.github.com/khalilannbiya)
